@@ -1156,7 +1156,27 @@ namespace TangramCLR
 		static void Fire_OnCloudAppIdle();
 
 		delegate bool TangramAppInit();
-		static event TangramAppInit^ OnAppInit;
+		static TangramAppInit^ pOnAppInit;
+		// Ref https://docs.microsoft.com/en-us/previous-versions/58cwt3zh%28v%3dvs.140%29#custom-accessor-methods
+		static event TangramAppInit^ OnAppInit
+		{
+			void add(TangramAppInit^ p)
+			{
+				pOnAppInit = static_cast<TangramAppInit^>(Delegate::Combine(pOnAppInit, p));
+			}
+			void remove(TangramAppInit^ p)
+			{
+				pOnAppInit = static_cast<TangramAppInit^>(Delegate::Remove(pOnAppInit, p));
+			}
+			bool raise()
+			{
+				if (pOnAppInit != nullptr)
+				{
+					return pOnAppInit->Invoke();
+				}
+				return true;
+			}
+		};
 		static bool Fire_OnAppInit();
 
 		delegate void EclipseAppInit();
