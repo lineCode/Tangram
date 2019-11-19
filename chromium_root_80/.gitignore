@@ -1,0 +1,5 @@
+.gclient
+.gclient_entries
+.cipd/
+src/
+Archive-*

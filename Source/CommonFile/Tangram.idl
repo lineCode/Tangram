@@ -1,0 +1,895 @@
+/********************************************************************************
+*					Tangram Library - version 10.0.0							*
+*********************************************************************************
+* Copyright (C) 2002-2019 by Tangram Team.   All Rights Reserved.				*
+*
+* THIS SOURCE FILE IS THE PROPERTY OF TANGRAM TEAM AND IS NOT TO
+* BE RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED
+* WRITTEN CONSENT OF TANGRAM TEAM.
+*
+* THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS
+* OUTLINED IN THE GPL LICENSE AGREEMENT.TANGRAM TEAM
+* GRANTS TO YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE
+* THIS SOFTWARE ON A SINGLE COMPUTER.
+*
+* CONTACT INFORMATION:
+* mailto:tangramteam@outlook.com
+* https://www.tangramteam.com
+*
+********************************************************************************/
+
+// Tangram.idl : IDL source for Tangram
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (Tangram.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+interface ICompositorManager;
+interface IWndNode;
+interface ICompositor;
+interface ITangram;
+interface ITangramCtrl;
+interface IWorkBenchWindow;
+interface ITangramTreeView;
+interface IEclipseCtrl;
+interface ITangramDoc;
+interface IVSDocument;
+interface IChromeWebBrowser;
+interface IWndNodeCollection;
+
+typedef
+[
+	helpstring("Open URL for Chromium Based WebBrowser")
+]
+enum BrowserWndOpenDisposition {
+	UNKNOWN = 0x00000000,
+	CURRENT_TAB = 0x00000001,
+	// Indicates that only one tab with the url should exist in the same window.
+	SINGLETON_TAB = 0x00000002,
+	NEW_FOREGROUND_TAB = 0x00000003,
+	NEW_BACKGROUND_TAB = 0x00000004,
+	NEW_POPUP = 0x00000005,
+	NEW_WINDOW = 0x00000006,
+	SAVE_TO_DISK = 0x00000007,
+	OFF_THE_RECORD = 0x00000008,
+	IGNORE_ACTION = 0x00000009,
+	// Activates an existing tab containing the url, rather than navigating.
+	// This is similar to SINGLETON_TAB, but searches across all windows from
+	// the current profile and anonymity (instead of just the current one);
+	// closes the current tab on switching if the current tab was the NTP with
+	// no session history; and behaves like CURRENT_TAB instead of
+	// NEW_FOREGROUND_TAB when no existing tab is found.
+	SWITCH_TO_TAB = 0x0000000a
+	// Update when adding a new disposition.
+}BrowserWndOpenDisposition;
+
+typedef   
+[  
+	helpstring("")
+] 
+enum CompositorType
+{
+	MDIClientCompositor										= 0x00000000,
+	MDIChildCompositor										= 0x00000001,
+	SDICompositor											= 0x00000002,
+	CtrlBarCompositor										= 0x00000003,
+	WinFormMDIClientCompositor								= 0x00000004,
+	WinFormMDIChildCompositor								= 0x00000005,
+	WinFormCompositor										= 0x00000006,
+	EclipseWorkBenchCompositor								= 0x00000007,
+	EclipseViewCompositor									= 0x00000008,
+	EclipseSWTCompositor									= 0x00000009,
+	WinFormControlCompositor								= 0x0000000a,
+	TabbedMDIClientCompositor								= 0x0000000b,
+	NOCompositor											= 0x0000010a
+}CompositorType;
+
+typedef   
+[  
+	helpstring("")
+] 
+enum ObjEventType
+{
+	TangramNode											= 0x00000000,
+	TangramDocEvent										= 0x00000001,
+	TangramNodeAllChildNode								= 0x00000002,
+	TangramDocAllFrameAllChildNode						= 0x00000003,
+	TangramDocAllFrameAllTopNode						= 0x00000004,
+	TangramFrameAllTopNodeAllChildNode					= 0x00000005,
+	TangramFrameAllTopNode								= 0x00000006,
+	CompositorManagerAllFrameAllTopNodeAllChildNode		= 0x00000007,
+	CompositorManagerAllFrameAllTopNode					= 0x00000008,
+	CompositorManagerCtrlBarFrameAllTopNodeAllChildNode	= 0x00000009,
+	CompositorManagerCtrlBarFrameAllTopNode				= 0x0000000a,
+	CompositorManagerNotCtrlBarFrameAllTopNodeAllChildNode = 0x0000000b,
+	CompositorManagerNotCtrlBarFrameAllTopNode				= 0x0000000c,
+	TangramDocAllCtrlBarFrameAllChildNode				= 0x0000000d,
+	TangramDocAllCtrlBarFrame							= 0x0000000e
+}ObjEventType;
+
+typedef   
+[  
+	helpstring("")
+] 
+enum TangramViewType
+{
+	BlankView = 0x00000001,
+	ActiveX = 0x00000002,
+	Splitter = 0x00000004,
+	TabbedWnd = 0x00000008,
+
+	CLRCtrl = 0x00000010,
+	CLRForm = 0x00000020,
+	CLRWnd = 0x00000040,
+	TangramView = 0x00000080,
+	TangramTreeView = 0x0100,
+	TangramListView = 0x0200,
+	TabCtrl = 0x400,
+	TangramWPFCtrl = 0x800
+}TangramViewType;
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060120160101),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ITangramExtender : IDispatch {
+	[id(0)] HRESULT Close();
+	[propget, id(1)] HRESULT ActiveWorkBenchWindow(BSTR bstrID, [out, retval] IWorkBenchWindow** pVal);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060120170321),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ITangramDesigner : IDispatch {
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060120160918),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IEclipseExtender : ITangramExtender {
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060119631222),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IOfficeExtender : ITangramExtender {
+	[id(101)] HRESULT AddVBAFormsScript(IDispatch* OfficeObject, BSTR bstrKey, BSTR bstrXml);
+	[id(102)] HRESULT InitVBAForm([in] IDispatch* newVal, [in]long nStyle, BSTR bstrXml, [out, retval] IWndNode** ppNode);
+	[id(103)] HRESULT GetFrameFromVBAForm(IDispatch* pForm, [out, retval] ICompositor** ppCompositor);
+	[id(104)] HRESULT GetActiveTopWndNode(IDispatch* pForm, [out, retval] IWndNode** WndNode);
+	[id(105)] HRESULT GetObjectFromWnd(LONG hWnd, [out, retval] IDispatch** ppObjFromWnd);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060119890701),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IVSExtender : ITangramExtender {
+	[propget, id(101), hidden] HRESULT CurrentDesignNode([out, retval] IWndNode** ppRetVal);
+	[propput, id(101), hidden] HRESULT CurrentDesignNode([in] IWndNode* newVal);
+	[propget, id(102), hidden] HRESULT DesignNode([out, retval] IWndNode** pVal);
+	[propget, id(103), hidden] HRESULT DesignRootNode([out, retval] IWndNode** pVal);
+	[propput, id(103), hidden] HRESULT DesignRootNode([in] IWndNode* newVal);
+	[propget, id(104)] HRESULT TangramCLRProject(BSTR bstrPrjPath, [out, retval] VARIANT_BOOL* pVal);
+	[propput, id(104)] HRESULT TangramCLRProject(BSTR bstrPrjPath, [in] VARIANT_BOOL newVal);
+	[propget, id(105)] HRESULT CurrentSelectedPrj([out, retval] BSTR* pVal);
+	[id(106)] HRESULT ExtendXmlUI(BSTR bstrKey, BSTR bstrXml, [out, retval] IWndNode** ppNode);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-06012017F7CD),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ITangramRestNotify : IDispatch {
+	[id(1)] HRESULT Notify(BSTR bstrInfo);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060120176C7D),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ITangramRestObj : IDispatch {
+	[propget, id(1)] HRESULT TangramRestNotify([out, retval] ITangramRestNotify** pVal);
+	[propput, id(1)] HRESULT TangramRestNotify([in] ITangramRestNotify* newVal);
+	[propget, id(2)] HRESULT NotifyHandle([out, retval] LONGLONG* pVal);
+	[propput, id(2)] HRESULT NotifyHandle([in] LONGLONG newVal);
+	[propget, id(3)] HRESULT Header(BSTR bstrHeaderName, [out, retval] BSTR* pVal);
+	[propput, id(3)] HRESULT Header(BSTR bstrHeaderName, [in] BSTR newVal);
+	[propget, id(4)] HRESULT RestKey([out, retval] BSTR* pVal);
+	[propput, id(4)] HRESULT RestKey([in] BSTR newVal);
+	[propget, id(5)] HRESULT TangramNode([out, retval] IWndNode** pVal);
+	[propput, id(5)] HRESULT TangramNode([in] IWndNode* newVal);
+	[id(104)] HRESULT AsyncRest(int nMethod, BSTR bstrURL, BSTR bstrData, LONGLONG hNotify);
+	[id(105)] HRESULT Notify(long nNotify);
+	[id(106)] HRESULT UploadFile(VARIANT_BOOL bUpload, BSTR bstrServerURL, BSTR bstrRequest, BSTR bstrFilePath);
+	[id(107)] HRESULT RestData(int nMethod, BSTR bstrServerURL, BSTR bstrRequest, BSTR bstrData, LONGLONG hNotify);
+	[id(108)] HRESULT ClearHeaders();
+	[id(109)] HRESULT Clone(ITangramRestObj* pTargetObj);
+	[propget, id(110)] HRESULT State([out, retval] int* pVal);
+	[propput, id(110)] HRESULT State([in] int newVal);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060120170824),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IVSDocument : IDispatch {
+	[propget, id(DISPID_VALUE), helpstring("")] HRESULT VSClass([in]VARIANT vIndex, [out, retval]IDispatch **ppNode);
+	[propget, id(DISPID_NEWENUM), helpstring("")] HRESULT _NewEnum([out, retval]IUnknown** ppVal);
+	[propget, id(1), helpstring("")] HRESULT Count([out, retval]long *pCount);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-0601198222C0),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ITaskNotify : IDispatch {
+	[id(1)] HRESULT Notify(BSTR bstrInfo);
+	[id(2)] HRESULT NotifyEx(VARIANT varNotify);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-06011982C951),
+	dual,
+	nonextensible,
+	helpstring("ITangramTreeNode Interface"),
+	pointer_default(unique)
+]
+interface ITangramTreeNode : IDispatch {
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-0601198283A6),
+	dual,
+	nonextensible,
+	helpstring("ITangramTreeViewCallBack Interface"),
+	pointer_default(unique)
+]
+interface ITangramTreeViewCallBack : IDispatch {
+	[propput, id(1), helpstring("property WndNode")] HRESULT WndNode(IWndNode* newVal);
+	[propget, id(2), helpstring("property Pages")] HRESULT Pages(long* retVal);
+	[id(100), helpstring("method OnInitTreeView")] HRESULT OnInitTreeView(ITangramTreeView* pTangramTreeView, BSTR bstrXml);
+	[id(101), helpstring("method OnClick")] HRESULT OnClick(BSTR bstrXml, BSTR bstrXmlData);
+	[id(102), helpstring("method OnInit")] HRESULT OnInit(BSTR bstrXml);
+	[id(103), helpstring("method OnNewPage")] HRESULT OnNewPage(int nNewPage);
+	[id(104), helpstring("method TangramAction")] HRESULT TangramAction(BSTR bstrXml, [out, retval] BSTR* bstrRetXml);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-0601198283A5),
+	dual,
+	nonextensible,
+	helpstring("ITangramTreeView Interface"),
+	pointer_default(unique)
+]
+interface ITangramTreeView : IDispatch {
+	[propput, id(1), helpstring("property TangramTreeViewCallBack")] HRESULT TangramTreeViewCallBack(BSTR bstrKey, [in] ITangramTreeViewCallBack* newVal);
+	[propget, id(2), helpstring("property FirstRoot")] HRESULT FirstRoot([out, retval] long* pVal);
+	[id(3), helpstring("method AddTreeNode")] HRESULT AddTreeNode(long hItem, BSTR bstrXml);
+	[id(4), helpstring("method InsertNode")] HRESULT InsertNode(BSTR bstrXml, [out, retval] long* hItem);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060119820000),
+	dual,
+	hidden,
+	nonextensible,
+	helpstring("ITangramApp Interface"),
+	pointer_default(unique)
+]
+interface ITangramApp : IDispatch{
+	[propget, id(1), helpstring("property Tangram")] HRESULT Tangram([out, retval]ITangram** ppTangramCore);
+}
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060120160928),
+	dual,
+	hidden,
+	nonextensible,
+	helpstring("ITangramEventObj Interface"),
+	pointer_default(unique)
+]
+interface ITangramEventObj : IDispatch{
+	[propget, id(0)] HRESULT eventSource([out, retval] IDispatch** pVal);
+	[propput, id(0), helpstring("eventSource")] HRESULT eventSource([in] IDispatch* eventSource);
+	[propget, id(1)] HRESULT Index([out, retval] int* nVal);
+	[propput, id(1)] HRESULT Index(int newVal);
+	[propget, id(2)] HRESULT EventName([out, retval] BSTR* pVal);
+	[propput, id(2)] HRESULT EventName(BSTR newVal);
+	[propget, id(3)] HRESULT Object(int nIndex, [out, retval] IDispatch** pVal);
+	[propput, id(3)] HRESULT Object(int nIndex, IDispatch* newVal);
+	[propget, id(4)] HRESULT Value(int nIndex, [out, retval] VARIANT* pVal);
+	[propput, id(4)] HRESULT Value(int nIndex, VARIANT newVal);
+}
+
+[
+	uuid(19631222-1992-0612-1965-060119820004),
+	helpstring("IWndNode Interface"),
+	pointer_default(unique)
+]
+interface IWndNode : IDispatch{
+	[propget, id(1), helpstring("property ChildNodes")] HRESULT ChildNodes([out, retval]IWndNodeCollection** ppNodeColletion);
+	[propget, id(2), helpstring("property Rows")] HRESULT Rows([out, retval]long* nRows);
+	[propget, id(3), helpstring("property Cols")] HRESULT Cols([out, retval]long* nCols);
+	[propget, id(4), helpstring("property Row")] HRESULT Row([out, retval]long* nRow);
+	[propget, id(5), helpstring("property Col")] HRESULT Col([out, retval]long* nCol);	
+	[propget, id(6), helpstring("property NodeType")] HRESULT NodeType([out,retval]TangramViewType* nType);
+	[propget, id(7), helpstring("property ParentNode")] HRESULT ParentNode([out,retval]IWndNode** ppNode);	
+	[propget, id(9)] HRESULT CompositorManager([out, retval] ICompositorManager** pVal);
+	[propget, id(10), helpstring("property RootNode")] HRESULT RootNode([out, retval]IWndNode** ppNode);
+	[propget, id(11), helpstring("property XObject")] HRESULT XObject([out, retval] VARIANT* pVar);
+	[propget, id(12), helpstring("property PlugIn")] HRESULT AxPlugIn([in] BSTR bstrPlugInName, [out, retval] IDispatch** pVal);
+	[propget, id(13), helpstring("When this Node is Contained in a Tabbed Node, "
+		"this property is the Tab Caption")] HRESULT Caption([out, retval] BSTR* pVal);
+	[propput, id(13), helpstring("property Caption")] HRESULT Caption([in] BSTR bstrCaption);
+	[propget, id(14), helpstring("property Name")] HRESULT Name([out, retval] BSTR* pVal);
+	[propput, id(14), helpstring("property Name")] HRESULT Name([in] BSTR bstrName);
+	[propget, id(15), helpstring("property Objects")] HRESULT Objects([in]long nType, [out, retval]IWndNodeCollection** ppNodeColletion);
+	[propget, id(16), helpstring("property Handle")] HRESULT Handle([out, retval]LONGLONG* hWnd);
+	[propget, id(17), helpstring("property Attribute")] HRESULT Attribute([in]BSTR bstrKey, [out, retval] BSTR* pVal);
+	[propput, id(17), helpstring("property Attribute")] HRESULT Attribute([in]BSTR bstrKey, [in]BSTR bstrVal);
+	[propget, id(18), helpstring("property Tag")] HRESULT Tag([out, retval] VARIANT* pVar);
+	[propput, id(18), helpstring("property Tag")] HRESULT Tag([in] VARIANT vVar);
+	[propget, id(19), helpstring("property OuterXml")] HRESULT OuterXml([out, retval] BSTR* pVal);
+	[propget, id(20), helpstring("property Key")] HRESULT Key([out, retval] BSTR* pVal);
+	[propget, id(22)] HRESULT NameAtWindowPage([out, retval] BSTR* pVal);
+	[propget, id(23), helpstring("property Width")] HRESULT Width([out, retval] LONG* pVal);
+	[propget, id(24), helpstring("property Height")] HRESULT Height([out, retval] LONG* pVal);
+	[propget, id(25), helpstring("property Frame")] HRESULT Compositor([out, retval] ICompositor** pVal);
+	[propget, id(26), helpstring("property XML")] HRESULT XML([out, retval] BSTR* pVal);
+	[propget, id(27), helpstring("property Extender")] HRESULT Extender([out, retval] IDispatch** pVal);
+	[propput, id(27), helpstring("property Extender")] HRESULT Extender([in] IDispatch* newVal);
+	[propget, id(28)] HRESULT DocXml([out, retval] BSTR* pVal);
+	[propget, id(29)] HRESULT rgbMiddle([out, retval] OLE_COLOR* pVal);
+	[propput, id(29)] HRESULT rgbMiddle([in] OLE_COLOR newVal);
+	[propget, id(30)] HRESULT rgbRightBottom([out, retval] OLE_COLOR* pVal);
+	[propput, id(30)] HRESULT rgbRightBottom([in] OLE_COLOR newVal);
+	[propget, id(31)] HRESULT rgbLeftTop([out, retval] OLE_COLOR* pVal);
+	[propput, id(31)] HRESULT rgbLeftTop([in] OLE_COLOR newVal);
+	[propget, id(32)] HRESULT Hmin([out, retval] int* pVal);
+	[propput, id(32)] HRESULT Hmin([in] int newVal);
+	[propget, id(33)] HRESULT Hmax([out, retval] int* pVal);
+	[propput, id(33)] HRESULT Hmax([in] int newVal);
+	[propget, id(34)] HRESULT Vmin([out, retval] int* pVal);
+	[propput, id(34)] HRESULT Vmin([in] int newVal);
+	[propget, id(35)] HRESULT Vmax([out, retval] int* pVal);
+	[propput, id(35)] HRESULT Vmax([in] int newVal);
+	[propget, id(36)] HRESULT HostNode([out, retval] IWndNode** pVal);
+	[propput, id(36)] HRESULT HostNode([in] IWndNode* newVal);
+	[propget, id(37)] HRESULT ActivePage([out, retval] int* pVal);
+	[propput, id(37)] HRESULT ActivePage([in] int newVal);
+	[propget, id(38), helpstring("property HostFrame")] HRESULT HostCompositor([out, retval] ICompositor** pVal);
+	[propget, id(39)] HRESULT MasterRow([out, retval] int* pVal);
+	[propput, id(39)] HRESULT MasterRow([in] int newVal);
+	[propget, id(40)] HRESULT MasterCol([out, retval] int* pVal);
+	[propput, id(40)] HRESULT MasterCol([in] int newVal);
+	[propget, id(41), helpstring("property Office Object")] HRESULT OfficeObj([out, retval] IDispatch** pVal);
+	[propput, id(42)] HRESULT SaveToConfigFile([in] VARIANT_BOOL newVal);
+	[propget, id(43)] HRESULT DockObj(BSTR bstrName, [out, retval] LONGLONG* pVal);
+	[propput, id(43)] HRESULT DockObj(BSTR bstrName, [in] LONGLONG newVal);
+	[propget, id(45)] HRESULT VSDocument([out, retval] IVSDocument** ppVSDocument);
+	//[propput, id(45)] HRESULT VSDocument([in] IVSDocument* newVal);
+	[propget, id(46)] HRESULT URL([out, retval] BSTR* pVal);
+	[propput, id(46)] HRESULT URL([in] BSTR newVal);
+
+	[id(100), hidden] HRESULT ActiveTabPage(IWndNode* pNode);
+	[id(101), helpstring("method GetNodes")] HRESULT GetNodes([in]BSTR bstrName, [out]IWndNode** ppNode, [out]IWndNodeCollection** ppNodes, [out, retval]long* pCount);
+	[id(102), helpstring("method GetNode")] HRESULT GetNode([in]long nRow, [in]long nCol, [out, retval]IWndNode** ppWndmNode);
+	[id(103)] HRESULT GetCtrlByName(BSTR bstrName, VARIANT_BOOL bFindInChild, [out, retval] IDispatch** ppCtrlDisp);
+	[id(104), helpstring("method Refresh")] HRESULT Refresh(void);
+	[id(105)] HRESULT Open(BSTR bstrKey, BSTR bstrXml, [out, retval] IWndNode** ppRetNode);
+	[id(106), helpstring("method LoadXML")] HRESULT LoadXML(int nType, BSTR bstrXML);
+	[id(107)] HRESULT OpenEx(int nRow, int nCol, BSTR bstrKey, BSTR bstrXml, [out, retval] IWndNode** ppRetNode);
+	[id(108)] HRESULT GetNodeByName([in]BSTR bstrName, [out, retval] IWndNodeCollection** pVal);
+	[id(109)] HRESULT GetCtrlValueByName(BSTR bstrName, VARIANT_BOOL bFindInChild, [out, retval] BSTR* bstrVal);
+	[id(110)] HRESULT SetCtrlValueByName(BSTR bstrName, VARIANT_BOOL bFindInChild, BSTR bstrVal);
+	[id(112)] HRESULT NavigateURL(BSTR bstrURL, IDispatch* dispObjforScript);
+	[id(113)] HRESULT AddChannel(BSTR bstrChannel);
+	[id(114)] HRESULT SendIPCMessage(BSTR bstrChannel, BSTR bstrData);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060119822007),
+	dual,
+	nonextensible,
+	helpstring("IAppExtender Interface"),
+	pointer_default(unique)
+]
+interface IAppExtender : IDispatch{
+	[id(1), helpstring("method ProcessNotify")] HRESULT ProcessNotify([in]BSTR bstrXmlNotify);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060119826688),
+	oleautomation,
+	nonextensible,
+	helpstring("TangramDesigner Single View Editor Interface"),
+	pointer_default(unique)
+]
+interface ITangramEditor : IDispatch
+{
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060120161101),
+	dual,
+	nonextensible,
+	helpstring("ITangramDoc Interface"),
+	pointer_default(unique)
+]
+interface ITangramDoc : IDispatch {
+	[propget, id(1)] HRESULT TemplateXml([out, retval] BSTR* bstrVal);
+	[propput, id(1)] HRESULT TemplateXml([in] BSTR newVal);
+	[propput, id(2)] HRESULT DocType([in] BSTR newVal);
+	[propget, id(3)] HRESULT DocID([out, retval] LONGLONG* pVal);
+	[propput, id(3)] HRESULT DocID([in] LONGLONG newVal);
+
+	[id(101)] HRESULT GetFrameWndXml(BSTR bstrWndID, [out, retval] BSTR* bstrWndScriptVal);
+}
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060120170707),
+	dual,
+	nonextensible,
+	helpstring("ITangramDocTemplate Interface"),
+	pointer_default(unique)
+]
+interface ITangramDocTemplate : IDispatch {
+	[propget, id(1)] HRESULT TemplateXml([out, retval] BSTR* bstrVal);
+	[propput, id(1)] HRESULT TemplateXml([in] BSTR newVal);
+	[propput, id(2)] HRESULT DocType([in] BSTR newVal);
+	[propget, id(3)] HRESULT DocID([out, retval] LONGLONG* pVal);
+	[propput, id(3)] HRESULT DocID([in] LONGLONG newVal);
+
+	[id(101)] HRESULT GetFrameWndXml(BSTR bstrWndID, [out, retval] BSTR* bstrWndScriptVal);
+}
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-0601da3b0a66),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ITangramJava : IDispatch
+{
+	[id(1)] HRESULT CreateCompositorManager(LONGLONG hWnd, [out, retval]IDispatch** ppCompositorManager);
+	[id(2)] HRESULT CreateObject(BSTR bstrObjID, [out, retval]IDispatch** ppObj);
+	[id(3)] HRESULT ActiveMethod(BSTR bstrObjID, BSTR bstrMethodName, BSTR bstrParams);
+	[id(4)] HRESULT CreatingNode([out, retval]IDispatch** ppCreatingNode);
+	[id(5)] HRESULT Open(LONGLONG hWnd, BSTR bstrKey, BSTR bstrXML, BSTR bstrFeatures);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060119820001),
+	dual,
+	nonextensible,
+	helpstring("ITangram Interface"),
+	pointer_default(unique)
+]
+interface ITangram : IDispatch{
+	[propget, id(1), helpstring("property Application")] HRESULT Application([out, retval] IDispatch** pVal);
+	[propput, id(1), helpstring("property Application")] HRESULT Application([in]IDispatch* newVal);
+	[propget, id(2), helpstring("property AppKeyValue")] HRESULT AppKeyValue(BSTR bstrKey, [out, retval] VARIANT* pVal);
+	[propput, id(2), helpstring("property AppKeyValue")] HRESULT AppKeyValue(BSTR bstrKey, [in] VARIANT newVal);
+	[propget, id(3), helpstring("property AppExtender")] HRESULT AppExtender(BSTR bstrKey, [out, retval] IDispatch** pVal);
+	[propput, id(3), helpstring("property AppExtender")] HRESULT AppExtender(BSTR bstrKey, [in] IDispatch* newVal);
+	[propget, id(4), helpstring("property RootNodes")] HRESULT RootNodes([out, retval]IWndNodeCollection** ppNodeColletion);
+	[propget, id(5)] HRESULT HostWnd([out, retval] LONGLONG* pVal);
+	[propget, id(6), helpstring("property CurrentActiveNode")] HRESULT CurrentActiveNode([out, retval] IWndNode** pVal);
+	[propget, id(7), helpstring("property CreatingNode")] HRESULT CreatingNode([out, retval] IWndNode** pVal);
+	[propget, id(8)] HRESULT RemoteTangram(BSTR bstrID, [out, retval] ITangram** pVal);
+	[propget, id(9)] HRESULT Extender([out, retval] ITangramExtender** pVal);
+	[propput, id(9)] HRESULT Extender([in] ITangramExtender* newVal);
+	[propget, id(10)] HRESULT RemoteHelperHWND([out, retval] LONGLONG* pVal);
+	[propput, id(10)] HRESULT RemoteHelperHWND([in]LONGLONG newVal);
+	[propget, id(11), hidden] HRESULT DesignNode([out, retval] IWndNode** pVal);
+	[propget, id(13)] HRESULT TangramDoc(LONGLONG AppProxy, LONGLONG nDocID, [out, retval] ITangramDoc** pVal);
+	[propget, id(14)] HRESULT DocTemplate(BSTR bstrID, [out, retval] LONGLONG* pVal);
+	[propget, id(15)] HRESULT ActiveChromeBrowserWnd([out, retval] IChromeWebBrowser** ppChromeWebBrowser);
+	[propget, id(16)] HRESULT HostChromeBrowserWnd([out, retval] IChromeWebBrowser** ppChromeWebBrowser);
+
+	[id(0x00100)] HRESULT NavigateNode(IWndNode* pNode, BSTR bstrBrowserID, BSTR bstrXml);
+	[id(0x00101)] HRESULT CreateCompositorManager(LONGLONG hWnd, [out, retval]ICompositorManager** ppCompositorManager);
+	[id(0x00102)] HRESULT CreateOfficeDocument(BSTR bstrXml);
+	[id(0x00103), helpstring("method Create CLR Object")] HRESULT CreateCLRObj(BSTR bstrObjID,[out, retval]IDispatch** ppDisp);
+	[id(0x00104)] HRESULT StartApplication(BSTR bstrAppID, BSTR bstrXml);
+	[id(0x00105), helpstring("method GetCompositor")] HRESULT GetCompositor(LONGLONG hHostWnd, [out,retval] ICompositor** ppCompositor);
+	[id(0x00106)] HRESULT GetItemText(IWndNode* pNode, long nCtrlID, LONG nMaxLengeh, [out, retval] BSTR* bstrRet);
+	[id(0x00107)] HRESULT SetItemText(IWndNode* pNode, long nCtrlID, BSTR bstrText);
+	[id(0x00108)] HRESULT GetCLRControl(IDispatch* CtrlDisp, BSTR bstrName, [out, retval] IDispatch** ppRetDisp);
+	[id(0x00109), helpstring("method MessageBox")] HRESULT MessageBox(LONGLONG hWnd, BSTR bstrContext, BSTR bstrCaption, long nStyle, [out, retval] int* nRet);
+	[id(0x0010a), helpstring("method Encode")] HRESULT Encode(BSTR bstrSRC, VARIANT_BOOL bEncode, [out,retval] BSTR* bstrRet);
+	[id(0x0010b), helpstring("method SetHostFocus")] HRESULT SetHostFocus(void);
+	[id(0x0010c)] HRESULT UpdateWndNode(IWndNode* pNode);
+	[id(0x0010d), helpstring("method NewGUID")] HRESULT NewGUID([out, retval] BSTR* retVal);
+	[id(0x0010e)] HRESULT ActiveCLRMethod(BSTR bstrObjID, BSTR bstrMethod, BSTR bstrParam, BSTR bstrData);
+	[id(0x0010f), helpstring("method TangramGetObject")] HRESULT TangramGetObject(IDispatch* SourceDisp, IDispatch** ResultDisp);
+	[id(0x00110)] HRESULT DownLoadFile(BSTR strFileURL, BSTR bstrTargetFile, BSTR bstrActionXml);
+	[id(0x00111)] HRESULT GetCtrlByName(IDispatch* pCtrl, BSTR bstrName, VARIANT_BOOL bFindInChild, [out, retval] IDispatch** ppCtrlDisp);
+	[id(0x00112)] HRESULT GetNodeFromHandle(LONGLONG hWnd, [out, retval] IWndNode** ppRetNode);
+	[id(0x00113)] HRESULT GetCtrlValueByName(IDispatch* pCtrl, BSTR bstrName, VARIANT_BOOL bFindInChild, [out, retval] BSTR* bstrVal);
+	[id(0x00114)] HRESULT SetCtrlValueByName(IDispatch* pCtrl, BSTR bstrName, VARIANT_BOOL bFindInChild, BSTR bstrVal);
+	[id(0x00115), hidden] HRESULT CreateTangramCtrl(BSTR bstrAppID, [out, retval] ITangramCtrl** ppRetCtrl);
+	[id(0x00116)] HRESULT AttachObjEvent(IDispatch* pDisp, int nEventIndex);
+	[id(0x00118)] HRESULT GetWindowClientDefaultNode(IDispatch* pAddDisp, LONGLONG hParent, BSTR bstrWndClaName, BSTR bstrCompositorManagerName, [out, retval] IWndNode** ppNode);
+	[id(0x00119)] HRESULT GetDocTemplateXml(BSTR bstrCaption, BSTR bstrPath, BSTR bstrFilter, [out, retval] BSTR* bstrTemplatePath);
+	[id(0x0011a)] HRESULT OpenTangramFile([out, retval] ITangramDoc** ppDoc);
+	[id(0x0011b)] HRESULT CreateTangramEventObj([out, retval]ITangramEventObj** ppTangramEventObj);
+	[id(0x0011c)] HRESULT FireTangramEventObj(ITangramEventObj* pTangramEventObj);
+	[id(0x0011d)] HRESULT OpenCompositors(LONGLONG hWnd, BSTR bstrFrames, BSTR bstrKey, BSTR bstrXml, VARIANT_BOOL bSaveToConfigFile);
+	[id(0x0011e)] HRESULT DeletePage(LONGLONG PageHandle);
+	[id(0x0011f)] HRESULT LoadDocComponent(BSTR bstrLib, [out, retval] LONGLONG* llAppProxy);
+	[id(0x00120)] HRESULT OpenTangramDocFile(BSTR bstrFilePath, [out, retval] ITangramDoc** ppDoc);
+	[id(0x00122), helpstring("method CreateOutLookObj")] HRESULT CreateOutLookObj(BSTR bstrObjType, int nType, BSTR bstrURL, [out, retval] IDispatch** ppRetDisp);
+	[id(0x00123)] HRESULT NewWorkBench(BSTR bstrTangramDoc, [out, retval] IWorkBenchWindow** ppWorkBenchWindow);
+	[id(0x00124)] HRESULT ReadTextFromWeb(BSTR bstrURL, BSTR bstrOrg, BSTR bstrRepo, BSTR bstrBranch, BSTR bstrFile, BSTR bstrTarget, LONGLONG hNotify);
+	[id(0x00125)] HRESULT ClearHeader();
+	[id(0x00126)] HRESULT DeleteFrame(ICompositor* pCompositor);
+	[id(0x00127)] HRESULT InitEclipseApp();
+	[id(0x00128)] HRESULT InitCLRApp(BSTR strInitXml, [out, retval] LONGLONG* llHandle);
+
+	[id(0x001000), helpstring("method TangramCommand")] HRESULT TangramCommand(IDispatch* RibbonControl);
+	[id(0x001001), helpstring("method TangramGetImage")] HRESULT TangramGetImage(BSTR strValue, [out, retval] IPictureDisp** ppdispImage);
+	[id(0x001002), helpstring("method TangramGetVisible")] HRESULT TangramGetVisible(IDispatch* RibbonControl, [out, retval] VARIANT* varVisible);
+	[id(0x001003), helpstring("method TangramOnLoad")] HRESULT TangramOnLoad(IDispatch* RibbonControl);
+	[id(0x001004), helpstring("method TangramGetItemCount")] HRESULT TangramGetItemCount(IDispatch* RibbonControl, [out, retval] long* nCount);
+	[id(0x001005), helpstring("method TangramGetItemLabel")] HRESULT TangramGetItemLabel(IDispatch* RibbonControl, long nIndex, [out, retval] BSTR* bstrLabel);
+	[id(0x001006), helpstring("method TangramGetItemID")] HRESULT TangramGetItemID(IDispatch* RibbonControl, long nIndex, [out, retval]BSTR*  bstrID);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060119820003),
+	dual,
+	nonextensible,
+	helpstring("ICompositor Interface"),
+	pointer_default(unique)
+]
+interface ICompositor : IDispatch{
+	[propget, id(DISPID_VALUE), helpstring("")] HRESULT WndNode([in]VARIANT vIndex, [out, retval]IWndNode **ppNode);
+	[propget, id(DISPID_NEWENUM), helpstring("")] HRESULT _NewEnum([out, retval]IUnknown** ppVal);
+	[propget, id(1), helpstring("property HWND")] HRESULT HWND([out, retval] LONGLONG* pVal);
+	[propget, id(2), helpstring("property VisibleNode")] HRESULT VisibleNode([out, retval] IWndNode** pVal);
+	[propget, id(3)] HRESULT CurrentNavigateKey([out, retval] BSTR* pVal);
+	[propget, id(4)] HRESULT CompositorManager([out, retval] ICompositorManager** pVal);
+	[propget, id(5)] HRESULT CompositorData(BSTR bstrKey, [out, retval] VARIANT* pVal);
+	[propput, id(5)] HRESULT CompositorData(BSTR bstrKey, [in] VARIANT newVal);
+	[propget, id(6), hidden] HRESULT DesignerState([out, retval] VARIANT_BOOL* pVal);
+	[propput, id(6), hidden] HRESULT DesignerState([in] VARIANT_BOOL newVal);
+	[propget, id(7), helpstring("")] HRESULT Count([out, retval]long *pCount);
+	[propget, id(8), helpstring("property RootNodes")] HRESULT RootNodes([out, retval]IWndNodeCollection** ppNodeColletion);
+	[propget, id(9)] HRESULT CompositorXML([out, retval] BSTR* pVal);
+	[propget, id(10)] HRESULT TangramDoc([out, retval] ITangramDoc** pVal);
+	[propget, id(11)] HRESULT CompositorType([out, retval] CompositorType* pVal);
+	[propget, id(12)] HRESULT Name([out, retval] BSTR* pVal);
+
+	[id(101), helpstring("method Detach")] HRESULT Detach(void);
+	[id(102), helpstring("method Attach")] HRESULT Attach(void);
+	[id(103), helpstring("method ModifyHost")] HRESULT ModifyHost(LONGLONG hHostWnd);
+	[id(104)] HRESULT Open(BSTR bstrKey, BSTR bstrXml, [out, retval] IWndNode** ppRetNode);
+	[id(105)] HRESULT GetXml(BSTR bstrRootName, [out, retval] BSTR* bstrRet);
+	[id(106)] HRESULT OpenFromWeb(BSTR bstrURLBase, BSTR bstrKey, BSTR bstrOrg, BSTR bstrRepo, BSTR bstrBranch, BSTR bstrPath);
+	[id(107)] HRESULT SendIPCMessage(int MessageType, BSTR bstrMessage, BSTR bstrMessageData);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060119820017),
+	dual,
+	nonextensible,
+	helpstring("IWndNodeCollection Interface"),
+	pointer_default(unique)
+]
+interface IWndNodeCollection : IDispatch{
+	[propget, id(1), helpstring("")] HRESULT NodeCount([out, retval]long *pCount);
+	[propget, id(DISPID_VALUE), helpstring("")] HRESULT Item([in]long iIndex, [out, retval]IWndNode **ppTopWindow);
+	[propget, id(DISPID_NEWENUM), helpstring("")] HRESULT _NewEnum([out, retval]IUnknown** ppVal);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060119820002),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ICompositorManager : IDispatch{
+	[propget, id(DISPID_VALUE), helpstring("")] HRESULT Compositor([in]VARIANT vIndex, [out, retval]ICompositor ** ppCompositor);
+	[propget, id(DISPID_NEWENUM), helpstring("")] HRESULT _NewEnum([out, retval]IUnknown** ppVal);
+	[propget, id(1), helpstring("")] HRESULT Count([out, retval]long *pCount);
+	[propget, id(2)] HRESULT xtml(BSTR strKey, [out, retval] BSTR* pVal);
+	[propput, id(2)] HRESULT xtml(BSTR strKey, [in] BSTR newVal);
+	[propget, id(3)] HRESULT Extender(BSTR bstrExtenderName, [out, retval] IDispatch** pVal);
+	[propput, id(3)] HRESULT Extender(BSTR bstrExtenderName, [in] IDispatch* newVal);
+	[propget, id(4)] HRESULT Node(BSTR bstrNodeName, [out, retval] IWndNode** pVal);
+	[propget, id(5)] HRESULT XObject(BSTR bstrName, [out, retval] IDispatch** pVal);
+	[propget, id(6)] HRESULT CompositorName(LONGLONG hHwnd, [out, retval] BSTR* pVal);
+	[propget, id(7)] HRESULT Handle([out, retval] LONGLONG* pVal);
+	[propget, id(8)] HRESULT Width([out, retval] long* pVal);
+	[propput, id(8)] HRESULT Width([in] long newVal);
+	[propget, id(9)] HRESULT Height([out, retval] long* pVal);
+	[propput, id(9)] HRESULT Height([in] long newVal);
+	[propget, id(10)] HRESULT NodeNames([out, retval] BSTR* pVal);
+	[propget, id(11)] HRESULT Parent([out, retval] ICompositorManager** pVal);
+	[propget, id(13)] HRESULT CompositorManagerXML([out, retval] BSTR* pVal);
+	[propput, id(14)] HRESULT ConfigName([in] BSTR newVal);
+	[propget, id(15)] HRESULT CurrentDesignCompositorType([out, retval] CompositorType* pVal);
+	[propget, id(16)] HRESULT CurrentDesignNode([out, retval] IWndNode** pVal);
+
+	[id(101)] HRESULT CreateCompositor(VARIANT ParentObj, VARIANT HostWnd, BSTR bstrCompositorName, [out, retval] ICompositor** pRetFrame);
+	[id(102)] HRESULT Open(IDispatch* Parent, BSTR CtrlName, BSTR FrameName, BSTR bstrKey, BSTR bstrXml, [out, retval] IWndNode** ppRetNode);
+	[id(103)] HRESULT OpenCtrl(VARIANT Ctrl, BSTR bstrKey, BSTR bstrXml, [out, retval] IWndNode** ppRetNode);
+	[id(104)] HRESULT GetWndNode(BSTR bstrFrameName, BSTR bstrNodeName, [out, retval] IWndNode** pRetNode);
+	[id(105)] HRESULT GetCtrlInNode(BSTR NodeName, BSTR CtrlName, [out, retval] IDispatch** ppCtrl);
+	[id(106)] HRESULT GetCompositorFromCtrl(IDispatch* ctrl, [out, retval] ICompositor** ppCompositor);
+	[id(107)] HRESULT ConnectTangramCtrl(ITangramCtrl* eventSource);
+	[id(108)] HRESULT CreateCompositorWithDefaultNode(ULONGLONG hFrameWnd, BSTR bstrFrameName, BSTR bstrDefaultNodeKey, BSTR bstrXml, VARIANT_BOOL bSaveToConfig, [out, retval] IWndNode** ppNode);
+	[id(109)] HRESULT OpenCompositors(BSTR bstrFrames, BSTR bstrKey, BSTR bstrXml, VARIANT_BOOL bSaveToConfigFile);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060119825D34),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IWorkBenchWindow : IDispatch {
+	[propget, id(DISPID_VALUE), helpstring("")] HRESULT Ctrl([in]VARIANT vIndex, [out, retval]IEclipseCtrl **ppCtrl);
+	[propget, id(DISPID_NEWENUM), helpstring("")] HRESULT _NewEnum([out, retval]IUnknown** ppVal);
+	[propget, id(1), helpstring("")] HRESULT Count([out, retval]long *pCount);
+	[propget, id(2)] HRESULT Handle([out, retval] LONGLONG* pVal);
+	[propget, id(3)] HRESULT TangramCtrl(LONGLONG hWnd, [out, retval] IEclipseCtrl** pVal);
+	[propget, id(4)] HRESULT CompositorManager([out, retval] ICompositorManager** pVal);
+	[propget, id(5)] HRESULT Compositor([out, retval] ICompositor** pVal);
+
+	[id(101)] HRESULT Active();
+	[id(102), hidden] HRESULT CloseTangramUI();
+	[id(103)] HRESULT Open(BSTR bstrKey, BSTR bstrXml, [out, retval] IWndNode** ppNode);
+	[id(104)] HRESULT OpenEx(BSTR bstrKey, BSTR bstrXml, [out, retval] IWndNode** ppNode);
+	[id(105)] HRESULT OpenInView(int nIndex, BSTR bstrKey, BSTR bstrXml, [out, retval] IWndNode** ppRetNode);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060120180828),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IChromeWebBrowser : IDispatch {
+	[id(101)] HRESULT OpenURL(BSTR bstrURL, BrowserWndOpenDisposition nDisposition, BSTR bstrKey, BSTR bstrXml);
+	//[id(104)] HRESULT ExtendEx(BSTR bstrKey, BSTR bstrXml, [out, retval] IWndNode** ppNode);
+	//[id(105)] HRESULT ExtendInView(int nIndex, BSTR bstrKey, BSTR bstrXml, [out, retval] IWndNode** ppRetNode);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060120180903),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IChromeWebContent : IDispatch {
+	//[id(101)] HRESULT OpenURL(BSTR bstrURL, BrowserWndOpenDisposition nDisposition, BSTR bstrKey, BSTR bstrXml, IDispatch* pDisp);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060119650606),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IOfficeObject : IDispatch{
+	[id(1)] HRESULT Show(VARIANT_BOOL bShow);
+	[id(2)] HRESULT Open(BSTR bstrKey, BSTR bstrXml, [out, retval] IWndNode** ppNode);
+	[id(3)] HRESULT UnloadTangram();
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-0601198231DC),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ITangramCtrl : IDispatch{
+	[propget, id(1), helpstring("property HWND")] HRESULT HWND([out, retval] LONGLONG* pVal);
+	[propget, id(2)] HRESULT Tangram([out, retval] ITangram** pVal);
+	[propget, id(1000)] HRESULT tag([out, retval] VARIANT* pVal);
+	[propput, id(1000)] HRESULT tag([in] VARIANT newVal);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060120161001),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ITangramAppCtrl : ITangramCtrl {
+	[propput, id(100)] HRESULT AppCtrl([in] VARIANT_BOOL newVal);
+};
+
+[
+	object,
+	uuid(19631222-1992-0612-1965-060120160912),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IEclipseCtrl : ITangramCtrl {
+	[propput, id(101), helpstring("Tangram Frame Window for SWT")] HRESULT TangramHandle(BSTR bstrHandleName, [in] LONGLONG newVal);
+	[propget, id(102)] HRESULT EclipseViewHandle([out, retval] LONGLONG* pVal);
+	[propget, id(103)] HRESULT CompositorManager([out, retval] ICompositorManager** pVal);
+	[propget, id(104)] HRESULT WorkBenchWindow([out, retval] IWorkBenchWindow** pVal);
+	[propget, id(105)] HRESULT TopCompositorManager([out, retval] ICompositorManager** pVal);
+	[propget, id(106)] HRESULT TopCompositor([out, retval] ICompositor** pVal);
+	[propget, id(107)] HRESULT ActiveTopNode([out, retval] IWndNode** pVal);
+	[propget, id(108), helpstring("property AppKeyValue")] HRESULT AppKeyValue(BSTR bstrKey, [out, retval] VARIANT* pVal);
+	[propput, id(108), helpstring("property AppKeyValue")] HRESULT AppKeyValue(BSTR bstrKey, [in] VARIANT newVal);
+
+	[id(201)] HRESULT Open(BSTR bstrFrameName, BSTR bstrKey, BSTR bstrXml, [out, retval] IWndNode** ppNode);
+	[id(202)] HRESULT OpenEx(BSTR bstrFrameName, BSTR bstrKey, BSTR bstrXml, [out, retval] IWndNode** ppNode);
+	[id(203)] HRESULT InitCtrl(BSTR bstrXml);
+};
+
+[
+	uuid(19631222-1992-0612-1965-060119820911),
+	version(1.0),
+	helpstring("Tangram 8.0 Type Library")
+]
+library Tangram
+{
+	[
+		uuid(19631222-1992-0612-1965-060119821002),
+		helpstring("_ITangram Interface")
+	]
+	dispinterface _ITangram
+	{
+		properties:
+		methods:
+			[id(1), helpstring("method OpenComplete")] HRESULT OpenComplete(LONG hWnd, BSTR bstrUrl, IWndNode* pRootNode);
+			[id(2)] HRESULT Close();
+			[id(3)] HRESULT TangramEvent(ITangramEventObj* NotifyObj);
+	};
+
+	[
+		uuid(19631222-1992-0612-1965-060119990606),
+		appobject,
+		helpstring("Tangram Class")
+	]
+	coclass Tangram
+	{
+		[default] interface ITangram;
+		[default, source] dispinterface _ITangram;
+	};
+
+	[
+		uuid(19631222-1992-0612-1965-060119821001),
+		helpstring("_IWndNodeEvents Interface")
+	]
+	dispinterface _IWndNodeEvents
+	{
+		properties:
+		methods:
+			[id(1), helpstring("method OpenComplete")] HRESULT OpenComplete();
+			[id(2)] HRESULT Destroy();
+			[id(3), helpstring("WndNode Addin Object Created")] HRESULT NodeAddInCreated(IDispatch* pAddIndisp, BSTR bstrAddInID, BSTR bstrAddInXml);
+			[id(4)] HRESULT NodeAddInsCreated();
+			[id(5)] HRESULT NodeDocumentComplete(IDispatch* ExtenderDisp, BSTR bstrURL);
+			[id(6)] HRESULT ControlNotify(IWndNode* sender, LONG NotifyCode, LONG CtrlID, long CtrlHandle, BSTR CtrlClassName);
+			[id(7)] HRESULT TabChange(LONG ActivePage, LONG OldPage);
+			[id(8)] HRESULT IPCMessageReceived(BSTR bstrChannel, BSTR bstrData);
+	};
+
+	[
+		uuid(19631222-1992-0612-1965-060119821992),
+		helpstring("_ITangramObjEvents Interface")
+	]
+	dispinterface _ITangramObjEvents
+	{
+	properties:
+	methods:
+		[id(1)] HRESULT PageLoaded(IDispatch* sender, BSTR url);
+		[id(2)] HRESULT NodeCreated(IWndNode* pNodeCreated);
+		[id(3)] HRESULT AddInCreated(IWndNode* pRootNode, IDispatch* pAddIn, BSTR bstrID, BSTR bstrAddInXml);
+		[id(4)] HRESULT BeforeExtendXml(BSTR bstrXml, long hWnd);
+		[id(5)] HRESULT ExtendXmlComplete(BSTR bstrXml, long hWnd, IWndNode* pRetRootNode);
+		[id(6)] HRESULT Destroy();
+		[id(7)] HRESULT NodeMouseActivate(IWndNode* pActiveNode);
+		[id(8)] HRESULT ClrControlCreated(IWndNode* Node, IDispatch* Ctrl, BSTR CtrlName, long CtrlHandle);
+		[id(9)] HRESULT TabChange(IWndNode* sender, LONG ActivePage, LONG OldPage);
+		[id(10)] HRESULT Event(IDispatch* sender, IDispatch* EventArg);
+		[id(11)] HRESULT ControlNotify(IWndNode* sender, LONG NotifyCode, LONG CtrlID, long CtrlHandle, BSTR CtrlClassName);
+		[id(12)] HRESULT TangramEvent(ITangramEventObj* NotifyObj);
+		[id(13)] HRESULT IPCMsg(ICompositor* pSender, BSTR bstrType, BSTR bstrContent, BSTR bstrFeature);
+	};
+
+	[
+		uuid(19631222-1992-0612-1965-060120160930),
+		helpstring("_ITangramAppEvents Interface")
+	]
+	dispinterface _ITangramAppEvents
+	{
+	properties:
+	methods:
+		[id(1)] HRESULT TangramEvent(ITangramEventObj* NotifyObj);
+	};
+
+	[
+		uuid(19631222-1992-0612-1965-060120071001),		
+		control
+	]
+	coclass TangramCtrl
+	{
+		[default] interface ITangramCtrl;
+		[default, source]  dispinterface 	_ITangramObjEvents;
+	};
+
+	[
+		uuid(19631222-1992-0612-1965-060120190303)
+	]
+	coclass TangramJava
+	{
+		[default] interface ITangramJava;
+	};
+
+	[
+		hidden,
+		uuid(19631222-1992-0612-1965-060100000000)
+	]
+	coclass TangramExtender
+	{
+		interface IEclipseCtrl;
+		interface IEclipseExtender;
+		interface IOfficeExtender;
+		interface ITangramAppCtrl;
+		interface IVSExtender;
+	};
+};

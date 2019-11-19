@@ -1,0 +1,8 @@
+﻿<doc>
+  <window>
+    <node id='splitter' name='splitter' rows='1' cols='2' height='500,' width='100,100,' borderwidth='0' splitterwidth='4' middlecolor='RGB(240,240,240)'>
+      <node id="clrctrl" cnnid="DemoStart.UserControl_A,DemoStart"></node>
+      <node id="clrctrl" cnnid="DemoStart.UserControl_B,DemoStart"></node>
+    </node>
+  </window>
+</doc>

@@ -1,0 +1,8 @@
+﻿<layout2>
+  <window>
+    <node id="splitter" name="right" style="1" rows="2" cols="1" height="500,300," width="500,">
+      <node name="node0" id="hostview" caption="The full Chrome is included in the Chrome Runtime"></node>
+      <node name="node1" id="clrctrl" cnnid="ChromeApp.InvisibleWebPage,ChromeApp" caption="Invisible webpage"></node>
+    </node>
+  </window>
+</layout2>

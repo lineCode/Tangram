@@ -1,0 +1,8 @@
+﻿<doc>
+  <window>
+    <node id='splitter' name='splitter' rows='2' cols='1' height='150,150,' width='500,' borderwidth='0' splitterwidth='4' middlecolor='RGB(240,240,240)'>
+      <node id="clrctrl" cnnid="DemoStart.UserControl_A,DemoStart"></node>
+      <node url="https://www.chromium.org/Home"></node>
+    </node>
+  </window>
+</doc>

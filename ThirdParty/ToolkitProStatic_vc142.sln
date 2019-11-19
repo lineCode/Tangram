@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Codejock.ToolkitPro.Static", "ToolkitProStatic_vc142.vcxproj", "{53872481-1472-7556-9666-821985737652}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Dynamic Debug|x64 = Dynamic Debug|x64
+		Dynamic Debug|x86 = Dynamic Debug|x86
+		Dynamic Release|x64 = Dynamic Release|x64
+		Dynamic Release|x86 = Dynamic Release|x86
+		Dynamic Unicode Debug|x64 = Dynamic Unicode Debug|x64
+		Dynamic Unicode Debug|x86 = Dynamic Unicode Debug|x86
+		Dynamic Unicode Release|x64 = Dynamic Unicode Release|x64
+		Dynamic Unicode Release|x86 = Dynamic Unicode Release|x86
+		Static Debug|x64 = Static Debug|x64
+		Static Debug|x86 = Static Debug|x86
+		Static Release|x64 = Static Release|x64
+		Static Release|x86 = Static Release|x86
+		Static Unicode Debug|x64 = Static Unicode Debug|x64
+		Static Unicode Debug|x86 = Static Unicode Debug|x86
+		Static Unicode Release|x64 = Static Unicode Release|x64
+		Static Unicode Release|x86 = Static Unicode Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53872481-1472-7556-9666-821985737652}.Dynamic Debug|x64.ActiveCfg = Dynamic Debug|x64
+		{53872481-1472-7556-9666-821985737652}.Dynamic Debug|x64.Build.0 = Dynamic Debug|x64
+		{53872481-1472-7556-9666-821985737652}.Dynamic Debug|x86.ActiveCfg = Dynamic Debug|Win32
+		{53872481-1472-7556-9666-821985737652}.Dynamic Debug|x86.Build.0 = Dynamic Debug|Win32
+		{53872481-1472-7556-9666-821985737652}.Dynamic Release|x64.ActiveCfg = Dynamic Release|x64
+		{53872481-1472-7556-9666-821985737652}.Dynamic Release|x64.Build.0 = Dynamic Release|x64
+		{53872481-1472-7556-9666-821985737652}.Dynamic Release|x86.ActiveCfg = Dynamic Release|Win32
+		{53872481-1472-7556-9666-821985737652}.Dynamic Release|x86.Build.0 = Dynamic Release|Win32
+		{53872481-1472-7556-9666-821985737652}.Dynamic Unicode Debug|x64.ActiveCfg = Dynamic Unicode Debug|x64
+		{53872481-1472-7556-9666-821985737652}.Dynamic Unicode Debug|x64.Build.0 = Dynamic Unicode Debug|x64
+		{53872481-1472-7556-9666-821985737652}.Dynamic Unicode Debug|x86.ActiveCfg = Dynamic Unicode Debug|Win32
+		{53872481-1472-7556-9666-821985737652}.Dynamic Unicode Debug|x86.Build.0 = Dynamic Unicode Debug|Win32
+		{53872481-1472-7556-9666-821985737652}.Dynamic Unicode Release|x64.ActiveCfg = Dynamic Unicode Release|x64
+		{53872481-1472-7556-9666-821985737652}.Dynamic Unicode Release|x64.Build.0 = Dynamic Unicode Release|x64
+		{53872481-1472-7556-9666-821985737652}.Dynamic Unicode Release|x86.ActiveCfg = Dynamic Unicode Release|Win32
+		{53872481-1472-7556-9666-821985737652}.Dynamic Unicode Release|x86.Build.0 = Dynamic Unicode Release|Win32
+		{53872481-1472-7556-9666-821985737652}.Static Debug|x64.ActiveCfg = Static Debug|x64
+		{53872481-1472-7556-9666-821985737652}.Static Debug|x64.Build.0 = Static Debug|x64
+		{53872481-1472-7556-9666-821985737652}.Static Debug|x86.ActiveCfg = Static Debug|Win32
+		{53872481-1472-7556-9666-821985737652}.Static Debug|x86.Build.0 = Static Debug|Win32
+		{53872481-1472-7556-9666-821985737652}.Static Release|x64.ActiveCfg = Static Release|x64
+		{53872481-1472-7556-9666-821985737652}.Static Release|x64.Build.0 = Static Release|x64
+		{53872481-1472-7556-9666-821985737652}.Static Release|x86.ActiveCfg = Static Release|Win32
+		{53872481-1472-7556-9666-821985737652}.Static Release|x86.Build.0 = Static Release|Win32
+		{53872481-1472-7556-9666-821985737652}.Static Unicode Debug|x64.ActiveCfg = Static Unicode Debug|x64
+		{53872481-1472-7556-9666-821985737652}.Static Unicode Debug|x64.Build.0 = Static Unicode Debug|x64
+		{53872481-1472-7556-9666-821985737652}.Static Unicode Debug|x86.ActiveCfg = Static Unicode Debug|Win32
+		{53872481-1472-7556-9666-821985737652}.Static Unicode Debug|x86.Build.0 = Static Unicode Debug|Win32
+		{53872481-1472-7556-9666-821985737652}.Static Unicode Release|x64.ActiveCfg = Static Unicode Release|x64
+		{53872481-1472-7556-9666-821985737652}.Static Unicode Release|x64.Build.0 = Static Unicode Release|x64
+		{53872481-1472-7556-9666-821985737652}.Static Unicode Release|x86.ActiveCfg = Static Unicode Release|Win32
+		{53872481-1472-7556-9666-821985737652}.Static Unicode Release|x86.Build.0 = Static Unicode Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F45B8B11-3511-4590-9863-A8B1DBB0E673}
+	EndGlobalSection
+EndGlobal

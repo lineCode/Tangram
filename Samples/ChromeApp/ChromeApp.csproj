@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6DA111F1-8954-470F-BBEA-EF03E578E5B1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ChromeApp</RootNamespace>
+    <AssemblyName>ChromeApp</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Tangram\chromium_root\src\out\tangram_static_debug_x64\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\..\..\..\test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>chromium.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TangramCLR, Version=1.0.1992.1963, Culture=neutral, PublicKeyToken=1bcc94f26a4807a7, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_64\TangramCLR\v4.0_1.0.1992.1963__1bcc94f26a4807a7\TangramCLR.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChartDesktopTech2018.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChartDesktopTech2018.Designer.cs">
+      <DependentUpon>ChartDesktopTech2018.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClrIntegration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ClrIntegration.Designer.cs">
+      <DependentUpon>ClrIntegration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChromeForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChromeForm1.Designer.cs">
+      <DependentUpon>ChromeForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChromeForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChromeForm2.Designer.cs">
+      <DependentUpon>ChromeForm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChromeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChromeForm.Designer.cs">
+      <DependentUpon>ChromeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChromeMDIParent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChromeMDIParent.Designer.cs">
+      <DependentUpon>ChromeMDIParent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomNTP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomNTP.Designer.cs">
+      <DependentUpon>CustomNTP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FullForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FullForm.Designer.cs">
+      <DependentUpon>FullForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvisibleWebPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InvisibleWebPage.Designer.cs">
+      <DependentUpon>InvisibleWebPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LeftPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LeftPanel.Designer.cs">
+      <DependentUpon>LeftPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDIForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIForm.Designer.cs">
+      <DependentUpon>MDIForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDILeftCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MDILeftCtrl.Designer.cs">
+      <DependentUpon>MDILeftCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NestedPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NestedPanel.Designer.cs">
+      <DependentUpon>NestedPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SiteMap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SiteMap.Designer.cs">
+      <DependentUpon>SiteMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TangramMDIParent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TangramMDIParent.Designer.cs">
+      <DependentUpon>TangramMDIParent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NtpCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NtpCtrl.Designer.cs">
+      <DependentUpon>NtpCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeIntegration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OfficeIntegration.Designer.cs">
+      <DependentUpon>OfficeIntegration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ChartDesktopTech2018.resx">
+      <DependentUpon>ChartDesktopTech2018.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClrIntegration.resx">
+      <DependentUpon>ClrIntegration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChromeForm1.resx">
+      <DependentUpon>ChromeForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChromeForm2.resx">
+      <DependentUpon>ChromeForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChromeForm.resx">
+      <DependentUpon>ChromeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChromeMDIParent.resx">
+      <DependentUpon>ChromeMDIParent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomNTP.resx">
+      <DependentUpon>CustomNTP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvisibleWebPage.resx">
+      <DependentUpon>InvisibleWebPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeftPanel.resx">
+      <DependentUpon>LeftPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIForm.resx">
+      <DependentUpon>MDIForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDILeftCtrl.resx">
+      <DependentUpon>MDILeftCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NestedPanel.resx">
+      <DependentUpon>NestedPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SiteMap.resx">
+      <DependentUpon>SiteMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TangramMDIParent.resx">
+      <DependentUpon>TangramMDIParent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NtpCtrl.resx">
+      <DependentUpon>NtpCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeIntegration.resx">
+      <DependentUpon>OfficeIntegration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="chromium.ico" />
+    <Content Include="Layout2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

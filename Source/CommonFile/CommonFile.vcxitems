@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{b1efca1d-c788-42b4-99bd-10545f2407d5}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Browser.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TabPageWnd.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Tangram.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TangramCoreEvents.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TangramTreeNode.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TangramTreeView.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TangramWinRTProxy.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TangramXmlParse.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Tangram_p.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Browser.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ChromeProxy.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ChromeRenderDomProxy.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)CommonFunction.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ipc_message.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)fm20.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)gchost.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)inc.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ivalidator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ivehandler.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jni.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jni_md.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)metahost.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)msaddndr.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)mscoree.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)mso.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TabPageWnd.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Tangram.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)tangrambase.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TangramCategory.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TangramChromeProxy.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TangramCommon.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TangramCoreEvents.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TangramJavaHelper.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TangramTreeNode.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TangramTreeView.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TangramWinRTProxy.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TangramXmlParse.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)vbe6ext.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="$(MSBuildThisFileDirectory)ivalidator.idl" />
+    <Midl Include="$(MSBuildThisFileDirectory)IVEHandler.idl" />
+    <Midl Include="$(MSBuildThisFileDirectory)Tangram.idl" />
+  </ItemGroup>
+</Project>

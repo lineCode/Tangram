@@ -1,0 +1,6 @@
+[submodule "Source/TangramTabbedWnd"]
+	path = Source/TangramTabbedWnd
+	url = https://github.com/TangramDev/TangramTabbedWnd.git
+[submodule "Source/TangramDesigner"]
+	path = Source/TangramDesigner
+	url = https://github.com/TangramDev/TangramDesigner.git

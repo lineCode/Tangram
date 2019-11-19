@@ -1,0 +1,1025 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Dynamic Debug|Win32">
+      <Configuration>Dynamic Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Dynamic Debug|x64">
+      <Configuration>Dynamic Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Dynamic Release|Win32">
+      <Configuration>Dynamic Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Dynamic Release|x64">
+      <Configuration>Dynamic Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Dynamic Unicode Debug|Win32">
+      <Configuration>Dynamic Unicode Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Dynamic Unicode Debug|x64">
+      <Configuration>Dynamic Unicode Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Dynamic Unicode Release|Win32">
+      <Configuration>Dynamic Unicode Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Dynamic Unicode Release|x64">
+      <Configuration>Dynamic Unicode Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Static Debug|Win32">
+      <Configuration>Static Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Static Debug|x64">
+      <Configuration>Static Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Static Release|Win32">
+      <Configuration>Static Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Static Release|x64">
+      <Configuration>Static Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Static Unicode Debug|Win32">
+      <Configuration>Static Unicode Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Static Unicode Debug|x64">
+      <Configuration>Static Unicode Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Static Unicode Release|Win32">
+      <Configuration>Static Unicode Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Static Unicode Release|x64">
+      <Configuration>Static Unicode Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>Codejock.ToolkitPro.Static</ProjectName>
+    <Keyword>MFCProj</Keyword>
+    <ProjectGuid>{53872481-1472-7556-9666-821985737652}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Static Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Static Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Static Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Static Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Static Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Static Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Static Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Static Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|Win32'">.\Dynamic_Release/vc142\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|Win32'">.\Dynamic_Release/vc142\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Static Release|Win32'">.\Static_Release/vc100\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Static Release|Win32'">.\Static_Release/vc100\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|Win32'">.\Static_Unicode_Debug/vc142\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|Win32'">.\Static_Unicode_Debug/vc142\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|Win32'">.\Dynamic_Debug/vc142\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|Win32'">.\Dynamic_Debug/vc142\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|Win32'">.\Dynamic_Unicode_Debug/vc100\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|Win32'">.\Dynamic_Unicode_Debug/vc100\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|Win32'">.\Static_Unicode_Release/vc142\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|Win32'">.\Static_Unicode_Release/vc142\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Static Debug|Win32'">.\Static_Debug/vc100\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Static Debug|Win32'">.\Static_Debug/vc100\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|Win32'">.\Dynamic_Unicode_Release/vc100\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|Win32'">.\Dynamic_Unicode_Release/vc100\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|x64'">.\Dynamic_Release/vc142x64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|x64'">.\Dynamic_Release/vc142x64\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Static Release|x64'">.\Static_Release/vc100x64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Static Release|x64'">.\Static_Release/vc100x64\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|x64'">.\Static_Unicode_Debug/vc142x64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|x64'">.\Static_Unicode_Debug/vc142x64\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|x64'">.\Dynamic_Debug/vc142x64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|x64'">.\Dynamic_Debug/vc142x64\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|x64'">.\Dynamic_Unicode_Debug/vc100x64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|x64'">.\Dynamic_Unicode_Debug/vc100x64\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|x64'">.\Static_Unicode_Release/vc142x64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|x64'">.\Static_Unicode_Release/vc142x64\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Static Debug|x64'">.\Static_Debug/vc100x64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Static Debug|x64'">.\Static_Debug/vc100x64\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|x64'">.\Dynamic_Unicode_Release/vc100x64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|x64'">.\Dynamic_Unicode_Release/vc100x64\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Static Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Static Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Static Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Static Debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Static Debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Static Debug|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Static Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Static Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Static Release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Static Release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Static Release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Static Release|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|x64'" />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);</LibraryPath>
+    <ExcludePath>$(VC_IncludePath);$(WindowsSDKIncludePath);$(MSBuild_ExecutablePath);$(VC_LibraryPath_x86);</ExcludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);</LibraryPath>
+    <ExcludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(MSBuild_ExecutablePath);$(VC_LibraryPath_x86);</ExcludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>../../Source;../../Source/Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Dynamic_Release/vc100/ToolkitProStatic.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Dynamic_Release/vc100/</AssemblerListingLocation>
+      <ObjectFileName>.\Dynamic_Release/vc100/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Dynamic_Release/vc100/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>../../lib/vc100/ToolkitPro1531vc100DS.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Static Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>../../Source;../../Source/Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Static_Release/vc100/ToolkitProStatic.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Static_Release/vc100/</AssemblerListingLocation>
+      <ObjectFileName>.\Static_Release/vc100/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Static_Release/vc100/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <CompileAs>Default</CompileAs>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>../../lib/vc100/ToolkitPro1531vc100S.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../Source;../../Source/Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Static_Unicode_Debug/vc100/ToolkitProStatic.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Static_Unicode_Debug/vc100/</AssemblerListingLocation>
+      <ObjectFileName>.\Static_Unicode_Debug/vc100/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Static_Unicode_Debug/vc100/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>../../lib/vc100/ToolkitPro1531vc142SUD.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../Source;../../Source/Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Dynamic_Debug/vc100/ToolkitProStatic.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Dynamic_Debug/vc100/</AssemblerListingLocation>
+      <ObjectFileName>.\Dynamic_Debug/vc100/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Dynamic_Debug/vc100/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>../../lib/vc100/ToolkitPro1531vc100DSD.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../Source;../../Source/Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Dynamic_Unicode_Debug/vc100/ToolkitProStatic.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Dynamic_Unicode_Debug/vc100/</AssemblerListingLocation>
+      <ObjectFileName>.\Dynamic_Unicode_Debug/vc100/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Dynamic_Unicode_Debug/vc100/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>../../lib/vc100/ToolkitPro1531vc100DSUD.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>../../Source;../../Source/Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Static_Unicode_Release/vc100/ToolkitProStatic.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Static_Unicode_Release/vc100/</AssemblerListingLocation>
+      <ObjectFileName>.\Static_Unicode_Release/vc100/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Static_Unicode_Release/vc100/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <CompileAs>Default</CompileAs>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>../../lib/vc100/ToolkitPro1531vc142SU.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Static Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../Source;../../Source/Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Static_Debug/vc100/ToolkitProStatic.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Static_Debug/vc100/</AssemblerListingLocation>
+      <ObjectFileName>.\Static_Debug/vc100/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Static_Debug/vc100/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>../../lib/vc100/ToolkitPro1531vc100SD.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>../../Source;../../Source/Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Dynamic_Unicode_Release/vc100/ToolkitProStatic.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Dynamic_Unicode_Release/vc100/</AssemblerListingLocation>
+      <ObjectFileName>.\Dynamic_Unicode_Release/vc100/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Dynamic_Unicode_Release/vc100/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>../../lib/vc100/ToolkitPro1531vc100DSU.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>../../Source;../../Source/Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Dynamic_Release/vc100x64/ToolkitProStatic.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Dynamic_Release/vc100x64/</AssemblerListingLocation>
+      <ObjectFileName>.\Dynamic_Release/vc100x64/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Dynamic_Release/vc100x64/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>../../lib/vc100x64/ToolkitPro1531vc100x64DS.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Static Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>../../Source;../../Source/Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Static_Release/vc100x64/ToolkitProStatic.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Static_Release/vc100x64/</AssemblerListingLocation>
+      <ObjectFileName>.\Static_Release/vc100x64/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Static_Release/vc100x64/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>../../lib/vc100x64/ToolkitPro1531vc100x64S.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../Source;../../Source/Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Static_Unicode_Debug/vc100x64/ToolkitProStatic.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Static_Unicode_Debug/vc100x64/</AssemblerListingLocation>
+      <ObjectFileName>.\Static_Unicode_Debug/vc100x64/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Static_Unicode_Debug/vc100x64/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>../../lib/vc100x64/ToolkitPro1531vc142x64SUD.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../Source;../../Source/Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Dynamic_Debug/vc100x64/ToolkitProStatic.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Dynamic_Debug/vc100x64/</AssemblerListingLocation>
+      <ObjectFileName>.\Dynamic_Debug/vc100x64/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Dynamic_Debug/vc100x64/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>../../lib/vc100x64/ToolkitPro1531vc100x64DSD.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../Source;../../Source/Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Dynamic_Unicode_Debug/vc100x64/ToolkitProStatic.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Dynamic_Unicode_Debug/vc100x64/</AssemblerListingLocation>
+      <ObjectFileName>.\Dynamic_Unicode_Debug/vc100x64/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Dynamic_Unicode_Debug/vc100x64/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>../../lib/vc100x64/ToolkitPro1531vc100x64DSUD.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>../../Source;../../Source/Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Static_Unicode_Release/vc100x64/ToolkitProStatic.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Static_Unicode_Release/vc100x64/</AssemblerListingLocation>
+      <ObjectFileName>.\Static_Unicode_Release/vc100x64/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Static_Unicode_Release/vc100x64/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <CompileAs>Default</CompileAs>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>../../lib/vc100x64/ToolkitPro1531vc142x64SU.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Static Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../Source;../../Source/Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Static_Debug/vc100x64/ToolkitProStatic.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Static_Debug/vc100x64/</AssemblerListingLocation>
+      <ObjectFileName>.\Static_Debug/vc100x64/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Static_Debug/vc100x64/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>../../lib/vc100x64/ToolkitPro1531vc100x64SD.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>../../Source;../../Source/Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Dynamic_Unicode_Release/vc100x64/ToolkitProStatic.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Dynamic_Unicode_Release/vc100x64/</AssemblerListingLocation>
+      <ObjectFileName>.\Dynamic_Unicode_Release/vc100x64/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Dynamic_Unicode_Release/vc100x64/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>../../lib/vc100x64/ToolkitPro1531vc100x64DSU.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Dynamic Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Dynamic Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Dynamic Unicode Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Static Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Static Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Static Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Static Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Static Unicode Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Static Unicode Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\XTPColorManager.cpp" />
+    <ClCompile Include="..\..\Source\Common\XTPDrawHelpers.cpp" />
+    <ClCompile Include="..\..\Source\Common\XTPHookManager.cpp" />
+    <ClCompile Include="..\..\Source\Common\XTPImageManager.cpp" />
+    <ClCompile Include="..\..\Source\Common\XTPMarkupRender.cpp" />
+    <ClCompile Include="..\..\Source\Common\XTPMathUtils.cpp" />
+    <ClCompile Include="..\..\Source\Common\XTPNotifyConnection.cpp" />
+    <ClCompile Include="..\..\Source\Common\XTPPropExchange.cpp" />
+    <ClCompile Include="..\..\Source\Common\XTPResourceImage.cpp" />
+    <ClCompile Include="..\..\Source\Common\XTPResourceManager.cpp" />
+    <ClCompile Include="..\..\Source\Common\XTPRichRender.cpp" />
+    <ClCompile Include="..\..\Source\Common\XTPSystemHelpers.cpp" />
+    <ClCompile Include="..\..\Source\Common\XTPToolTipContext.cpp" />
+    <ClCompile Include="..\..\Source\Common\XTPWinThemeWrapper.cpp" />
+    <ClCompile Include="..\..\Source\Common\Base\Types\XTPPoint2.cpp" />
+    <ClCompile Include="..\..\Source\Common\Base\Types\XTPPoint3.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Button\XTPButton.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Button\XTPButtonTheme.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Button\XTPColorPicker.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Resize\XTPResize.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Resize\XTPResizeDialog.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Resize\XTPResizeFormView.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Resize\XTPResizeGroupBox.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Resize\XTPResizePoint.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Resize\XTPResizePropertyPage.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Resize\XTPResizePropertySheet.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Resize\XTPResizeRect.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Scroll\XTPPageScroller.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Scroll\XTPScrollBar.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Tab\XTPExcelTabCtrl.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Tab\XTPExcelTabCtrlTheme.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Tab\XTPMDIWndTab.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Tab\XTPTabBase.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Tab\XTPTabBaseTheme.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Tab\XTPTabCtrl.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Tab\XTPTabCtrlButtons.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Tab\XTPTabView.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Util\XTPAnimationDC.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Util\XTPControlTheme.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Util\XTPFunctions.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Util\XTPGlobal.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Util\XTPMemFile.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Util\XTPRegistryManager.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Util\XTPUtil.cpp" />
+    <ClCompile Include="..\..\Source\Controls\Util\XTPWindowPos.cpp" />
+    <ClCompile Include="..\..\Source\Controls\View\XTPMarkupView.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupBorder.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupBuilder.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupButton.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupCanvas.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupContext.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupControl.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupDecorator.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupDeviceContext.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupDrawingContext.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupFrameworkElement.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupGrid.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupImage.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupInputElement.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupKeyboardNavigation.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupObject.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupPage.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupPanel.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupParser.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupResourceDictionary.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupScrollViewer.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupShape.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupStackPanel.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupTextBlock.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupThickness.cpp" />
+    <ClCompile Include="..\..\Source\Markup\XTPMarkupUIElement.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Objects\XTPMarkupBrush.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Objects\XTPMarkupGradientStop.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Objects\XTPMarkupLinearGradientBrush.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Objects\XTPMarkupPoint.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Objects\XTPMarkupSolidColorBrush.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Grid\XTPMarkupColumnDefinition.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Grid\XTPMarkupDefinitionBase.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Grid\XTPMarkupDefinitionCollection.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Grid\XTPMarkupGridLength.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Grid\XTPMarkupRowDefinition.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Transform\XTPMarkupRenderTransform.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Transform\XTPMarkupRotateTransform.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Text\XTPMarkupInline.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Text\XTPMarkupRun.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Path\XTPMarkupPath.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Path\XTPMarkupPathData.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Path\XTPMarkupPathGeometry.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Path\XTPMarkupPathGeometryBuilder.cpp" />
+    <ClCompile Include="..\..\Source\Markup\Path\XTPMarkupPathGeometryFigures.cpp" />
+    <ClCompile Include="..\..\Source\TabManager\XTPTabControl.cpp" />
+    <ClCompile Include="..\..\Source\TabManager\XTPTabManager.cpp" />
+    <ClCompile Include="..\..\Source\TabManager\XTPTabPaintManager.cpp" />
+    <ClCompile Include="..\..\Source\TabManager\XTPTabPaintManagerAppearance.cpp" />
+    <ClCompile Include="..\..\Source\TabManager\XTPTabPaintManagerColors.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="..\..\Source\Common\XTPColorManager.h" />
+    <ClInclude Include="..\..\Source\Common\XTPCustomHeap.h" />
+    <ClInclude Include="..\..\Source\Common\XTPDLLExports.h" />
+    <ClInclude Include="..\..\Source\Common\XTPDrawHelpers.h" />
+    <ClInclude Include="..\..\Source\Common\XTPHookManager.h" />
+    <ClInclude Include="..\..\Source\Common\XTPImageManager.h" />
+    <ClInclude Include="..\..\Source\Common\XTPIntel80Helpers.h" />
+    <ClInclude Include="..\..\Source\Common\XTPMacros.h" />
+    <ClInclude Include="..\..\Source\Common\XTPMarkupRender.h" />
+    <ClInclude Include="..\..\Source\Common\XTPMaskEditT.h" />
+    <ClInclude Include="..\..\Source\Common\XTPMathUtils.h" />
+    <ClInclude Include="..\..\Source\Common\XTPNotifyConnection.h" />
+    <ClInclude Include="..\..\Source\Common\XTPPropExchange.h" />
+    <ClInclude Include="..\..\Source\Common\XTPRegExp.h" />
+    <ClInclude Include="..\..\Source\Common\XTPResourceImage.h" />
+    <ClInclude Include="..\..\Source\Common\XTPResourceManager.h" />
+    <ClInclude Include="..\..\Source\Common\XTPRichRender.h" />
+    <ClInclude Include="..\..\Source\Common\XTPSmartPtrInternalT.h" />
+    <ClInclude Include="..\..\Source\Common\XTPSystemHelpers.h" />
+    <ClInclude Include="..\..\Source\Common\XTPToolTipContext.h" />
+    <ClInclude Include="..\..\Source\Common\XTPvc100Helpers.h" />
+    <ClInclude Include="..\..\Source\Common\XTPVersion.h" />
+    <ClInclude Include="..\..\Source\Common\XTPWinThemeWrapper.h" />
+    <ClInclude Include="..\..\Source\Common\XTPXMLHelpers.h" />
+    <ClInclude Include="..\..\Source\Common\Base\Types\XTPPoint2.h" />
+    <ClInclude Include="..\..\Source\Common\Base\Types\XTPPoint3.h" />
+    <ClInclude Include="..\..\Source\Common\Base\Types\XTPRect.h" />
+    <ClInclude Include="..\..\Source\Common\Base\Types\XTPSize.h" />
+    <ClInclude Include="..\..\Source\Controls\Defines.h" />
+    <ClInclude Include="..\..\Source\Controls\Includes.h" />
+    <ClInclude Include="..\..\Source\Controls\Resource.h" />
+    <ClInclude Include="..\..\Source\Controls\Button\XTPButton.h" />
+    <ClInclude Include="..\..\Source\Controls\Button\XTPButtonTheme.h" />
+    <ClInclude Include="..\..\Source\Controls\Button\XTPColorPicker.h" />
+    <ClInclude Include="..\..\Source\Controls\Resize\XTPResize.h" />
+    <ClInclude Include="..\..\Source\Controls\Resize\XTPResizeDialog.h" />
+    <ClInclude Include="..\..\Source\Controls\Resize\XTPResizeFormView.h" />
+    <ClInclude Include="..\..\Source\Controls\Resize\XTPResizeGroupBox.h" />
+    <ClInclude Include="..\..\Source\Controls\Resize\XTPResizePoint.h" />
+    <ClInclude Include="..\..\Source\Controls\Resize\XTPResizePropertyPage.h" />
+    <ClInclude Include="..\..\Source\Controls\Resize\XTPResizePropertySheet.h" />
+    <ClInclude Include="..\..\Source\Controls\Resize\XTPResizeRect.h" />
+    <ClInclude Include="..\..\Source\Controls\Scroll\XTPPageScroller.h" />
+    <ClInclude Include="..\..\Source\Controls\Scroll\XTPScrollBar.h" />
+    <ClInclude Include="..\..\Source\Controls\Tab\XTPExcelTabCtrl.h" />
+    <ClInclude Include="..\..\Source\Controls\Tab\XTPExcelTabCtrlTheme.h" />
+    <ClInclude Include="..\..\Source\Controls\Tab\XTPMDIWndTab.h" />
+    <ClInclude Include="..\..\Source\Controls\Tab\XTPTabBase.h" />
+    <ClInclude Include="..\..\Source\Controls\Tab\XTPTabBaseTheme.h" />
+    <ClInclude Include="..\..\Source\Controls\Tab\XTPTabCtrl.h" />
+    <ClInclude Include="..\..\Source\Controls\Tab\XTPTabCtrlButtons.h" />
+    <ClInclude Include="..\..\Source\Controls\Tab\XTPTabView.h" />
+    <ClInclude Include="..\..\Source\Controls\Util\XTPAnimationDC.h" />
+    <ClInclude Include="..\..\Source\Controls\Util\XTPControlTheme.h" />
+    <ClInclude Include="..\..\Source\Controls\Util\XTPFunctions.h" />
+    <ClInclude Include="..\..\Source\Controls\Util\XTPGlobal.h" />
+    <ClInclude Include="..\..\Source\Controls\Util\XTPHelpers.h" />
+    <ClInclude Include="..\..\Source\Controls\Util\XTPMemFile.h" />
+    <ClInclude Include="..\..\Source\Controls\Util\XTPRegistryManager.h" />
+    <ClInclude Include="..\..\Source\Controls\Util\XTPUtil.h" />
+    <ClInclude Include="..\..\Source\Controls\Util\XTPWindowPos.h" />
+    <ClInclude Include="..\..\Source\Controls\View\XTPMarkupView.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupBorder.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupBuilder.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupButton.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupCanvas.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupContext.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupControl.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupDecorator.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupDeviceContext.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupDrawingContext.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupFrameworkElement.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupGrid.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupImage.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupInputElement.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupKeyboardNavigation.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupObject.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupPage.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupPanel.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupParser.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupResourceDictionary.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupScrollViewer.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupShape.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupStackPanel.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupTextBlock.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupThickness.h" />
+    <ClInclude Include="..\..\Source\Markup\XTPMarkupUIElement.h" />
+    <ClInclude Include="..\..\Source\Markup\Transform\XTPMarkupRenderTransform.h" />
+    <ClInclude Include="..\..\Source\Markup\Transform\XTPMarkupRotateTransform.h" />
+    <ClInclude Include="..\..\Source\Markup\Text\XTPMarkupInline.h" />
+    <ClInclude Include="..\..\Source\Markup\Text\XTPMarkupRun.h" />
+    <ClInclude Include="..\..\Source\Markup\Text\XTPMarkupSpan.h" />
+    <ClInclude Include="..\..\Source\Markup\Path\XTPMarkupPathGeometry.h" />
+    <ClInclude Include="..\..\Source\Markup\Path\XTPMarkupPathGeometryFigures.h" />
+    <ClInclude Include="..\..\Source\TabManager\XTPTabControl.h" />
+    <ClInclude Include="..\..\Source\TabManager\XTPTabManager.h" />
+    <ClInclude Include="..\..\Source\TabManager\XTPTabPaintManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Source\Common\XTPPropExchange.inc" />
+    <None Include="..\..\Source\TabManager\XTPTabPaintManager.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

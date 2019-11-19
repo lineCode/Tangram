@@ -1,0 +1,10 @@
+﻿<doc>
+  <window>
+    <node id='splitter' name='splitter' rows='2' cols='2' height='250,250,' width='250,250,' borderwidth='0' splitterwidth='4' middlecolor='RGB(240,240,240)'>
+      <node id="clrctrl" cnnid="DemoStart.UserControl_WinForm,DemoStart"></node>
+      <node id="clrctrl" cnnid="DemoStart.UserControl_WPF,DemoStart"></node>
+      <node url="https://dotnet.microsoft.com/|https://www.chromium.org/Home|https://www.tangram.dev"></node>
+      <node id="clrctrl" cnnid="DemoStart.Form_MDI,DemoStart"></node>
+    </node>
+  </window>
+</doc>

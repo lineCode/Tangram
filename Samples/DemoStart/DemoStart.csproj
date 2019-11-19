@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DB0C36A3-FD3D-4A10-918F-107711EBFF00}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DemoStart</RootNamespace>
+    <AssemblyName>DemoStart</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\chromium_root_78\src\out\tangram_static_debug_x64\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TangramCLR, Version=1.0.1992.1963, Culture=neutral, PublicKeyToken=1bcc94f26a4807a7, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\chromium_root_78\src\out\tangram_static_debug_x64\TangramCLR.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_B.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_B.Designer.cs">
+      <DependentUpon>Form_B.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Browser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Browser.Designer.cs">
+      <DependentUpon>Form_Browser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DemoStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DemoStart.Designer.cs">
+      <DependentUpon>Form_DemoStart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_A.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_A.Designer.cs">
+      <DependentUpon>Form_A.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DynamicUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DynamicUI.Designer.cs">
+      <DependentUpon>Form_DynamicUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_MDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_MDI.Designer.cs">
+      <DependentUpon>Form_MDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_TabbedBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_TabbedBrowser.Designer.cs">
+      <DependentUpon>Form_TabbedBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControl_A.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl_A.Designer.cs">
+      <DependentUpon>UserControl_A.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl_B.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl_B.Designer.cs">
+      <DependentUpon>UserControl_B.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl_WinForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl_WinForm.Designer.cs">
+      <DependentUpon>UserControl_WinForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl_WPF.xaml.cs">
+      <DependentUpon>UserControl_WPF.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_B.resx">
+      <DependentUpon>Form_B.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Browser.resx">
+      <DependentUpon>Form_Browser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DemoStart.resx">
+      <DependentUpon>Form_DemoStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_A.resx">
+      <DependentUpon>Form_A.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DynamicUI.resx">
+      <DependentUpon>Form_DynamicUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_MDI.resx">
+      <DependentUpon>Form_MDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_TabbedBrowser.resx">
+      <DependentUpon>Form_TabbedBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UserControl_A.resx">
+      <DependentUpon>UserControl_A.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl_B.resx">
+      <DependentUpon>UserControl_B.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl_WinForm.resx">
+      <DependentUpon>UserControl_WinForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Form_Browser.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Form_DynamicUI.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Form_TabbedBrowser.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Sample1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UserControl_A.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UserControl_And_Browser.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UserControl_A_And_B.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="UserControl_WPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
