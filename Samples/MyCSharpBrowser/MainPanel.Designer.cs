@@ -30,9 +30,9 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.btnWhatIsNtp = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnStyle1 = new System.Windows.Forms.Button();
+            this.btnStyle2 = new System.Windows.Forms.Button();
+            this.btnStyle3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -54,40 +54,41 @@
             this.btnWhatIsNtp.UseVisualStyleBackColor = true;
             this.btnWhatIsNtp.Click += new System.EventHandler(this.btnWhatIsNtp_Click);
             // 
-            // button1
+            // btnStyle1
             // 
-            this.button1.Location = new System.Drawing.Point(19, 90);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(189, 43);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Style 1: Extend the panel at the bottom of the NTP.";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnStyle1.Location = new System.Drawing.Point(19, 90);
+            this.btnStyle1.Name = "btnStyle1";
+            this.btnStyle1.Size = new System.Drawing.Size(189, 43);
+            this.btnStyle1.TabIndex = 2;
+            this.btnStyle1.Text = "Style 1: Show the panel at the bottom of the NTP.";
+            this.btnStyle1.UseVisualStyleBackColor = true;
+            this.btnStyle1.Click += new System.EventHandler(this.btnStyle1_Click);
             // 
-            // button2
+            // btnStyle2
             // 
-            this.button2.Location = new System.Drawing.Point(19, 151);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(189, 43);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnStyle2.Location = new System.Drawing.Point(19, 151);
+            this.btnStyle2.Name = "btnStyle2";
+            this.btnStyle2.Size = new System.Drawing.Size(189, 43);
+            this.btnStyle2.TabIndex = 3;
+            this.btnStyle2.Text = "Style 2: More complex NTP layout.";
+            this.btnStyle2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnStyle3
             // 
-            this.button3.Location = new System.Drawing.Point(19, 212);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(189, 43);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnStyle3.Location = new System.Drawing.Point(19, 212);
+            this.btnStyle3.Name = "btnStyle3";
+            this.btnStyle3.Size = new System.Drawing.Size(189, 43);
+            this.btnStyle3.TabIndex = 4;
+            this.btnStyle3.Text = "Style 3: NTP with tabs.";
+            this.btnStyle3.UseVisualStyleBackColor = true;
             // 
             // MainPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnStyle3);
+            this.Controls.Add(this.btnStyle2);
+            this.Controls.Add(this.btnStyle1);
             this.Controls.Add(this.btnWhatIsNtp);
             this.Controls.Add(this.label1);
             this.Name = "MainPanel";
@@ -101,8 +102,8 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnWhatIsNtp;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnStyle1;
+        private System.Windows.Forms.Button btnStyle2;
+        private System.Windows.Forms.Button btnStyle3;
     }
 }

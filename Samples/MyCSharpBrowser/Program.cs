@@ -19,21 +19,8 @@ namespace MyCSharpBrowser
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            LoadDefaultNTPXML();
+            Common.LoadNTPXML("MyCSharpBrowser.DefaultNTP.xml");
             Application.Run(Tangram.Context);
-        }
-
-        static void LoadDefaultNTPXML()
-        {
-            var assembly = Assembly.GetExecutingAssembly();
-            var xmlResourceName = "MyCSharpBrowser.DefaultNTP.xml";
-            using (Stream stream = assembly.GetManifestResourceStream(xmlResourceName))
-            {
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    Tangram.NTPXml = reader.ReadToEnd();
-                }
-            }
         }
     }
 }

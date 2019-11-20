@@ -26,5 +26,11 @@ namespace MyCSharpBrowser
                 wb.OpenURL("https://www.chromium.org/user-experience/new-tab-page|", Disposition.NEW_POPUP, "", "");
             }
         }
+
+        private void btnStyle1_Click(object sender, EventArgs e)
+        {
+            Common.LoadNTPXML("MyCSharpBrowser.Style1.xml");
+            Tangram.CreateBrowser(IntPtr.Zero, "https://www.google.com|");
+        }
     }
 }
