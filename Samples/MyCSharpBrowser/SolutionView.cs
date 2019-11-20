@@ -16,5 +16,13 @@ namespace MyCSharpBrowser
         {
             InitializeComponent();
         }
+
+        private void SolutionView_Load(object sender, EventArgs e)
+        {
+            if (!DesignMode)
+            {
+                treeView1.ExpandAll();
+            }
+        }
     }
 }
