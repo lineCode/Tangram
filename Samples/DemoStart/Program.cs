@@ -19,7 +19,7 @@ namespace DemoStart
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Tangram.OnGetAppIcon += Tangram_OnGetAppIcon;
+                //Tangram.OnGetAppIcon += Tangram_OnGetAppIcon;
                 Tangram.OnAppInit += Tangram_OnAppInit;
                 Tangram.OnAppMsgLoop += Tangram_OnAppMsgLoop;
                 Tangram.OnTangramIPCMsg += Tangram_OnTangramIPCMsg;

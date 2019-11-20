@@ -28,38 +28,6 @@
 #include <shellapi.h>
 #include <shlobj.h>
 
-ITangram* GetTangram()
-{
-	if (::GetModuleHandle(_T("TangramCore.dll")) == nullptr)
-	{
-		HMODULE hModule = ::LoadLibrary(L"tangramcore.dll");
-		if (hModule == nullptr) {
-			TCHAR m_szBuffer[MAX_PATH];
-			if (SHGetFolderPath(NULL, CSIDL_PROGRAM_FILES, NULL, 0, m_szBuffer) ==
-				S_OK) {
-				ATL::CString m_strProgramFilePath = ATL::CString(m_szBuffer);
-				m_strProgramFilePath += _T("\\Tangram\\Tangramcore.dll");
-				if (::PathFileExists(m_strProgramFilePath)) {
-					hModule = ::LoadLibrary(m_strProgramFilePath);
-				}
-			}
-		}
-		if (hModule) {
-			typedef CTangramImpl* (__stdcall * GetTangramImpl)(ITangram**);
-			GetTangramImpl _pTangramImplFunction;
-			_pTangramImplFunction = (GetTangramImpl)GetProcAddress(hModule, "GetTangramImpl");
-			if (_pTangramImplFunction != NULL) {
-				theApp.m_pTangramImpl = _pTangramImplFunction(&theApp.m_pTangram);
-				if(theApp.m_pTangramImpl->m_nAppType==0)
-					theApp.m_pTangramImpl->m_nAppType = 4000;
-				theApp.m_pTangramImpl->m_pTangramDelegate = ((ITangramDelegate*)&theApp);
-				theApp.m_pTangramImpl->m_pTangramAppProxy = ((ITangramAppProxy*)&theApp);
-			}
-		}
-	}
-	return theApp.m_pTangram;
-}
-
 CTangramCLRApp::CTangramCLRApp()
 {
 	ATLTRACE(_T("Loading CTangramCLRApp :%p\n"), this);

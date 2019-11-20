@@ -348,89 +348,6 @@ void CTangram::Init()
 	else
 		m_bX86App = true;
 
-	TCHAR szDriver[MAX_PATH] = { 0 };
-	TCHAR szDir[MAX_PATH] = { 0 };
-	TCHAR szExt[MAX_PATH] = { 0 };
-	TCHAR szFile2[MAX_PATH] = { 0 };
-	::GetModuleFileName(NULL, m_szBuffer, MAX_PATH);
-
-	m_strConfigFile = CString(m_szBuffer);
-	m_strConfigFile.MakeLower();
-	m_strAppKey = ComputeHash(m_strConfigFile);
-	m_strConfigFile += _T(".tangram");
-	_tsplitpath_s(m_szBuffer, szDriver, szDir, szFile2, szExt);
-	m_strAppPath = szDriver;
-	m_strAppPath += szDir;
-
-	::GetTempPath(MAX_PATH, m_szBuffer);
-	m_strTempPath = CString(m_szBuffer);
-	m_bAdmin = IsUserAdministrator();
-	HRESULT hr = SHGetFolderPath(NULL, CSIDL_COMMON_APPDATA, NULL, 0, m_szBuffer);
-	m_strAppDataPath = CString(m_szBuffer);
-	m_strAppCommonDocPath += m_strAppDataPath + _T("\\TangramCommonDocTemplate\\");
-	if (::PathIsDirectory(m_strAppCommonDocPath) == false)
-	{
-		::SHCreateDirectory(nullptr, m_strAppCommonDocPath);
-	}
-	m_strAppCommonFormsInfoPath = m_strAppDataPath + _T("\\TangramCommonFormsInfo\\");
-	if (::PathIsDirectory(m_strAppCommonFormsInfoPath) == false)
-	{
-		::SHCreateDirectory(nullptr, m_strAppCommonFormsInfoPath);
-	}
-	m_strAppCommonFormsTemplatePath = m_strAppDataPath + _T("\\TangramCommonFormsTemplate\\");
-	if (::PathIsDirectory(m_strAppCommonFormsTemplatePath) == false)
-	{
-		::SHCreateDirectory(nullptr, m_strAppCommonFormsTemplatePath);
-	}
-
-	m_strNewDocXml = g_pTangram->m_strAppCommonDocPath + _T("newdocument.xml");
-
-	CString strPath = m_strAppCommonDocPath + _T("\\Tangramdoctemplate.xml");
-	if (::PathFileExists(strPath) == FALSE)
-	{
-		CTangramXmlParse m_Parse;
-		m_Parse.LoadXml(_T("<TangramDocTemplate />"));
-		m_Parse.SaveFile(strPath);
-	}
-
-	m_strAppDataPath += _T("\\TangramData\\");
-	m_strAppDataPath += m_strExeName;
-	m_strAppDataPath += _T("\\");
-	m_strAppDataPath += m_strAppKey;
-	m_strAppDataPath += _T("\\");
-
-	// Log direcotry
-	CTime time = CTime::GetCurrentTime();
-	CString strTime;
-	strTime.Format(L"%lld", time.GetTime());
-	m_strLogFileFormatPath.Format(L"%s.log", strTime);
-	m_strLogFileFormatPath = m_strAppDataPath + m_strLogFileFormatPath;
-
-	strPath = g_pTangram->m_strAppDataPath + _T("default.tangramdoc");
-	if (::PathFileExists(strPath) == false)
-	{
-		CString _strPath = g_pTangram->m_strAppPath + _T("default.tangramdoc");
-		if (::PathFileExists(_strPath))
-		{
-			::CopyFile(_strPath, strPath, true);
-		}
-	}
-
-	m_strAppFormsPath = m_strAppPath + _T("CommonForms\\");
-	if (::PathIsDirectory(m_strAppFormsPath) == false)
-	{
-		::SHCreateDirectory(nullptr, m_strAppFormsPath);
-	}
-	m_strAppFormsInfoPath = m_strAppDataPath + _T("TangramFormsInfo\\");
-	if (::PathIsDirectory(m_strAppFormsInfoPath) == false)
-	{
-		::SHCreateDirectory(nullptr, m_strAppFormsInfoPath);
-	}
-	m_strAppFormsTemplatePath = m_strAppDataPath + _T("TangramFormsTemplate\\");
-	if (::PathIsDirectory(m_strAppFormsTemplatePath) == false)
-	{
-		::SHCreateDirectory(nullptr, m_strAppFormsTemplatePath);
-	}
 
 	if (m_bOfficeApp == false && m_nAppID != 9)
 	{
@@ -1561,6 +1478,93 @@ BOOL CTangram::LoadImageFromResource(ATL::CImage *pImage, HMODULE hMod, UINT nRe
 	return true;
 }
 
+void CTangram::TangramLoad()
+{
+	TCHAR szDriver[MAX_PATH] = { 0 };
+	TCHAR szDir[MAX_PATH] = { 0 };
+	TCHAR szExt[MAX_PATH] = { 0 };
+	TCHAR szFile2[MAX_PATH] = { 0 };
+	::GetModuleFileName(NULL, m_szBuffer, MAX_PATH);
+
+	m_strConfigFile = CString(m_szBuffer);
+	m_strConfigFile.MakeLower();
+	m_strAppKey = ComputeHash(m_strConfigFile);
+	m_strConfigFile += _T(".tangram");
+	_tsplitpath_s(m_szBuffer, szDriver, szDir, szFile2, szExt);
+	m_strAppPath = szDriver;
+	m_strAppPath += szDir;
+
+	::GetTempPath(MAX_PATH, m_szBuffer);
+	m_strTempPath = CString(m_szBuffer);
+	m_bAdmin = IsUserAdministrator();
+	HRESULT hr = SHGetFolderPath(NULL, CSIDL_COMMON_APPDATA, NULL, 0, m_szBuffer);
+	m_strAppDataPath = CString(m_szBuffer);
+	m_strAppCommonDocPath += m_strAppDataPath + _T("\\TangramCommonDocTemplate\\");
+	if (::PathIsDirectory(m_strAppCommonDocPath) == false)
+	{
+		::SHCreateDirectory(nullptr, m_strAppCommonDocPath);
+	}
+	m_strAppCommonFormsInfoPath = m_strAppDataPath + _T("\\TangramCommonFormsInfo\\");
+	if (::PathIsDirectory(m_strAppCommonFormsInfoPath) == false)
+	{
+		::SHCreateDirectory(nullptr, m_strAppCommonFormsInfoPath);
+	}
+	m_strAppCommonFormsTemplatePath = m_strAppDataPath + _T("\\TangramCommonFormsTemplate\\");
+	if (::PathIsDirectory(m_strAppCommonFormsTemplatePath) == false)
+	{
+		::SHCreateDirectory(nullptr, m_strAppCommonFormsTemplatePath);
+	}
+
+	m_strNewDocXml = g_pTangram->m_strAppCommonDocPath + _T("newdocument.xml");
+
+	CString strPath = m_strAppCommonDocPath + _T("\\Tangramdoctemplate.xml");
+	if (::PathFileExists(strPath) == FALSE)
+	{
+		CTangramXmlParse m_Parse;
+		m_Parse.LoadXml(_T("<TangramDocTemplate />"));
+		m_Parse.SaveFile(strPath);
+	}
+
+	m_strAppDataPath += _T("\\TangramData\\");
+	m_strAppDataPath += m_strExeName;
+	m_strAppDataPath += _T("\\");
+	m_strAppDataPath += m_strAppKey;
+	m_strAppDataPath += _T("\\");
+
+	// Log direcotry
+	CTime time = CTime::GetCurrentTime();
+	CString strTime;
+	strTime.Format(L"%lld", time.GetTime());
+	m_strLogFileFormatPath.Format(L"%s.log", strTime);
+	m_strLogFileFormatPath = m_strAppDataPath + m_strLogFileFormatPath;
+
+	strPath = g_pTangram->m_strAppDataPath + _T("default.tangramdoc");
+	if (::PathFileExists(strPath) == false)
+	{
+		CString _strPath = g_pTangram->m_strAppPath + _T("default.tangramdoc");
+		if (::PathFileExists(_strPath))
+		{
+			::CopyFile(_strPath, strPath, true);
+		}
+	}
+
+	m_strAppFormsPath = m_strAppPath + _T("CommonForms\\");
+	if (::PathIsDirectory(m_strAppFormsPath) == false)
+	{
+		::SHCreateDirectory(nullptr, m_strAppFormsPath);
+	}
+	m_strAppFormsInfoPath = m_strAppDataPath + _T("TangramFormsInfo\\");
+	if (::PathIsDirectory(m_strAppFormsInfoPath) == false)
+	{
+		::SHCreateDirectory(nullptr, m_strAppFormsInfoPath);
+	}
+	m_strAppFormsTemplatePath = m_strAppDataPath + _T("TangramFormsTemplate\\");
+	if (::PathIsDirectory(m_strAppFormsTemplatePath) == false)
+	{
+		::SHCreateDirectory(nullptr, m_strAppFormsTemplatePath);
+	}
+}
+
 void CTangram::TangramInit()
 {
 	if (m_bTangramInit)
@@ -1875,8 +1879,6 @@ ULONG CTangram::InternalRelease()
 	return 1;
 }
 
-extern HWND    topWindow;
-
 void CTangram::ProcessMsg(LPMSG lpMsg)
 {
 	switch (lpMsg->message)
@@ -1999,7 +2001,9 @@ void CTangram::CreateCommonDesignerToolBar()
 		m_hHostWnd = ::CreateWindowEx(WS_EX_WINDOWEDGE | WS_EX_TOOLWINDOW, _T("Tangram Window Class"), m_strDesignerToolBarCaption, WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN | WS_CLIPSIBLINGS, 0, 0, 400, 400, NULL, 0, theApp.m_hInstance, NULL);
 		m_hChildHostWnd = ::CreateWindowEx(NULL, _T("Tangram Window Class"), _T(""), WS_VISIBLE | WS_CHILD, 0, 0, 0, 0, m_hHostWnd, 0, theApp.m_hInstance, NULL);
 	}
-
+	CString strDesignerDll = m_strAppPath + _T("tangramdesigner.dll");
+	if (::PathFileExists(strDesignerDll) == false)
+		return;
 	if (m_pCLRProxy && m_pCLRProxy->IsSupportDesigner() == false)
 		return;
 	HWND hwnd = ::GetActiveWindow();

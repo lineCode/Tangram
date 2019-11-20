@@ -707,23 +707,34 @@ namespace ChromePlus {
 			}
 			if (strType.CompareNoCase(_T("workbench")) == 0)
 			{
-				CString strStartup = _T("");
-				CString strID = m_Parse.attr(_T("workbenchkey"), _T(""));
-				CString strName = m_Parse.name();
-				if (strID != _T(""))
+				bool bSkip = false;
+				if (::IsChild(g_pTangram->m_hHostBrowserWnd, m_hWnd))
 				{
-					g_pTangram->m_mapCreatingWorkBenchInfo[strID] = m_mapWorkBenchInfo[strID] = m_Parse.xml();
+					if (g_pTangram->m_nAppType != TANGRAM_APP_ECLIPSE && g_pTangram->m_nAppType != TANGRAM_APP_BROWSER_ECLIPSE)
+					{
+						bSkip = true;
+					}
 				}
-				if (m_Parse.attrBool(_T("showstartup")))
+				if (bSkip == false)
 				{
-					strStartup = strID;
-				}
-				if (strStartup != _T(""))
-				{
-					CString strID = strStartup;
-					g_pTangram->m_strWorkBenchStrs = strID;
-					g_pTangram->m_strWorkBenchStrs += _T("|");
-					g_pTangram->m_nAppType = TANGRAM_APP_BROWSER_ECLIPSE;
+					CString strStartup = _T("");
+					CString strID = m_Parse.attr(_T("workbenchkey"), _T(""));
+					CString strName = m_Parse.name();
+					if (strID != _T(""))
+					{
+						g_pTangram->m_mapCreatingWorkBenchInfo[strID] = m_mapWorkBenchInfo[strID] = m_Parse.xml();
+					}
+					if (m_Parse.attrBool(_T("showstartup")))
+					{
+						strStartup = strID;
+					}
+					if (strStartup != _T(""))
+					{
+						CString strID = strStartup;
+						g_pTangram->m_strWorkBenchStrs = strID;
+						g_pTangram->m_strWorkBenchStrs += _T("|");
+						g_pTangram->m_nAppType = TANGRAM_APP_BROWSER_ECLIPSE;
+					}
 				}
 			}
 			else if (strType.CompareNoCase(_T("browser")) == 0)

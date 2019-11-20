@@ -493,10 +493,10 @@ public:
 	virtual void TangramAction(CString strXml) {}
 };
 
-class CTangramCLRProxyImpl
+class ITangramCLRImpl
 {
 public:
-	CTangramCLRProxyImpl()
+	ITangramCLRImpl()
 	{
 		m_strObjTypeName = _T("");
 	}
@@ -657,13 +657,13 @@ class CTangramImpl {
   CStringA						m_strBridgeJavaClass;
   CString						m_strStartJarPath;
 
-  CMDIChildFormInfo*			m_pCurMDIChildFormInfo;
+  ITangramCLRImpl*				m_pCLRProxy;
+  ITaskbarList3*				m_pTaskbarList3;
   ITangramAppProxy*				m_pActiveAppProxy;
   ITangramAppProxy*				m_pTangramAppProxy;
   ITangramAppProxy*				m_pTangramCLRAppProxy;
+  CMDIChildFormInfo*			m_pCurMDIChildFormInfo;
   CTangramPackageProxy*			m_pTangramPackageProxy;
-  CTangramCLRProxyImpl*			m_pCLRProxy;
-  ITaskbarList3*				m_pTaskbarList3;
 
   IDispatch*					m_pMainFormDisp;
   IDispatch*					m_pAppDisp;
@@ -686,11 +686,19 @@ class CTangramImpl {
   map<CString, void*>			m_mapExcludedObjects;
   map<CString, HWND>			m_mapTangramDesignedWindows;
   map<CString, ITangramWindowProvider*> m_mapTangramWindowProvider;
-  map<int, TangramDocTemplateInfo*> m_mapTangramDocTemplateInfo;
+  map<int, TangramDocTemplateInfo*>		m_mapTangramDocTemplateInfo;
   map<CString, TangramDocTemplateInfo*> m_mapTangramDocTemplateInfo2;
   map<CString, TangramDocTemplateInfo*> m_mapTangramFormsTemplateInfo;
-  map<int, TangramDocTemplateInfo*> m_mapTangramFormsTemplateInfo2;
-  map<CString, ITangramAppProxy*> m_mapTangramAppProxy;
+  map<int, TangramDocTemplateInfo*>		m_mapTangramFormsTemplateInfo2;
+  map<CString, ITangramAppProxy*>		m_mapTangramAppProxy;
+
+  map<CString, CString>					m_mapFormsInfo;
+  map<CString, CString>					m_mapAtlMFCsInfo;
+  map<CString, CString>					m_mapStartupsInfo;
+  map<CString, CString>					m_mapeclipsesInfo;
+  map<CString, CString>					m_mapWorkBenchInfo;
+  map<CString, CString>					m_mapUserControlsInfo;
+  map<CString, CMDIChildFormInfo*>		m_mapChildFormsInfo;
 
   virtual void BrowserAppStart() = 0;
   virtual ICompositor* ConnectCompositorManager(HWND, CString, ICompositorManager* pCompositorManager, CompositorInfo*) { return nullptr; }

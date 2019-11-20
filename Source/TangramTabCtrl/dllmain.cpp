@@ -36,7 +36,7 @@ CTangramApp::~CTangramApp()
 
 BOOL CTangramApp::InitInstance()
 {
-	m_strTangramContainer = _T("tangramtabctrl");
+	m_strTangramContainer = _T(",tangramtabctrl,");
 	TangramInit(_T("connector.1"));
 	return __super::InitInstance();
 }

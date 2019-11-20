@@ -258,9 +258,9 @@ namespace TangramCommon {
 		ICompositorManager* m_pCompositorManager;
 	}CtrlInfo;
 
+	class ITangramCLRImpl;
 	class ITangramAppProxy;
 	class CTangramPackageProxy;
-	class CTangramCLRProxyImpl;
 
 	typedef struct tagMainFrameInfo
 	{
@@ -452,10 +452,10 @@ namespace TangramCommon {
 		virtual void TangramAction(CString strXml) {};
 	};
 
-	class CTangramCLRProxyImpl
+	class ITangramCLRImpl
 	{
 	public:
-		CTangramCLRProxyImpl()
+		ITangramCLRImpl()
 		{
 			m_strObjTypeName = _T("");
 		};
@@ -722,13 +722,13 @@ namespace TangramCommon {
 		CStringA								m_strBridgeJavaClass;
 		CString									m_strStartJarPath = _T("");
 
-		CMDIChildFormInfo*						m_pCurMDIChildFormInfo;
+		ITangramCLRImpl*						m_pCLRProxy;
+		ITaskbarList3*							m_pTaskbarList3;
 		ITangramAppProxy*						m_pActiveAppProxy;
 		ITangramAppProxy*						m_pTangramAppProxy;
 		ITangramAppProxy*						m_pTangramCLRAppProxy;
+		CMDIChildFormInfo*						m_pCurMDIChildFormInfo;
 		CTangramPackageProxy*					m_pTangramPackageProxy;
-		CTangramCLRProxyImpl*					m_pCLRProxy;
-		ITaskbarList3*							m_pTaskbarList3;
 
 		IDispatch*								m_pMainFormDisp;
 		IDispatch*								m_pAppDisp;
@@ -756,6 +756,14 @@ namespace TangramCommon {
 		map<CString, TangramDocTemplateInfo*>	m_mapTangramFormsTemplateInfo;
 		map<int, TangramDocTemplateInfo*>		m_mapTangramFormsTemplateInfo2;
 		map<CString, ITangramAppProxy*>			m_mapTangramAppProxy;
+
+		map<CString, CString>					m_mapFormsInfo;
+		map<CString, CString>					m_mapAtlMFCsInfo;
+		map<CString, CString>					m_mapStartupsInfo;
+		map<CString, CString>					m_mapeclipsesInfo;
+		map<CString, CString>					m_mapWorkBenchInfo;
+		map<CString, CString>					m_mapUserControlsInfo;
+		map<CString, CMDIChildFormInfo*>		m_mapChildFormsInfo;
 
 		virtual void BrowserAppStart() = 0;
 		virtual ICompositor* ConnectCompositorManager(HWND, CString, ICompositorManager* pCompositorManager, CompositorInfo*) { return nullptr; }

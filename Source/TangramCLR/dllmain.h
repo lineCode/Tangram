@@ -21,18 +21,11 @@
 // dllmain.h : Declaration of module class.
 
 #include "TangramCoreEvents.h"
-#ifdef _WIN64
-#include <ActiveDS.h>
-#endif
 #include <cstring>
 #include <iostream>
 #include "TangramBase.h"
 
 class CWndNodeCLREvent;
-typedef struct tagTangramWindowInfo {
-	bool m_bContainer;
-	CString m_strStyles;
-} TangramWindowInfo;
 
 class CTangramCLRApp :
 	public ITangramDelegate,
@@ -112,5 +105,3 @@ private:
 	void __stdcall  OnTabChange(int nActivePage, int nOldPage);
 	void __stdcall  OnIPCMessageReceived(BSTR bstrChannel, BSTR bstrData);
 };
-
-extern ITangram* GetTangram();

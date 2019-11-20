@@ -33,7 +33,7 @@ using namespace TangramCLR;
 
 class CTangramWPFObjWrapper;
 
-class CTangramCLRProxy : public CTangramCLRProxyImpl
+class CTangramCLRProxy : public ITangramCLRImpl
 {
 public: 
 	CTangramCLRProxy();

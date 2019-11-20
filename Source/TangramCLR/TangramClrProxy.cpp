@@ -42,7 +42,39 @@ CTangramCLRApp theApp;
 #pragma managed(pop)
 CTangramCLRProxy theAppProxy;
 
-CTangramCLRProxy::CTangramCLRProxy() : CTangramCLRProxyImpl()
+ITangram* GetTangram()
+{
+	if (::GetModuleHandle(_T("TangramCore.dll")) == nullptr)
+	{
+		HMODULE hModule = ::LoadLibrary(L"tangramcore.dll");
+		if (hModule == nullptr) {
+			TCHAR m_szBuffer[MAX_PATH];
+			if (SHGetFolderPath(NULL, CSIDL_PROGRAM_FILES, NULL, 0, m_szBuffer) ==
+				S_OK) {
+				ATL::CString m_strProgramFilePath = ATL::CString(m_szBuffer);
+				m_strProgramFilePath += _T("\\Tangram\\Tangramcore.dll");
+				if (::PathFileExists(m_strProgramFilePath)) {
+					hModule = ::LoadLibrary(m_strProgramFilePath);
+				}
+			}
+		}
+		if (hModule) {
+			typedef CTangramImpl* (__stdcall* GetTangramImpl)(ITangram**);
+			GetTangramImpl _pTangramImplFunction;
+			_pTangramImplFunction = (GetTangramImpl)GetProcAddress(hModule, "GetTangramImpl");
+			if (_pTangramImplFunction != NULL) {
+				theApp.m_pTangramImpl = _pTangramImplFunction(&theApp.m_pTangram);
+				if (theApp.m_pTangramImpl->m_nAppType == 0)
+					theApp.m_pTangramImpl->m_nAppType = TANGRAM_APP_BROWSERAPP;
+				theApp.m_pTangramImpl->m_pTangramDelegate = (ITangramDelegate*)&theApp;
+				theApp.m_pTangramImpl->m_pTangramAppProxy = (ITangramAppProxy*)&theApp;
+			}
+		}
+	}
+	return theApp.m_pTangram;
+}
+
+CTangramCLRProxy::CTangramCLRProxy() : ITangramCLRImpl()
 {
 	//_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	//_CrtSetBreakAlloc(177);
@@ -452,7 +484,6 @@ void CTangramCLRProxy::WindowCreated(LPCTSTR strClassName, LPCTSTR strName, HWND
 							m_pOnLoad = gcnew EventHandler(CTangramCLRProxy::OnLoad);
 						_pForm->Load += m_pOnLoad;
 						::SendMessage(theApp.m_pTangramImpl->m_hTangramWnd, WM_WINFORMCREATED, (WPARAM)hPWnd, (LPARAM)0);
-						::PostMessage(hPWnd, WM_WINFORMCREATED, (WPARAM)hPWnd, (LPARAM)20190727);
 					}
 				}
 			}
@@ -1901,7 +1932,10 @@ void CTangramCLRProxy::TangramAction(BSTR bstrXml, IWndNode * pNode)
 			{
 				m_bInitApp = true;
 				if (TangramCLR::Tangram::Fire_OnAppInit() == false)
+				{
+					PostQuitMessage(0);
 					return;
+				}
 				switch (TangramCLR::Tangram::AppType)
 				{
 				case TangramAppType::APP_WIN32:
@@ -2236,7 +2270,15 @@ HICON CTangramCLRProxy::GetAppIcon(int nIndex)
 	System::Drawing::Icon^ icon = TangramCLR::Tangram::Fire_OnGetAppIcon(nIndex);
 	if (icon != nullptr)
 		return (HICON)icon->Handle.ToPointer();
-	return nullptr;
+	else
+	{
+		if (TangramCLR::Tangram::m_pDefaultIcon == nullptr)
+		{
+			Form^ _pForm = gcnew Form();
+			TangramCLR::Tangram::m_pDefaultIcon = _pForm->Icon;
+		}
+		return (HICON)TangramCLR::Tangram::m_pDefaultIcon->Handle.ToPointer();
+	}
 }
 
 void CTangramCLRProxy::OnSelectedObjectsChanged(Object ^ sender, EventArgs ^ e)
@@ -2303,7 +2345,7 @@ void CTangramCLRProxy::OnSelectedObjectsChanged(Object ^ sender, EventArgs ^ e)
 
 void CTangramCLRProxy::OnControlAdded(Object ^ sender, ControlEventArgs ^ e)
 {
-	String^ strType = e->Control->GetType()->ToString();//System.Windows.Forms.MdiClient
+	String^ strType = e->Control->GetType()->ToString();
 	if (strType == L"System.Windows.Forms.MdiClient")
 	{
 		__int64 nHandle = e->Control->Handle.ToInt64();

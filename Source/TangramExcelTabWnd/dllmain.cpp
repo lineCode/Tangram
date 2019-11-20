@@ -19,7 +19,7 @@ CTangramApp::~CTangramApp()
 
 BOOL CTangramApp::InitInstance()
 {
-	m_strTangramContainer = _T("exceltab,outlooktabwndh,outlooktabwndv");
+	m_strTangramContainer = _T(",exceltab,outlooktabwndh,outlooktabwndv,");
 	TangramInit(_T("tangramexceltabwnd.tab.1"));
 	return __super::InitInstance();
 }

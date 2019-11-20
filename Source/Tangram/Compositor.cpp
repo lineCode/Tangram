@@ -1373,9 +1373,6 @@ LRESULT CTangramWinFormWnd::OnTangramGetXml(UINT uMsg, WPARAM wParam, LPARAM lPa
 				}
 				g_pTangram->m_mapValInfo[strIndex] = CComVariant(pParse2->xml());
 				return 1;
-				//CString s = pParse2->xml();
-				//LRESULT res = (LRESULT)LPSTR(LPCTSTR(s));
-				//return res;
 			}
 		}
 	}
@@ -1384,12 +1381,7 @@ LRESULT CTangramWinFormWnd::OnTangramGetXml(UINT uMsg, WPARAM wParam, LPARAM lPa
 
 LRESULT CTangramWinFormWnd::OnFormCreated(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL&)
 {
-	if (lParam == 20190727)
-	{
-		//g_pTangram->SetOverlayIcon(m_hWnd, NULL, _T(""));
-	}
-	else
-		g_pTangram->m_hFormNodeWnd = nullptr;
+	g_pTangram->m_hFormNodeWnd = nullptr;
 	return DefWindowProc(uMsg, wParam, lParam);
 }
 

@@ -476,6 +476,7 @@ private:
 	CComObject<CWndNodeCollection>*		m_pRootNodes;
 	map<DWORD, TangramThreadInfo*>		m_mapThreadInfo;
 
+	void TangramLoad();
 	bool CheckUrl(CString&   url);
 	void AttachNode(void* pNodeEvents);
 	CString Encode(CString strSRC, BOOL bEnCode);

@@ -16,7 +16,7 @@ namespace Boot
 	private:
 		bool m_bEnableProcessFormTabKey = false;
 
-		CTangramCLRProxyImpl* m_pCLRProxy;
+		ITangramCLRImpl* m_pCLRProxy;
 		ICLRRuntimeHost* m_pClrHost;
 	};
 }

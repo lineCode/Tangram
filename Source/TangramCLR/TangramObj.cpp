@@ -531,9 +531,23 @@ namespace TangramCLR
 	}
 	void Tangram::NTPXml::set(String^ strXml)
 	{
-		if (theApp.m_pTangramImpl->m_strNtpXml == _T(""))
+		CString _strXml = strXml;
+		CTangramXmlParse m_Parse;
+		if (m_Parse.LoadXml(_strXml))
 		{
-			theApp.m_pTangramImpl->m_strNtpXml = strXml;
+			CTangramXmlParse* pParse = m_Parse.GetChild(_T("window"));
+			if (pParse)
+			{
+				int nCount = pParse->GetCount();
+				if (nCount == 1)
+				{
+					pParse = pParse->GetChild(_T("node"));
+					if (pParse)
+					{
+						theApp.m_pTangramImpl->m_strNtpXml = _strXml;
+					}
+				}
+			}
 		}
 	}
 
@@ -1199,6 +1213,17 @@ namespace TangramCLR
 				BSTR bstrID = STRING2BSTR(m_strID);
 				CString _strID = OLE2T(bstrID);
 				::SysFreeString(bstrID);
+				int nIndex = _strID.Find(_T(","));
+				if (nIndex != -1)
+				{
+					CString s1 = _strID.Mid(nIndex + 1);
+					if (s1 == _T("host"))
+					{
+						CString s = _strID.Left(nIndex);
+						_strID = _strID.Left(nIndex + 1) + theApp.m_pTangramImpl->m_strAppName;
+						_strID.MakeLower();
+					}
+				}
 				_strID = theApp.GetLibPathFromAssemblyQualifiedName(_strID);
 				if (_strID != _T(""))
 				{
