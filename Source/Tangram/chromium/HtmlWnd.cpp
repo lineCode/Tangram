@@ -560,6 +560,8 @@ namespace ChromePlus {
 					m_hHostWnd = NULL;
 					if (m_pCompositor->m_pBindingNode)
 						m_hHostWnd = m_pCompositor->m_pBindingNode->m_pHostWnd->m_hWnd;
+
+					::PostMessage(::GetParent(m_hWnd), WM_BROWSERLAYOUT, 0, 2);
 				}
 			}
 		}

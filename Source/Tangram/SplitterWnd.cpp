@@ -474,9 +474,9 @@ void CSplitterNodeWnd::StopTracking(BOOL bAccept)
 		}
 		else if(g_pTangram->m_pDesignWindowNode&&g_pTangram->m_pDesignWindowNode->m_pTangramNodeCommonData->m_pCompositor->m_pWebWnd)
 			pWebWnd = g_pTangram->m_pDesignWindowNode->m_pTangramNodeCommonData->m_pCompositor->m_pWebWnd;
-		if(pWebWnd)
-			::PostMessage(::GetParent(pWebWnd->m_hWnd), WM_BROWSERLAYOUT, 0, 1);
 		pCompositor->HostPosChanged();
+		if(pWebWnd)
+			::SendMessage(::GetParent(pWebWnd->m_hWnd), WM_BROWSERLAYOUT, 0, 2);
 	}
 }
 
