@@ -82,6 +82,7 @@
             this.btnStyle3.TabIndex = 4;
             this.btnStyle3.Text = "Style 3: NTP with tabs.";
             this.btnStyle3.UseVisualStyleBackColor = true;
+            this.btnStyle3.Click += new System.EventHandler(this.btnStyle3_Click);
             // 
             // MainPanel
             // 
