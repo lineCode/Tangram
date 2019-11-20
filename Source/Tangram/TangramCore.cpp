@@ -332,8 +332,10 @@ BOOL IsWow64()
 
 void CTangram::Init()
 { 
-	if (m_strConfigFile != _T(""))
+	static bool bInit = false;
+	if (bInit)
 		return;
+	bInit = true;
 	SYSTEM_INFO si;
 	GetNativeSystemInfo(&si);
 
