@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MyCSharpBrowser
 {
-    public partial class BottomPanel : UserControl
+    public partial class OutputView : UserControl
     {
-        public BottomPanel()
+        public OutputView()
         {
             InitializeComponent();
         }

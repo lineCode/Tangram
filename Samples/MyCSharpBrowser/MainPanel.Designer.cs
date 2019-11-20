@@ -72,6 +72,7 @@
             this.btnStyle2.TabIndex = 3;
             this.btnStyle2.Text = "Style 2: More complex NTP layout.";
             this.btnStyle2.UseVisualStyleBackColor = true;
+            this.btnStyle2.Click += new System.EventHandler(this.btnStyle2_Click);
             // 
             // btnStyle3
             // 

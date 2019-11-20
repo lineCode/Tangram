@@ -30,7 +30,21 @@ namespace MyCSharpBrowser
         private void btnStyle1_Click(object sender, EventArgs e)
         {
             Common.LoadNTPXML("MyCSharpBrowser.Style1.xml");
-            Tangram.CreateBrowser(IntPtr.Zero, "https://www.google.com|");
+            ChromeWebBrowser wb = Tangram.ActiveBrowser();
+            if (wb != null)
+            {
+                wb.OpenURL("chrome://newtab", Disposition.NEW_FOREGROUND_TAB, "", "");
+            }
+        }
+
+        private void btnStyle2_Click(object sender, EventArgs e)
+        {
+            Common.LoadNTPXML("MyCSharpBrowser.Style2.xml");
+            ChromeWebBrowser wb = Tangram.ActiveBrowser();
+            if (wb != null)
+            {
+                wb.OpenURL("chrome://newtab", Disposition.NEW_FOREGROUND_TAB, "", "");
+            }
         }
     }
 }
