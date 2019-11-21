@@ -911,6 +911,7 @@ namespace TangramCLR
 		static Dictionary<String^, Type^>^ GetFormTypesFromDirectory(String^ directoryPath);
 		static List<String^>^ FindFiles(String^ rootPath, String^ fileSpec, bool recursive);
 		static ChromeWebBrowser^ ActiveBrowser();
+		static void UpdateNewTabPageLayout(String^ newTabPageLayout);
 
 		TangramCLR::ITangramApp^ m_pTangramAppProxy;
 

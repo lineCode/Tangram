@@ -704,6 +704,11 @@ namespace TangramCLR
 		return nullptr;
 	}
 
+	void Tangram::UpdateNewTabPageLayout(String^ newTabPageLayout)
+	{
+		Tangram::NTPXml::set(newTabPageLayout);
+	}
+
 	List<String^>^ Tangram::FindFiles(String^ rootPath, String^ fileSpec, bool recursive)
 	{
 		List<String^>^ pFiles = gcnew List<String^>();

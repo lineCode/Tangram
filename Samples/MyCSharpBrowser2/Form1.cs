@@ -21,7 +21,7 @@ namespace MyCSharpBrowser
         private void btnNewTabPageStyle1_Click(object sender, EventArgs e)
         {
             string newTabPageLayout = Helper.LoadResourceFile("MyCSharpBrowser.Style1.xml");
-            Tangram.NTPXml = newTabPageLayout;
+            Tangram.UpdateNewTabPageLayout(newTabPageLayout);
             ChromeWebBrowser wb = Tangram.ActiveBrowser();
             if (wb != null)
             {
@@ -32,7 +32,7 @@ namespace MyCSharpBrowser
         private void btnNewTabPageStyle2_Click(object sender, EventArgs e)
         {
             string newTabPageLayout = Helper.LoadResourceFile("MyCSharpBrowser.Style2.xml");
-            Tangram.NTPXml = newTabPageLayout;
+            Tangram.UpdateNewTabPageLayout(newTabPageLayout);
             ChromeWebBrowser wb = Tangram.ActiveBrowser();
             if (wb != null)
             {
@@ -43,7 +43,7 @@ namespace MyCSharpBrowser
         private void btnNewTabPageStyle3_Click(object sender, EventArgs e)
         {
             string newTabPageLayout = Helper.LoadResourceFile("MyCSharpBrowser.Style3.xml");
-            Tangram.NTPXml = newTabPageLayout;
+            Tangram.UpdateNewTabPageLayout(newTabPageLayout);
             ChromeWebBrowser wb = Tangram.ActiveBrowser();
             if (wb != null)
             {
