@@ -23,7 +23,7 @@ namespace MyCSharpBrowser
             ChromeWebBrowser wb = Tangram.ActiveBrowser();
             if (wb != null)
             {
-                wb.OpenURL("https://www.chromium.org/user-experience/new-tab-page|", Disposition.NEW_POPUP, "", "");
+                wb.OpenURL("https://demo.tangram.dev/new-tab-page.html", Disposition.NEW_POPUP, "", "");
             }
         }
 
