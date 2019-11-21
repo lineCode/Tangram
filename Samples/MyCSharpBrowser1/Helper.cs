@@ -5,20 +5,19 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using TangramCLR;
 
 namespace MyCSharpBrowser
 {
-    public class Common
+    public class Helper
     {
-        public static void LoadNTPXML(string xmlResourceName)
+        public static string LoadResourceFile(string resourceName)
         {
             var assembly = Assembly.GetExecutingAssembly();
-            using (Stream stream = assembly.GetManifestResourceStream(xmlResourceName))
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
             {
                 using (StreamReader reader = new StreamReader(stream))
                 {
-                    Tangram.NTPXml = reader.ReadToEnd();
+                    return reader.ReadToEnd();
                 }
             }
         }

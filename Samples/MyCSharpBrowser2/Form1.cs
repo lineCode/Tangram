@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,25 +11,17 @@ using TangramCLR;
 
 namespace MyCSharpBrowser
 {
-    public partial class MainPanel : UserControl
+    public partial class Form1 : Form
     {
-        public MainPanel()
+        public Form1()
         {
             InitializeComponent();
         }
 
-        private void btnWhatIsNtp_Click(object sender, EventArgs e)
+        private void btnNewTabPageStyle1_Click(object sender, EventArgs e)
         {
-            ChromeWebBrowser wb = Tangram.ActiveBrowser();
-            if (wb != null)
-            {
-                wb.OpenURL("https://demo.tangram.dev/new-tab-page.html", Disposition.NEW_POPUP, "", "");
-            }
-        }
-
-        private void btnStyle1_Click(object sender, EventArgs e)
-        {
-            Common.LoadNTPXML("MyCSharpBrowser.Style1.xml");
+            string newTabPageLayout = Helper.LoadResourceFile("MyCSharpBrowser.Style1.xml");
+            Tangram.NTPXml = newTabPageLayout;
             ChromeWebBrowser wb = Tangram.ActiveBrowser();
             if (wb != null)
             {
@@ -37,9 +29,10 @@ namespace MyCSharpBrowser
             }
         }
 
-        private void btnStyle2_Click(object sender, EventArgs e)
+        private void btnNewTabPageStyle2_Click(object sender, EventArgs e)
         {
-            Common.LoadNTPXML("MyCSharpBrowser.Style2.xml");
+            string newTabPageLayout = Helper.LoadResourceFile("MyCSharpBrowser.Style2.xml");
+            Tangram.NTPXml = newTabPageLayout;
             ChromeWebBrowser wb = Tangram.ActiveBrowser();
             if (wb != null)
             {
@@ -47,9 +40,10 @@ namespace MyCSharpBrowser
             }
         }
 
-        private void btnStyle3_Click(object sender, EventArgs e)
+        private void btnNewTabPageStyle3_Click(object sender, EventArgs e)
         {
-            Common.LoadNTPXML("MyCSharpBrowser.Style3.xml");
+            string newTabPageLayout = Helper.LoadResourceFile("MyCSharpBrowser.Style3.xml");
+            Tangram.NTPXml = newTabPageLayout;
             ChromeWebBrowser wb = Tangram.ActiveBrowser();
             if (wb != null)
             {

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ntp>
+  <window>
+    <node id='splitter' name='splitter' rows='1' cols='2' height='250,250,' width='250,250,' borderwidth='0' splitterwidth='2' middlecolor='RGB(180,180,180)'>
+      <node id="clrctrl" cnnid="MyCSharpBrowser.Form1,host"></node>
+      <node id="hostview"></node>
+    </node>
+  </window>
+</ntp>
