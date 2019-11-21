@@ -1220,7 +1220,7 @@ namespace TangramCLR
 					if (s1 == _T("host"))
 					{
 						CString s = _strID.Left(nIndex);
-						_strID = _strID.Left(nIndex + 1) + theApp.m_pTangramImpl->m_strAppName;
+						_strID = _strID.Left(nIndex + 1) + theApp.m_pTangramImpl->m_strExeName;
 						_strID.MakeLower();
 					}
 				}

@@ -1,0 +1,15 @@
+// begin Add by TangramTeam
+[
+	Exposed = Window,
+	NoInterfaceObject
+] interface TangramNode : EventTarget {
+
+	// Message API
+	void addChannel(DOMString channel);
+	void removeChannel(DOMString channel);
+	void sendMessage(DOMString channel, DOMString data);
+	// Event handler attributes
+	attribute EventHandler onMessageReceived;
+
+};
+// end Add by TangramTeam
