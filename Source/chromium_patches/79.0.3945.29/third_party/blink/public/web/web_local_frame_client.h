@@ -127,7 +127,7 @@ struct WebScrollIntoViewParams;
 struct WebURLError;
 
 // begin Add by TangramTeam
-#include "chrome_proxy/third_party/ChromeRenderDomProxy.h"
+#include "c:/src/tangram/source/chrome_proxy/third_party/ChromeRenderDomProxy.h"
 class BLINK_EXPORT WebLocalFrameClient
 	: public TangramCommon::CChromeWebFrameClient {
 public:

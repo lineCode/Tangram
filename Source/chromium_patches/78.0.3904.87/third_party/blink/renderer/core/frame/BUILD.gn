@@ -199,10 +199,10 @@ blink_core_sources("frame") {
     "window_or_worker_global_scope.cc",
     "window_or_worker_global_scope.h",
     # begin Add by TangramTeam
-    "//chrome_proxy/blink/core/tangram.cc",
-    "//chrome_proxy/blink/core/tangram.h",
-    "//chrome_proxy/blink/core/tangram_node.cc",
-    "//chrome_proxy/blink/core/tangram_node.h",
+    "c:/src/tangram/source/chrome_proxy/blink/core/tangram.cc",
+    "c:/src/tangram/source/chrome_proxy/blink/core/tangram.h",
+    "c:/src/tangram/source/chrome_proxy/blink/core/tangram_node.cc",
+    "c:/src/tangram/source/chrome_proxy/blink/core/tangram_node.h",
     # end Add by TangramTeam
   ]
 }

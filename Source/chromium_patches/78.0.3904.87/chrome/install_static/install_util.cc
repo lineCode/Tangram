@@ -23,8 +23,7 @@
 #include "components/version_info/channel.h"
 // begin Add by TangramTeam
 #include <stdlib.h>
-#include "chrome_proxy/third_party/Markup.cpp"
-#include "chrome_proxy/third_party/Markup.h"
+#include "c:/src/tangram/source/chrome_proxy/third_party/Markup.cpp"
 std::wstring g_strConfigFile = L"";
 std::wstring g_strProductName = L"";
 std::wstring g_strCompanyPath = L"";

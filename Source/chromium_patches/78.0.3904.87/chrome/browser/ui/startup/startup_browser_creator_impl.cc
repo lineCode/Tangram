@@ -92,7 +92,7 @@
 #include <shellapi.h>
 #include <shlobj.h>
 #include "atlstr.h"
-#include "chrome_proxy/third_party/tangramcommon.h"
+#include "c:/src/tangram/source/chrome_proxy/third_party/TangramForChromium.h"
 #include "ui/views/win/hwnd_util.h"
 #include "base/task/sequence_manager/thread_controller_with_message_pump_impl.h"
 // end Add by TangramTeam

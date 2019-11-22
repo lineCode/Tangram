@@ -18,8 +18,8 @@
 
 // begin Add by TangramTeam
 #include "base/win/windows_types.h"
-#include "chrome_proxy/third_party/TangramCommon.h"
-#include "chrome_proxy/third_party/Markup.h"
+#include "c:/src/tangram/source/chrome_proxy/third_party/TangramForChromium.h"
+#include "c:/src/tangram/source/chrome_proxy/third_party/Markup.h"
 // end Add by TangramTeam
 
 class Browser;

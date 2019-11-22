@@ -213,7 +213,7 @@
 #include "ui/native_theme/native_theme_win.h"
 #include "ui/views/win/scoped_fullscreen_visibility.h"
 // begin Add by TangramTeam
-#include "chrome_proxy/third_party/TangramCommon.h"
+#include "c:/src/tangram/source/chrome_proxy/third_party/TangramForChromium.h"
 #include "ui/views/win/hwnd_util.h"
 #include "content/browser/renderer_host/render_widget_host_view_aura.h"
 // end Add by TangramTeam

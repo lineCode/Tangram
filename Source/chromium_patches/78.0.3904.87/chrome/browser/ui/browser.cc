@@ -235,7 +235,7 @@
 #include "ui/base/win/shell.h"
 // begin Add by TangramTeam
 #include "ui/views/win/hwnd_util.h"
-#include "chrome_proxy/third_party/TangramCommon.h"
+#include "c:/src/tangram/source/chrome_proxy/third_party/TangramForChromium.h"
 #include "chrome/browser/ui/views/frame/browser_view.h"
 // end Add by TangramTeam
 #endif  // OS_WIN

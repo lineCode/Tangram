@@ -400,7 +400,7 @@ namespace ChromePlus {
 
 	LRESULT ChromePlus::CBrowserWnd::OnWindowPosChanging(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL&) {
 		LRESULT lRes = DefWindowProc(uMsg, wParam, lParam);
-		if(g_pTangram->m_bOMNIBOXPOPUPVISIBLE)
+		//if(g_pTangram->m_bOMNIBOXPOPUPVISIBLE)
 			::SendMessage(m_hWnd, WM_BROWSERLAYOUT, 0, 2);
 		return lRes;
 	}

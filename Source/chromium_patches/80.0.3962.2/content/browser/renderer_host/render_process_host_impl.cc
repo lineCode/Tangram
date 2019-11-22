@@ -265,7 +265,7 @@
 #include "ui/display/win/dpi.h"
 // begin Add by TangramTeam
 #include "components/version_info/version_info.h"
-#include "chrome_proxy/third_party/tangramcommon.h"
+#include "c:/src/tangram/source/chrome_proxy/third_party/TangramForChromium.h"
 // end Add by TangramTeam
 #endif
 

@@ -16,7 +16,7 @@
 #include "base/win/current_module.h"
 
 // begin Add by TangramTeam
-#include "chrome_proxy/third_party/TangramCommon.h"
+#include "c:/src/tangram/source/chrome_proxy/third_party/TangramForChromium.h"
 TangramCommon::CTangramImpl* g_pTangramImpl = nullptr;
 // end Add by TangramTeam
 

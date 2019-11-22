@@ -15,7 +15,7 @@
 #include "base/numerics/safe_conversions.h"
 #include "base/trace_event/trace_event.h"
 // begin Add by TangramTeam
-#include "chrome_proxy/third_party/TangramCommon.h"
+#include "c:/src/tangram/source/chrome_proxy/third_party/TangramForChromium.h"
 // end Add by TangramTeam
 
 namespace base {

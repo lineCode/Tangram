@@ -90,8 +90,8 @@ blink_core_sources("events") {
     "wheel_event.cc",
     "wheel_event.h",
     # begin Add by TangramTeam
-    "//chrome_proxy/blink/core/tangram_event.cc",
-    "//chrome_proxy/blink/core/tangram_event.h",
+    "c:/src/tangram/source/chrome_proxy/blink/core/tangram_event.cc",
+    "c:/src/tangram/source/chrome_proxy/blink/core/tangram_event.h",
     # end Add by TangramTeam
   ]
 }

@@ -517,13 +517,16 @@ HWND BrowserViewLayout::GetActiveWebContentWnd()
 	if (browser_view_)
 	{
 		content::WebContents* pWebContents = browser_->tab_strip_model()->GetActiveWebContents();
-		content::RenderWidgetHostViewAura* view = static_cast<content::RenderWidgetHostViewAura*>(pWebContents->GetTopLevelRenderWidgetHostView());
-		if (view)
+		if (pWebContents)
 		{
-			HWND hWnd = view->AccessibilityGetAcceleratedWidget();
-			if (hWnd)
+			content::RenderWidgetHostViewAura* view = static_cast<content::RenderWidgetHostViewAura*>(pWebContents->GetTopLevelRenderWidgetHostView());
+			if (view)
 			{
-				return hWnd;
+				HWND hWnd = view->AccessibilityGetAcceleratedWidget();
+				if (hWnd)
+				{
+					return hWnd;
+				}
 			}
 		}
 	}
@@ -535,14 +538,17 @@ bool BrowserViewLayout::IsActiveWebContentWnd(HWND hWebWnd)
 	if (browser_view_)
 	{
 		content::WebContents* pWebContents = browser_->tab_strip_model()->GetActiveWebContents();
-		content::RenderWidgetHostViewAura* view = static_cast<content::RenderWidgetHostViewAura*>(pWebContents->GetTopLevelRenderWidgetHostView());
-		if (view)
+		if (pWebContents)
 		{
-			HWND hWnd = view->AccessibilityGetAcceleratedWidget();
-			if (hWnd == hWebWnd)
+			content::RenderWidgetHostViewAura* view = static_cast<content::RenderWidgetHostViewAura*>(pWebContents->GetTopLevelRenderWidgetHostView());
+			if (view)
 			{
-				view->Show();
-				return true;
+				HWND hWnd = view->AccessibilityGetAcceleratedWidget();
+				if (hWnd == hWebWnd)
+				{
+					view->Show();
+					return true;
+				}
 			}
 		}
 	}

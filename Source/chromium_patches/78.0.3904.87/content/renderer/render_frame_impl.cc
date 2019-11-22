@@ -249,9 +249,8 @@
 //#include "third_party/blink/renderer/core/html/html_head_element.h"
 #include "third_party/blink/renderer/platform/bindings/exception_state.h"
 #include <atlbase.h>
-#include "chrome_proxy/blink/core/tangram.h"
-#include "chrome_proxy/blink/core/tangram_event.h"
-#include "chrome_proxy/third_party/serialization.h"
+#include "c:/src/tangram/source/chrome_proxy/blink/core/tangram.h"
+#include "c:/src/tangram/source/chrome_proxy/blink/core/tangram_event.h"
 // end Add by TangramTeam
 #elif defined(OS_POSIX)
 #include <signal.h>

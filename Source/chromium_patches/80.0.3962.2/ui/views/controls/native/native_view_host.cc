@@ -13,7 +13,7 @@
 #include "ui/views/widget/widget.h"
 // begin Add by TangramTeam
 #include "ui/views/win/hwnd_util.h"
-#include "chrome_proxy/third_party/TangramCommon.h"
+#include "c:/src/tangram/source/chrome_proxy/third_party/TangramForChromium.h"
 // end Add by TangramTeam
 
 namespace views {

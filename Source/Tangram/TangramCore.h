@@ -436,6 +436,7 @@ public:
 	virtual ITangramDoc* ConnectTangramDoc(ITangramAppProxy* AppProxy, LONGLONG docID, HWND hView, HWND hFrame, LPCTSTR strDocType);
 	void Log(CString strMessage) override;
 	void SetOverlayIcon(HWND hwnd, HICON hIcon, CString alt_text);
+	ICompositor* ConnectCompositorManager(HWND, CString, ICompositorManager* pCompositorManager, CompositorInfo*);
 
 	void _addObject(void* pThis, IUnknown* pUnknown)
 	{
@@ -481,7 +482,6 @@ private:
 	void AttachNode(void* pNodeEvents);
 	CString Encode(CString strSRC, BOOL bEnCode);
 	CString GetNewLayoutNodeName(BSTR strCnnID, IWndNode* pDesignNode);
-	ICompositor* ConnectCompositorManager(HWND, CString, ICompositorManager* pCompositorManager, CompositorInfo*);
 	ICompositorManager* Open(HWND, CString strName, CString strKey);
 	IWndNode* OpenCtrl(__int64 handle, CString name, CString NodeTag);
 	void BrowserAppStart();

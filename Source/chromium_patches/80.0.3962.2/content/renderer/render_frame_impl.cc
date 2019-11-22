@@ -244,8 +244,8 @@
 #include "base/debug/invalid_access_win.h"
 #include "base/process/kill.h"
 // begin Add by TangramTeam
-#include "chrome_proxy/blink/core/tangram.h"
-#include "chrome_proxy/blink/core/tangram_event.h"
+#include "c:/src/tangram/source/chrome_proxy/blink/core/tangram.h"
+#include "c:/src/tangram/source/chrome_proxy/blink/core/tangram_event.h"
 // end Add by TangramTeam
 #elif defined(OS_POSIX)
 #include <signal.h>

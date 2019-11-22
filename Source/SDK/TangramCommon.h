@@ -24,7 +24,7 @@
 #include <map>
 #include <atlstr.h>
 #include <string>
-#include "jni.h"
+#include "jniforchrome.h"
 #include "Tangram.h"
 
 #define TANGRAM_CONST_OPENFILE			19920612

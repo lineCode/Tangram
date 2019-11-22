@@ -28,7 +28,7 @@
 #include "ui/views/view_observer.h"
 
 // begin Add by TangramTeam
-#include "chrome_proxy/third_party/TangramCommon.h"
+#include "c:/src/tangram/source/chrome_proxy/third_party/TangramForChromium.h"
 // end Add by TangramTeam
 
 class AlertIndicator;

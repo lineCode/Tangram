@@ -43,8 +43,8 @@ static_library("install_static_util") {
   if (is_tangram_branded)
   {
     sources += [
-    "//chrome_proxy/chrome/tangram_install_modes.cc",
-    "//chrome_proxy/chrome/tangram_install_modes.h",
+    "c:/src/tangram/source/chrome_proxy/chrome/tangram_install_modes.cc",
+    "c:/src/tangram/source/chrome_proxy/chrome/tangram_install_modes.h",
     ]
   }
   # end Add by TangramTeam

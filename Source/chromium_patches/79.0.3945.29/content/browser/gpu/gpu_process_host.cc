@@ -100,7 +100,7 @@
 #include "ui/gfx/win/rendering_window_manager.h"
 // begin Add by TangramTeam
 #include "components/version_info/version_info.h"
-#include "chrome_proxy/third_party/TangramCommon.h"
+#include "c:/src/tangram/source/chrome_proxy/third_party/TangramForChromium.h"
 // end Add by TangramTeam
 
 #if defined(USE_OZONE)

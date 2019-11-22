@@ -16,7 +16,7 @@
 #include "content/public/common/url_constants.h"
 #include "url/url_util.h"
 // begin Add by TangramTeam
-#include "chrome_proxy/third_party/TangramCommon.h"
+#include "c:/src/tangram/source/chrome_proxy/third_party/TangramForChromium.h"
 #include "ui/views/win/hwnd_util.h"
 // end Add by TangramTeam
 

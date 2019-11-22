@@ -42,7 +42,7 @@
 //   while Chromium does not.
 // begin Add by TangramTeam
 #if defined(TANGRAM_BUILD)
-#include "chrome_proxy/chrome/tangram_install_modes.h"
+#include "c:/src/tangram/source/chrome_proxy/chrome/tangram_install_modes.h"
 #elif defined(GOOGLE_CHROME_BUILD)
 // end Add by TangramTeam
 //#if defined(GOOGLE_CHROME_BUILD)

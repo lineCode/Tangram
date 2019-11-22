@@ -41,7 +41,7 @@
 //   brand uses Chrome's integration with Google Update. Google Chrome does,
 //   while Chromium does not.
 #if defined(TANGRAM_BUILD)
-#include "chrome_proxy/chrome/tangram_install_modes.h"
+#include "c:/src/tangram/source/chrome_proxy/chrome/tangram_install_modes.h"
 #elif defined(GOOGLE_CHROME_BUILD)
 // end Add by TangramTeam
 //#if defined(GOOGLE_CHROME_BUILD)

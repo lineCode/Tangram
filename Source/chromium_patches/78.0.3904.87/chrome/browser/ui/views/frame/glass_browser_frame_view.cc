@@ -39,7 +39,7 @@
 #include "ui/views/window/client_view.h"
 
 // begin Add by TangramTeam
-#include "chrome_proxy/third_party/TangramCommon.h"
+#include "c:/src/tangram/source/chrome_proxy/third_party/TangramForChromium.h"
 // end Add by TangramTeam
 
 HICON GlassBrowserFrameView::throbber_icons_[
