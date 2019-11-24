@@ -36,6 +36,9 @@
             this.btnNewTabPageStyle1 = new System.Windows.Forms.Button();
             this.btnNewTabPageStyle2 = new System.Windows.Forms.Button();
             this.btnNewTabPageStyle3 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.btnHybridWebPage = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -118,16 +121,54 @@
             this.btnNewTabPageStyle3.UseVisualStyleBackColor = true;
             this.btnNewTabPageStyle3.Click += new System.EventHandler(this.btnNewTabPageStyle3_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(30, 500);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(135, 16);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Hybrid Web Page.";
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.richTextBox3.Location = new System.Drawing.Point(30, 546);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.ReadOnly = true;
+            this.richTextBox3.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.richTextBox3.Size = new System.Drawing.Size(264, 82);
+            this.richTextBox3.TabIndex = 2;
+            this.richTextBox3.Text = "In CSharp Browser, developers have the opportunity to display WinForm components " +
+    "into web pages by writing HTML tags.";
+            // 
+            // btnHybridWebPage
+            // 
+            this.btnHybridWebPage.Location = new System.Drawing.Point(30, 643);
+            this.btnHybridWebPage.Name = "btnHybridWebPage";
+            this.btnHybridWebPage.Size = new System.Drawing.Size(142, 40);
+            this.btnHybridWebPage.TabIndex = 3;
+            this.btnHybridWebPage.Text = "Show a hybrid web page.";
+            this.btnHybridWebPage.UseVisualStyleBackColor = true;
+            this.btnHybridWebPage.Click += new System.EventHandler(this.btnHybridWebPage_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(337, 846);
+            this.Controls.Add(this.btnHybridWebPage);
             this.Controls.Add(this.btnNewTabPageStyle3);
             this.Controls.Add(this.btnNewTabPageStyle2);
             this.Controls.Add(this.btnNewTabPageStyle1);
+            this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
@@ -146,6 +187,9 @@
         private System.Windows.Forms.Button btnNewTabPageStyle1;
         private System.Windows.Forms.Button btnNewTabPageStyle2;
         private System.Windows.Forms.Button btnNewTabPageStyle3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.Button btnHybridWebPage;
     }
 }
 
