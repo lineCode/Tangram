@@ -3415,68 +3415,6 @@ BOOL CTangramHtmlTreeWnd::Expand(HTREEITEM hItem, UINT nCode)
 		{
 			CString strHeaderXml = pXTCD->m_strTangramHeader;
 			BOOL bOldExpanded = pXTCD->m_bExpanded;
-			//if(pXTCD->m_bWaitingFor)
-			//{
-			//	CString strURL = m_strURL;
-			//	pXTCD->m_bWaitingFor = false;
-			//	//20141029:
-			//	if (strHeaderXml != _T(""))
-			//	{
-			//		CTangramXmlParse m_Parse;
-			//		if (m_Parse.LoadXml(strHeaderXml))
-			//		{
-			//			CString _strURL = m_Parse.attr(_T("url"), _T(""));
-			//			//CComPtr<ITangramRestObj> p;
-			//			//p.CoCreateInstance(CComBSTR(L"TangramEx.TangramRestObj.1"));
-			//			//if (p)
-			//			//{
-			//			//	ITangramRestObj* m_pTangramRestObj = p.Detach();
-			//			//	m_pTangramRestObj->put_Header(CComBSTR(_T("UserID")), CComBSTR(theApp.m_strUserID));
-			//			//	CString strHandle = _T("");
-			//			//	strHandle.Format(_T("%p"), (LONGLONG)hItem);
-			//			//	m_pTangramRestObj->put_Header(CComBSTR(_T("TreeItem")), CComBSTR(strHandle));
-			//			//	CTangramXmlParse* pHeaders = m_Parse.GetChild(_T("Headers"));
-			//			//	if (pHeaders)
-			//			//	{
-			//			//		CTangramXmlParse* pChild = NULL;
-			//			//		int nCount = pHeaders->GetCount();
-			//			//		for (int i = 0; i<nCount; i++)
-			//			//		{
-			//			//			pChild = pHeaders->GetChild(i);
-			//			//			m_pTangramRestObj->put_Header(CComBSTR(pChild->attr(_T("key"), _T(""))), CComBSTR(pChild->attr(_T("value"), _T(""))));
-			//			//		}
-			//			//	}
-			//			//	//m_pTangramRestObj->put_Header(CComBSTR(L"FileId"), CComBSTR(_strID));
-			//			//	CComQIPtr<IRestNotify> pCloudAddinRestNotify(this->m_pHostWnd->m_pWndNode);
-			//			//	m_pTangramRestObj->put_CloudAddinRestNotify(pCloudAddinRestNotify.p);
-			//			//	m_pTangramRestObj->RestData(1, _strURL.AllocSysString(), L"", L"", 0);
-			//			//}
-			//		}
-			//	}
-			//	else
-			//	{
-			//		//strURL += _T("?ID=");
-			//		//strURL += pXTCD->m_strTangramItemID;
-			//		//DWORD h = 0;
-			//		//m_mapNodeDic[pXTCD->m_strTangramItemID] = hItem;
-			//		//CString strObjID = _T("");
-			//		//if(m_pHostWnd&&m_pHostWnd->m_pWndNode)
-			//		//{
-			//		//	CComBSTR bstrID(L"");
-			//		//	m_pHostWnd->m_pWndNode->get_Attribute(CComBSTR(L"AsynObjID"),&bstrID);
-			//		//	strObjID = OLE2T(bstrID);
-			//		//	strObjID.Trim();
-			//		//	if(strObjID==_T(""))
-			//		//		strObjID = _T("TangramLyncPlus.LyncPlusAsynProxy.1");
-			//		//}
-			//		//CString strAsynXml = _T("");
-			//		//strAsynXml.Format(_T("<AsynBottomObj ID=\"%s\" ObjID=\"shell.explorer.2\" ExtID=\"%s\" URL=\"%s\" Visible=\"0\"/>"),pXTCD->m_strTangramItemID,strObjID,strURL);
-			//		//if(theApp.m_pAppDisp)
-			//		//	theApp.m_pTangramManager->CreateAsynObject(CComBSTR(strAsynXml),theApp.m_pAppDisp,CComBSTR(L""),(LONGLONG)m_hWnd);
-			//		//else
-			//		//	theApp.m_pTangramManager->CreateAsynObject(CComBSTR(strAsynXml),theApp.m_pTangramManager,CComBSTR(L""),(LONGLONG)m_hWnd);
-			//	}
-			//}
 
 			if (nCode == TVE_COLLAPSE || nCode == TVE_COLLAPSERESET)
 			{

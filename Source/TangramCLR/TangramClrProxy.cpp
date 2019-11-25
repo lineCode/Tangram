@@ -220,8 +220,6 @@ void CTangramCLRProxy::ExportCLRObjInfo(CString strPath)
 						Form^ m_pObj = nullptr;
 						try
 						{
-							CString strLogMsg; strLogMsg.Format(L"Create instance type %s", strTypeFullName);
-							theApp.m_pTangramImpl->Log(strLogMsg);
 							m_pObj = (Form^)Activator::CreateInstance(type);
 							if (m_pObj && (m_pObj->FormBorderStyle != FormBorderStyle::FixedToolWindow || m_pObj->FormBorderStyle != FormBorderStyle::None || m_pObj->FormBorderStyle != FormBorderStyle::SizableToolWindow))
 							{

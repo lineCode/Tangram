@@ -131,21 +131,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CLRCtrlDesigner.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AXCtrlDesigner.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HostViewDesigner.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SplitterDesigner.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TabWndDesigner.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
     <EmbeddedResource Include="TangramMDIForm.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
@@ -153,9 +138,6 @@
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="AcquireTemplateStorageInfoForm.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConfigurationPage.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="DefaultNTPCtrl.resx">

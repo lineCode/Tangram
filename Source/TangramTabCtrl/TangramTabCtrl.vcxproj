@@ -83,7 +83,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\..\chromium_root_78\src\out\tangram_static_debug_x64\tangramcomponent\</OutDir>
+    <OutDir>..\..\chromium_root_78\src\out\tangram_static_release_x64\tangramcomponent\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IgnoreImportLibrary>true</IgnoreImportLibrary>

@@ -494,7 +494,6 @@ private:
 
 	CString RemoveUTF8BOM(CString strUTF8);
 
-	void OnUpdateBookmarkBarState();
 	void ChromeTabCreated(CChromeTab* pTab);
 	void OnRenderProcessCreated(CChromeRenderProcess* pProcess);
 	void OnDocumentOnLoadCompleted(CChromeRenderFrameHostBase*, HWND hHtmlWnd, void*);

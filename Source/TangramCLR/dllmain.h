@@ -23,7 +23,6 @@
 #include "TangramCoreEvents.h"
 #include <cstring>
 #include <iostream>
-#include "TangramBase.h"
 
 class CWndNodeCLREvent;
 

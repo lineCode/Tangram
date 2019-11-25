@@ -7471,10 +7471,16 @@ __declspec(dllexport) void __stdcall  SetMainDllLoader(CTangramMainDllLoader* pL
 	{
 		::DestroyWindow(g_pTangram->m_hMainWnd);
 	}
-	if ((g_pTangram->m_nAppType == TANGRAM_APP_BROWSER &&
-		g_pTangram->m_pTangramDelegate->m_pJVM == nullptr)||
-		g_pTangram->m_nAppType == TANGRAM_APP_WILLCLOSE)
+	switch (g_pTangram->m_nAppType)
+	{
+	case TANGRAM_APP_BROWSER:
+		if(g_pTangram->m_pTangramDelegate->m_pJVM==nullptr)
+			::PostQuitMessage(0);
+		break;
+	case TANGRAM_APP_WILLCLOSE:
 		::PostQuitMessage(0);
+		break;
+	}
 }
 
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved)
@@ -7577,10 +7583,6 @@ BOOL CTangram::InitJNIForTangram()
 		}
 	}
 	return FALSE;
-}
-
-void CTangram::OnUpdateBookmarkBarState()
-{
 }
 
 void CTangram::ChromeTabCreated(CChromeTab* pTab)
