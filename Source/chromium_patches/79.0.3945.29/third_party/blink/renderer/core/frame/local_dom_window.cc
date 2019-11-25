@@ -315,91 +315,7 @@ void LocalDOMWindow::DispatchWindowLoadEvent() {
 
   // begin Add by TangramTeam
 
-  //AtomicString extraPrefix = "x";
-
-  //// Use a custom prefix.
-  //HTMLCollection* const extraPrefixElements = document()->getElementsByTagName("extraPrefix");
-  //for (Element* extraPrefixElement : *extraPrefixElements) {
-	 // AtomicString value = extraPrefixElement->getAttribute("value");
-	 // extraPrefix = value;
-  //}
-
-  //// TODO: Notify the prefix information to the Tangram.
-
-  //AtomicString extraPrefixWithDash = "";
-  //if (extraPrefix != "") {
-	 // extraPrefixWithDash = extraPrefix + "-";
-  //}
-
-  //tangram()->startBundlingMessage();
-
-  //// Scan all rule tags.
-  //HTMLCollection* const ruleElements = document()->getElementsByTagName(extraPrefixWithDash + "rule");
-  //for (Element* ruleElement : *ruleElements) {
-	 // String ruleName = ruleElement->getAttribute(extraPrefixWithDash + "name");
-	 // if (ruleName == "") {
-		//  ruleName = ruleElement->getAttribute("name");
-	 // }
-	 // if (ruleName != "") {
-		//  String outerHTML = ruleElement->OuterHTMLAsString();
-		//  tangram()->createRule(ruleName, outerHTML);
-	 // }
-  //}
-
-  //// Scan all data tags.
-  //HTMLCollection* const dataElements = document()->getElementsByTagName(extraPrefixWithDash + "data");
-  //for (Element* dataElement : *dataElements) {
-	 // String ruleName = dataElement->tagName();
-	 // if (ruleName.StartsWith(extraPrefixWithDash, kTextCaseASCIIInsensitive)) {
-		//  ruleName = ruleName.Substring(extraPrefixWithDash.length());
-	 // }
-	 // if (ruleName != "") {
-		//  String outerHTML = dataElement->OuterHTMLAsString();
-		//  tangram()->renderElement(ruleName, outerHTML);
-	 // }
-  //}
-
-  //// Scan all doc tags.
-  //HTMLCollection* const docElements = document()->getElementsByTagName(extraPrefixWithDash + "doc");
-  //for (Element* docElement : *docElements) {
-	 // String ruleName = docElement->tagName();
-	 // if (ruleName.StartsWith(extraPrefixWithDash, kTextCaseASCIIInsensitive)) {
-		//  ruleName = ruleName.Substring(extraPrefixWithDash.length());
-	 // }
-	 // if (ruleName != "") {
-		//  String outerHTML = docElement->OuterHTMLAsString();
-		//  tangram()->renderElement(ruleName, outerHTML);
-	 // }
-  //}
-
-  //// Scan all object tags.
-  //HTMLCollection* const objectElements = document()->getElementsByTagName(extraPrefixWithDash + "object");
-  //for (Element* objectElement : *objectElements) {
-	 // String ruleName = objectElement->tagName();
-	 // if (ruleName.StartsWith(extraPrefixWithDash, kTextCaseASCIIInsensitive)) {
-		//  ruleName = ruleName.Substring(extraPrefixWithDash.length());
-	 // }
-	 // if (ruleName != "") {
-		//  String outerHTML = objectElement->OuterHTMLAsString();
-		//  tangram()->renderElement(ruleName, outerHTML);
-	 // }
-  //}
-
-  //// Scan all extra tags.
-  //HTMLCollection* const extraElements = document()->getElementsByTagName(extraPrefixWithDash + "extra");
-  //for (Element* extraElement : *extraElements) {
-	 // String ruleName = extraElement->tagName();
-	 // if (ruleName.StartsWith(extraPrefixWithDash, kTextCaseASCIIInsensitive)) {
-		//  ruleName = ruleName.Substring(extraPrefixWithDash.length());
-	 // }
-	 // if (ruleName != "") {
-		//  String outerHTML = extraElement->OuterHTMLAsString();
-		//  tangram()->renderElement(ruleName, outerHTML);
-	 // }
-  //}
-
-  //tangram()->stopBundlingMessage();
-  AtomicString extraPrefix = "x";
+  AtomicString extraPrefix = "";
 
   // Use a custom prefix.
   HTMLCollection* const extraPrefixElements = document()->getElementsByTagName("extraPrefix");
@@ -415,33 +331,32 @@ void LocalDOMWindow::DispatchWindowLoadEvent() {
 	  extraPrefixWithDash = extraPrefix + "-";
   }
 
-  tangram()->startBundlingMessage();
+  tangram()->waitMessage();
 
-  // Scan all rule tags.
-  HTMLCollection* const ruleElements = document()->getElementsByTagName(extraPrefixWithDash + "rule");
-  for (Element* ruleElement : *ruleElements) {
-	  String ruleName = ruleElement->getAttribute(extraPrefixWithDash + "name");
-	  if (ruleName.IsNull() || ruleName.IsEmpty()) {
-		  ruleName = ruleElement->getAttribute("name");
+  // Scan all define tags.
+  HTMLCollection* const defineElements = document()->getElementsByTagName(extraPrefixWithDash + "define");
+  for (Element* defineElement : *defineElements) {
+	  String tagName = defineElement->getAttribute(extraPrefixWithDash + "tagName");
+	  if (tagName.IsNull() || tagName.IsEmpty()) {
+		  tagName = defineElement->getAttribute("tagName");
 	  }
-	  if (!ruleName.IsNull() && !ruleName.IsEmpty()) {
-		  if (ruleName.StartsWith(extraPrefixWithDash, kTextCaseASCIIInsensitive)) {
-			  ruleName = ruleName.Substring(extraPrefixWithDash.length());
+	  if (!tagName.IsNull() && !tagName.IsEmpty()) {
+		  if (tagName.StartsWith(extraPrefixWithDash, kTextCaseASCIIInsensitive)) {
+			  tagName = tagName.Substring(extraPrefixWithDash.length());
 		  }
-		  String outerHTML = ruleElement->OuterHTMLAsString();
-		  tangram()->createRule(ruleName, outerHTML);
+		  String outerHTML = defineElement->OuterHTMLAsString();
+		  tangram()->defineElement(tagName, outerHTML);
 
 		  // Scan tags for specific tagName
-		  HTMLCollection* const elements = document()->getElementsByTagName(extraPrefixWithDash + ruleName);
+		  HTMLCollection* const elements = document()->getElementsByTagName(extraPrefixWithDash + tagName);
 		  for (Element* element : *elements) {
 			  String outerHTML = element->OuterHTMLAsString();
-			  tangram()->renderElement(ruleName, outerHTML);
+			  tangram()->renderElement(tagName, outerHTML);
 		  }
 	  }
   }
 
-  tangram()->stopBundlingMessage();
-
+  tangram()->releaseMessage();
   // end Add by TangramTeam
 
   DispatchLoadEvent();

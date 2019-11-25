@@ -93,9 +93,7 @@ namespace ChromePlus
 		void RenderHTMLExtraElement(CString strHTML);
 		void RenderHTMLDataElement(CString strHTML);
 		void RenderHTMLDocElement(CString strHTML);
-		void OnNTPLoad();
-		void GetApplicationData(CString strKey, CString strCallbackID);
-		void PutApplicationData(CString strKey, CString strValue);
+		void OnNTPLoaded();
 	protected:
 		ULONG InternalAddRef() { return 1; }
 		ULONG InternalRelease() { return 1; }

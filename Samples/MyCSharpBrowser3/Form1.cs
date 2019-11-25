@@ -56,7 +56,7 @@ namespace MyCSharpBrowser
             ChromeWebBrowser wb = Tangram.ActiveBrowser();
             if (wb != null)
             {
-                wb.OpenURL("http://127.0.0.1:8080/homepage.html", Disposition.NEW_FOREGROUND_TAB, "", "");
+                wb.OpenURL("https://demo.tangram.dev/homepage.html", Disposition.NEW_FOREGROUND_TAB, "", "");
             }
         }
     }

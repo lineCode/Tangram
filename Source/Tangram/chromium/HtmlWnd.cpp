@@ -595,11 +595,7 @@ namespace ChromePlus {
 		}
 		else if (strType.CompareNoCase(_T("NTP_LOAD")) == 0)
 		{
-			OnNTPLoad();
-		}
-		else if (strType.CompareNoCase(_T("GET_APPLICATION_DATA")) == 0)
-		{
-			GetApplicationData(strParam1, strParam2);
+			OnNTPLoaded();
 		}
 		else
 		{
@@ -798,55 +794,13 @@ namespace ChromePlus {
 		}
 	}
 
-	void CHtmlWnd::OnNTPLoad()
+	void CHtmlWnd::OnNTPLoaded()
 	{
 		if (g_pTangram->m_strNtpXml != _T(""))
 		{
 			LoadDocument2Viewport(_T("__NTP_DEFAULT__"), g_pTangram->m_strNtpXml);
 		}
-		else
-		{
-			if (g_pTangram->m_strNtpXml.CompareNoCase(_T("nontpxml"))==0)
-			{
-				return;
-			}
-			if (g_pTangram->m_hMainWnd)
-			{
-				switch (g_pTangram->m_nAppID)
-				{
-				case 1992://for MDI Child
-					break;
-				case 1963://for MDT Child
-					break;
-				case 1965://for SDI Child
-					break;
-				default:
-					break;
-				}
-			}
-		}
 	}
-
-	void CHtmlWnd::GetApplicationData(CString strKey, CString strCallbackID)
-	{
-		CString strValue = L"";
-		auto it = g_pTangram->m_mapValInfo.find(strKey);
-		if (it != g_pTangram->m_mapValInfo.end())
-		{
-			VARIANT var = CComVariant(it->second);
-			if (var.vt == VT_BSTR)
-			{
-				strValue = OLE2T(var.bstrVal);
-			}
-		}
-		SendChromeIPCMessage(L"CB_GET_APPLICATION_DATA", strValue, strCallbackID);
-	}
-
-	void CHtmlWnd::PutApplicationData(CString strKey, CString strValue)
-	{
-
-	}
-
 
 }  // namespace ChromePlus
 

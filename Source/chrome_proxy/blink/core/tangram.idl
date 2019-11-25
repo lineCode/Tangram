@@ -12,24 +12,11 @@ typedef sequence<any> ObjectArray;
 	void addChannel(DOMString channel);
 	void removeChannel(DOMString channel);
 	void sendMessage(DOMString channel, DOMString data);
+
 	// Event handler attributes
 	attribute EventHandler onMessageReceived;
 
-	// Core API
-	void putApplicationData(DOMString key, DOMString value);
-	void getApplicationData(DOMString key, GeneralCallback callback);
-	unsigned long createObject(DOMString constructor, DOMString constructString);
-
-	// Core View API
-	void createWorkspace(Element elt, DOMString name);
-	void createView(Element elt, DOMString name);
-	void loadDocument(DOMString doc, DOMString name, DOMString viewName, DOMString workspaceName);
-
-	// View API
-	void loadDocument(DOMString name, DOMString html);
-	void getCurrentNode(GeneralCallback callback);
-
 	// DOM API
-	void createRule(DOMString name, DOMString html);
-	void renderElement(DOMString ruleName, DOMString html);
+	void defineElement(DOMString tagName, DOMString html);
+	void renderElement(DOMString tagName, DOMString html);
 };

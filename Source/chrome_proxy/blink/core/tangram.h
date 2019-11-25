@@ -44,45 +44,26 @@ class CORE_EXPORT Tangram final : public EventTargetWithInlineData,
 
   DEFINE_ATTRIBUTE_EVENT_LISTENER(MessageReceived, kTangrammsg)
 
-  // Intercept the specified message.
-  DispatchEventResult DispatchEventInternal(Event& event) override;
-
   // Internal method
 
   void ipcMessage__(const String& type, const String& param1, const String& param2);
 
-  // Message method
+  // User level message
 
   void addChannel(const String& channel);
   void removeChannel(const String& channel);
   void sendMessage(const String& channel, const String& data);
 
-  // Core API
-
-  void putApplicationData(const String& key, const String& value);
-  void getApplicationData(const String& key, V8GeneralCallback* callback);
-  unsigned int createObject(const String& constructor, const String& constructString);
-  //String invoke(unsigned int objectHandle, const base::Optional<Vector<ScriptValue>>& args);
-
-  // Core View API
-  void createWorkspace(blink::Element* elt, const String& name);
-  void createView(blink::Element* elt, const String& name);
-  void loadDocument(const String& doc, const String& name, const String& viewName, const String& workspaceName);
-
-  // View API
-  void loadDocument(const String& name, const String& html);
-  void getCurrentNode(V8GeneralCallback* callback);
-
   // DOM method
 
-  void createRule(const String& name, const String& html);
-  void renderElement(const String& ruleName, const String& html);
+  void defineElement(const String& tagName, const String& html);
+  void renderElement(const String& tagName, const String& html);
 
   // Non-js method
   
-  void sendIPCMessage(const String& type, const String& param1, const String& param2);
-  void startBundlingMessage();
-  void stopBundlingMessage();
+  void ipcMessage(const String& type, const String& param1, const String& param2);
+  void waitMessage();
+  void releaseMessage();
 
   // EventTarget overrides:
   const AtomicString& InterfaceName() const override;
@@ -92,9 +73,8 @@ class CORE_EXPORT Tangram final : public EventTargetWithInlineData,
   ~Tangram() override;
 
 private:
-	bool is_bundling_;
+	bool is_pending_;
 	Vector<String> pending_messages_;
-	HeapHashMap<String, Member<V8GeneralCallback>> pending_callbacks_;
 
 };
 
