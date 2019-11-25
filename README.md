@@ -4,15 +4,9 @@
 
 ## Contents
 
-- [Concept](README.md#concept)
 - [Build](README.md#build)
-- [Getting Started](README.md#getting-started)
 - [Discussion](README.md#discussion)
 - [Contributing](README.md#contributing)
-
-## [Concept](#concept)
-
-TODO
 
 ## [Build](#build)
 
@@ -38,10 +32,6 @@ The following are required.
 > Please run Visual Studio as an administrator.
 
 Open **YourProjectRootDirectory\Build\Tangram.sln**, build **Tangram** and **TangramCLR**.
-
-## [Getting Started](#getting-started)
-
-TODO
 
 ## [Discussion](#discussion)
 
