@@ -912,6 +912,7 @@ namespace TangramCLR
 		static List<String^>^ FindFiles(String^ rootPath, String^ fileSpec, bool recursive);
 		static ChromeWebBrowser^ ActiveBrowser();
 		static ChromeWebBrowser^ GetHostBrowser(Control^ ctrl);
+		static WndNode^ GetNodeFromControl(Control^ ctrl);
 		static void UpdateNewTabPageLayout(String^ newTabPageLayout);
 
 		TangramCLR::ITangramApp^ m_pTangramAppProxy;

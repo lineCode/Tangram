@@ -739,6 +739,21 @@ namespace TangramCLR
 		}
 	}
 
+	WndNode^ Tangram::GetNodeFromControl(Control^ ctrl)
+	{
+		if (ctrl == nullptr)
+		{
+			return nullptr;
+		}
+		IWndNode* pWndNode = nullptr;
+		HRESULT hr = theApp.m_pTangram->GetNodeFromHandle((LONGLONG)ctrl->Handle.ToPointer(), &pWndNode);
+		if (hr != S_OK || pWndNode == nullptr)
+		{
+			return nullptr;
+		}
+		return theAppProxy._createObject<IWndNode, WndNode>(pWndNode);
+	}
+
 	void Tangram::UpdateNewTabPageLayout(String^ newTabPageLayout)
 	{
 		Tangram::NTPXml::set(newTabPageLayout);
