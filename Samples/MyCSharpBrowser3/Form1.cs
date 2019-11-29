@@ -22,7 +22,7 @@ namespace MyCSharpBrowser
         {
             string newTabPageLayout = Helper.LoadResourceFile("MyCSharpBrowser.Style1.xml");
             Tangram.UpdateNewTabPageLayout(newTabPageLayout);
-            ChromeWebBrowser wb = Tangram.ActiveBrowser();
+            ChromeWebBrowser wb = Tangram.GetHostBrowser(this);
             if (wb != null)
             {
                 wb.OpenURL("chrome://newtab", Disposition.NEW_FOREGROUND_TAB, "", "");
@@ -33,7 +33,7 @@ namespace MyCSharpBrowser
         {
             string newTabPageLayout = Helper.LoadResourceFile("MyCSharpBrowser.Style2.xml");
             Tangram.UpdateNewTabPageLayout(newTabPageLayout);
-            ChromeWebBrowser wb = Tangram.ActiveBrowser();
+            ChromeWebBrowser wb = Tangram.GetHostBrowser(this);
             if (wb != null)
             {
                 wb.OpenURL("chrome://newtab", Disposition.NEW_FOREGROUND_TAB, "", "");
@@ -44,7 +44,7 @@ namespace MyCSharpBrowser
         {
             string newTabPageLayout = Helper.LoadResourceFile("MyCSharpBrowser.Style3.xml");
             Tangram.UpdateNewTabPageLayout(newTabPageLayout);
-            ChromeWebBrowser wb = Tangram.ActiveBrowser();
+            ChromeWebBrowser wb = Tangram.GetHostBrowser(this);
             if (wb != null)
             {
                 wb.OpenURL("chrome://newtab", Disposition.NEW_FOREGROUND_TAB, "", "");
@@ -53,7 +53,7 @@ namespace MyCSharpBrowser
 
         private void btnHybridWebPage_Click(object sender, EventArgs e)
         {
-            ChromeWebBrowser wb = Tangram.ActiveBrowser();
+            ChromeWebBrowser wb = Tangram.GetHostBrowser(this);
             if (wb != null)
             {
                 wb.OpenURL("https://demo.tangram.dev/homepage.html", Disposition.NEW_FOREGROUND_TAB, "", "");

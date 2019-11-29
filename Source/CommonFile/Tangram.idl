@@ -606,6 +606,7 @@ interface ICompositor : IDispatch{
 	[propget, id(10)] HRESULT TangramDoc([out, retval] ITangramDoc** pVal);
 	[propget, id(11)] HRESULT CompositorType([out, retval] CompositorType* pVal);
 	[propget, id(12)] HRESULT Name([out, retval] BSTR* pVal);
+	[propget, id(13)] HRESULT HostBrowser([out, retval] IChromeWebBrowser** ppChromeWebBrowser);
 
 	[id(101), helpstring("method Detach")] HRESULT Detach(void);
 	[id(102), helpstring("method Attach")] HRESULT Attach(void);

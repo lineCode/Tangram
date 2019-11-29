@@ -51,9 +51,9 @@ public:
 // CWndNode 
 class ATL_NO_VTABLE CWndNode : 
 	public CComObjectRootBase,
+	public IDispatchImpl<IWndNode, &IID_IWndNode>,
 	public IConnectionPointContainerImpl<CWndNode>,
 	public IConnectionPointImpl<CWndNode, &__uuidof(_IWndNodeEvents)>,
-	public IDispatchImpl<IWndNode, &IID_IWndNode>,
 	public IPC::EndPoint,
 	public Object::RefCoreObject
 {

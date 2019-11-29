@@ -39,7 +39,7 @@ namespace ChromePlus {
 		m_pOmniboxViewViews = nullptr;
 		if (g_pTangram->m_pCreatingOmniboxViewViews) {
 			m_pOmniboxViewViews = g_pTangram->m_pCreatingOmniboxViewViews;
-			g_pTangram->m_pCreatingOmniboxViewViews = nullptr;
+			g_pTangram->m_pCreatingOmniboxViewViews = nullptr; 
 		}
 	}
 

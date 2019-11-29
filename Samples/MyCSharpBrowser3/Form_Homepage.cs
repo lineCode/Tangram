@@ -20,7 +20,7 @@ namespace MyCSharpBrowser
 
         private void btnLeftRight_Click(object sender, EventArgs e)
         {
-            ChromeWebBrowser wb = Tangram.ActiveBrowser();
+            ChromeWebBrowser wb = Tangram.GetHostBrowser(this);
             if (wb != null)
             {
                 wb.OpenURL("https://demo.tangram.dev/leftright.html", Disposition.NEW_FOREGROUND_TAB, "", "");
@@ -29,7 +29,7 @@ namespace MyCSharpBrowser
 
         private void btnGrid_Click(object sender, EventArgs e)
         {
-            ChromeWebBrowser wb = Tangram.ActiveBrowser();
+            ChromeWebBrowser wb = Tangram.GetHostBrowser(this);
             if (wb != null)
             {
                 wb.OpenURL("https://demo.tangram.dev/grid.html", Disposition.NEW_FOREGROUND_TAB, "", "");
@@ -38,7 +38,7 @@ namespace MyCSharpBrowser
 
         private void btnFull_Click(object sender, EventArgs e)
         {
-            ChromeWebBrowser wb = Tangram.ActiveBrowser();
+            ChromeWebBrowser wb = Tangram.GetHostBrowser(this);
             if (wb != null)
             {
                 wb.OpenURL("https://demo.tangram.dev/full.html", Disposition.NEW_FOREGROUND_TAB, "", "");

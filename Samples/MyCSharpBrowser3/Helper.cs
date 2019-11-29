@@ -10,6 +10,11 @@ namespace MyCSharpBrowser
 {
     public class Helper
     {
+        /// <summary>
+        /// Loads the specified resource from this assembly.
+        /// </summary>
+        /// <param name="resourceName">The case-sensitive name of the manifest resource being requested.</param>
+        /// <returns>Resource content</returns>
         public static string LoadResourceFile(string resourceName)
         {
             var assembly = Assembly.GetExecutingAssembly();

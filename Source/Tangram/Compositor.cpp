@@ -3371,6 +3371,25 @@ STDMETHODIMP CCompositor::get_Name(BSTR* pVal)
 	return S_OK;
 }
 
+STDMETHODIMP CCompositor::get_HostBrowser(IChromeWebBrowser** ppChromeWebBrowser)
+{
+	if (m_pWebWnd != nullptr)
+	{
+		HWND hPWnd = ::GetParent(m_pWebWnd->m_hWnd);
+		if (::IsWindow(hPWnd))
+		{
+			auto it = g_pTangram->m_mapBrowserWnd.find(hPWnd);
+			if (it != g_pTangram->m_mapBrowserWnd.end())
+			{
+				CBrowserWnd* pBrowserWnd = it->second;
+				*ppChromeWebBrowser = (IChromeWebBrowser*)pBrowserWnd;
+				return S_OK;
+			}
+		}
+	}
+	return S_FALSE;
+}
+
 void CCompositor::DispatchToOtherBrokers(CString strChannel, CString strData)
 {
 	// TODO

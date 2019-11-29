@@ -5562,6 +5562,9 @@ EXTERN_C const IID IID_ICompositor;
         virtual /* [id][propget] */ HRESULT STDMETHODCALLTYPE get_Name( 
             /* [retval][out] */ BSTR *pVal) = 0;
         
+        virtual /* [id][propget] */ HRESULT STDMETHODCALLTYPE get_HostBrowser( 
+            /* [retval][out] */ IChromeWebBrowser **ppChromeWebBrowser) = 0;
+        
         virtual /* [helpstring][id] */ HRESULT STDMETHODCALLTYPE Detach( void) = 0;
         
         virtual /* [helpstring][id] */ HRESULT STDMETHODCALLTYPE Attach( void) = 0;
@@ -5716,6 +5719,10 @@ EXTERN_C const IID IID_ICompositor;
             ICompositor * This,
             /* [retval][out] */ BSTR *pVal);
         
+        /* [id][propget] */ HRESULT ( STDMETHODCALLTYPE *get_HostBrowser )( 
+            ICompositor * This,
+            /* [retval][out] */ IChromeWebBrowser **ppChromeWebBrowser);
+        
         /* [helpstring][id] */ HRESULT ( STDMETHODCALLTYPE *Detach )( 
             ICompositor * This);
         
@@ -5835,6 +5842,9 @@ EXTERN_C const IID IID_ICompositor;
 
 #define ICompositor_get_Name(This,pVal)	\
     ( (This)->lpVtbl -> get_Name(This,pVal) ) 
+
+#define ICompositor_get_HostBrowser(This,ppChromeWebBrowser)	\
+    ( (This)->lpVtbl -> get_HostBrowser(This,ppChromeWebBrowser) ) 
 
 #define ICompositor_Detach(This)	\
     ( (This)->lpVtbl -> Detach(This) ) 

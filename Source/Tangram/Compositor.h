@@ -325,6 +325,7 @@ private:
 	STDMETHOD(get_TangramDoc)(ITangramDoc** pVal);
 	STDMETHOD(get_CompositorType)(CompositorType* pVal);
 	STDMETHOD(get_Name)(BSTR* pVal);
+	STDMETHOD(get_HostBrowser)(IChromeWebBrowser** ppChromeWebBrowser);
 
 	STDMETHOD(Attach)(void);
 	STDMETHOD(Detach)(void);

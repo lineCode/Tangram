@@ -704,6 +704,41 @@ namespace TangramCLR
 		return nullptr;
 	}
 
+	ChromeWebBrowser^ Tangram::GetHostBrowser(Control^ ctrl)
+	{
+		if (ctrl == nullptr)
+		{
+			return nullptr;
+		}
+		IWndNode* pWndNode = nullptr;
+		HRESULT hr = theApp.m_pTangram->GetNodeFromHandle((LONGLONG)ctrl->Handle.ToPointer(), &pWndNode);
+		if (hr != S_OK || pWndNode == nullptr)
+		{
+			return nullptr;
+		}
+		ICompositor* pCompositor = nullptr;
+		hr = pWndNode->get_Compositor(&pCompositor);
+		if (hr != S_OK || pCompositor == nullptr)
+		{
+			return nullptr;
+		}
+		IChromeWebBrowser* pChromeWebBrowser = nullptr;
+		pCompositor->get_HostBrowser(&pChromeWebBrowser);
+		if (pChromeWebBrowser == nullptr)
+		{
+			return nullptr;
+		}
+		auto it = theAppProxy.m_mapChromeWebBrowser.find(pChromeWebBrowser);
+		if (it != theAppProxy.m_mapChromeWebBrowser.end())
+			return it->second;
+		else
+		{
+			ChromeWebBrowser^ pBrowser = gcnew ChromeWebBrowser(pChromeWebBrowser);
+			theAppProxy.m_mapChromeWebBrowser[pChromeWebBrowser] = pBrowser;
+			return pBrowser;
+		}
+	}
+
 	void Tangram::UpdateNewTabPageLayout(String^ newTabPageLayout)
 	{
 		Tangram::NTPXml::set(newTabPageLayout);
