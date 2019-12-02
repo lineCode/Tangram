@@ -931,26 +931,29 @@ void BrowserView::OnActiveTabChanged(content::WebContents* old_contents,
   {
 	  content::RenderWidgetHostViewAura* oldview = nullptr;
 	  content::RenderWidgetHostViewAura* view = static_cast<content::RenderWidgetHostViewAura*>(new_contents->GetTopLevelRenderWidgetHostView());
-	  bool bChild = ::GetWindowLongPtr(view->GetHostWindowHWND(), GWL_STYLE) & WS_CHILD;
-	  HWND hWnd = view->AccessibilityGetAcceleratedWidget();
-	  HWND hOldWnd = NULL;
-	  if (old_contents)
+	  if (view)
 	  {
-		  oldview = static_cast<content::RenderWidgetHostViewAura*>(old_contents->GetTopLevelRenderWidgetHostView());
-		  if (oldview)
+		  bool bChild = ::GetWindowLongPtr(view->GetHostWindowHWND(), GWL_STYLE) & WS_CHILD;
+		  HWND hWnd = view->AccessibilityGetAcceleratedWidget();
+		  HWND hOldWnd = NULL;
+		  if (old_contents)
 		  {
-			  hOldWnd = oldview->AccessibilityGetAcceleratedWidget();
-			  if (bChild && hOldWnd)
+			  oldview = static_cast<content::RenderWidgetHostViewAura*>(old_contents->GetTopLevelRenderWidgetHostView());
+			  if (oldview)
 			  {
-				  view->Show();
-				  if (hOldWnd)
-					  oldview->Hide();
+				  hOldWnd = oldview->AccessibilityGetAcceleratedWidget();
+				  if (bChild && hOldWnd)
+				  {
+					  view->Show();
+					  if (hOldWnd)
+						  oldview->Hide();
+				  }
 			  }
 		  }
+		  TangramCommon::CChromeBrowserBase* _pProxy = static_cast<TangramCommon::CChromeBrowserBase*>(pBrowserViewLayout);
+		  if (_pProxy && _pProxy->m_pProxy)
+			  _pProxy->m_pProxy->ActiveChromeTab(hWnd, hOldWnd);
 	  }
-	  TangramCommon::CChromeBrowserBase* _pProxy = static_cast<TangramCommon::CChromeBrowserBase*>(pBrowserViewLayout);
-	  if (_pProxy && _pProxy->m_pProxy)
-		  _pProxy->m_pProxy->ActiveChromeTab(hWnd, hOldWnd);
   }
   // end Add by TangramTeam
 

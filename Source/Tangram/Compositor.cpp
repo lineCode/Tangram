@@ -460,7 +460,7 @@ LRESULT CTangramMDIChildWnd::OnTangramMsg(UINT uMsg, WPARAM wParam, LPARAM lPara
 			if (it != g_pTangram->m_mapWindowPage.end())
 			{
 				m_strXml = _T("");
-				pCompositorManager = it->second;
+				pCompositorManager = (CCompositorManager*)it->second;
 				auto it2 = pCompositorManager->m_mapCompositor.begin();
 				while (it2 != pCompositorManager->m_mapCompositor.end())
 				{
@@ -617,7 +617,7 @@ LRESULT CTangramMDIChildWnd::OnTangramMsg(UINT uMsg, WPARAM wParam, LPARAM lPara
 					auto it = g_pTangram->m_mapWindowPage.find(hPage);
 					if (it != g_pTangram->m_mapWindowPage.end())
 					{
-						pCompositorManager = it->second;
+						pCompositorManager = (CCompositorManager*)it->second;
 						for (auto it : g_pTangram->m_mapTangramCommonCtrl)
 						{
 							//clear common control data:
@@ -973,7 +973,7 @@ LRESULT CTangramMDIChildWnd::OnCommand(UINT uMsg, WPARAM wParam, LPARAM lParam, 
 			{
 				auto it = g_pTangram->m_mapWindowPage.find(g_pTangram->m_hHostWnd);
 				if (it != g_pTangram->m_mapWindowPage.end())
-					g_pTangram->m_pDesignerCompositorManager = it->second;
+					g_pTangram->m_pDesignerCompositorManager = (CCompositorManager*)it->second;
 				else
 				{
 					g_pTangram->m_pDesignerCompositorManager = new CComObject<CCompositorManager>();
@@ -1110,11 +1110,6 @@ CTangramWinFormWnd::~CTangramWinFormWnd(void)
 		delete m_pChildFormsInfo;
 }
 
-LRESULT CTangramWinFormWnd::OnDestroy(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL&)
-{
-	return DefWindowProc(uMsg, wParam, lParam);
-}
-
 LRESULT CTangramWinFormWnd::OnClose(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL&)
 {
 	switch (m_nState)
@@ -1133,7 +1128,7 @@ LRESULT CTangramWinFormWnd::OnClose(UINT uMsg, WPARAM wParam, LPARAM lParam, BOO
 			auto it = g_pTangram->m_mapWindowPage.find(m_hWnd);
 			if (it != g_pTangram->m_mapWindowPage.end())
 			{
-				pCompositorManager = it->second;
+				pCompositorManager = (CCompositorManager*)it->second;
 				CString strData = _T("<winform>");
 				CString strIndex = _T("@");
 				for (auto it2 : pCompositorManager->m_mapCompositor)
@@ -1541,11 +1536,10 @@ void CTangramDocWnd::OnFinalMessage(HWND hWnd)
 		if (g_pTangram->m_mapBrowserWnd.size()==1)
 		{
 			g_pTangram->m_bChromeNeedClosed = true;
-			//auto it = g_pTangram->m_mapBrowserWnd.begin();
-			//it->second->SendMessageW(WM_CLOSE, 0, 0);
 			for (auto it : g_pTangram->m_mapBrowserWnd)
 			{
-				it.second->PostMessageW(WM_CLOSE, 0, 0);
+				ChromePlus::CBrowserWnd* pWnd = (ChromePlus::CBrowserWnd*)it.second;
+				pWnd->PostMessageW(WM_CLOSE, 0, 0);
 			}
 		}
 	}
@@ -1576,7 +1570,7 @@ LRESULT CTangramDocWnd::OnCtrlBarCreated(UINT uMsg, WPARAM wParam, LPARAM lParam
 			}
 		}
 		else
-			pCompositorManager = it->second;
+			pCompositorManager = (CCompositorManager*)it->second;
 
 		auto it2 = m_mapCtrlBar.find(strText);
 		if (it2 == m_mapCtrlBar.end())
@@ -1630,53 +1624,54 @@ LRESULT CTangramDocWnd::OnTangramGetXml(UINT uMsg, WPARAM wParam, LPARAM lParam,
 
 LRESULT CTangramDocWnd::OnTangramMsg(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL&)
 {
-	if (lParam == 19631222)
+	switch (lParam)
 	{
+	case 19631222:
 		return 0;
-	}
-	if (wParam == 2016)
-	{
-		return (LRESULT)this;
-	}
-	if (wParam == TANGRAM_CONST_PANE_FIRST)
-	{
-		return DefWindowProc(uMsg, wParam, lParam);
-	}
-	if (lParam == 1963)//for Uer Control
-	{
-		CNodeWnd* pWnd = (CNodeWnd*)wParam;
-		if (pWnd)
+	case 1963://for Uer Control
 		{
-			CCompositorManager* pCompositorManager = pWnd->m_pWndNode->m_pTangramNodeCommonData->m_pCompositor->m_pCompositorManager;
-			for (auto it : pWnd->m_mapDockCtrl)
+			CNodeWnd* pWnd = (CNodeWnd*)wParam;
+			if (pWnd)
 			{
-				TRACE(_T("DockCtrlName:%s\n"), it.first);
-				TRACE(_T("DockCtrlHandle:%x\n"), it.second);
-				CString strName = pWnd->m_pWndNode->m_strName;
-				strName += CComBSTR(L"_");
-				strName += it.first;
-				CString strKey = strName;
-				strKey += CComBSTR(L"_default");
-				CString strXml = _T("");
-				auto it2 = m_pDocFrame->m_pTangramDoc->m_mapWndScript.find(strKey);
-				if (it2 != m_pDocFrame->m_pTangramDoc->m_mapWndScript.end())
-					strXml = it2->second;
-
-				ICompositor* pCompositor = nullptr;
-				pCompositorManager->CreateCompositor(CComVariant(0), CComVariant((LONGLONG)it.second), strName.AllocSysString(), &pCompositor);
-				CCompositor* _pCompositor = (CCompositor*)pCompositor;
-				_pCompositor->m_pParentNode = pWnd->m_pWndNode;
-				IWndNode* pNode = nullptr;
-				pCompositor->Open(CComBSTR(L"default"), CComBSTR(strXml), &pNode);
-				if (pNode)
+				CCompositorManager* pCompositorManager = pWnd->m_pWndNode->m_pTangramNodeCommonData->m_pCompositor->m_pCompositorManager;
+				for (auto it : pWnd->m_mapDockCtrl)
 				{
-					_pCompositor->m_nCompositorType = CtrlBarCompositor;
-					pWnd->m_pWndNode->m_mapSubFrame[strName] = (CCompositor*)pCompositor;
+					TRACE(_T("DockCtrlName:%s\n"), it.first);
+					TRACE(_T("DockCtrlHandle:%x\n"), it.second);
+					CString strName = pWnd->m_pWndNode->m_strName;
+					strName += CComBSTR(L"_");
+					strName += it.first;
+					CString strKey = strName;
+					strKey += CComBSTR(L"_default");
+					CString strXml = _T("");
+					auto it2 = m_pDocFrame->m_pTangramDoc->m_mapWndScript.find(strKey);
+					if (it2 != m_pDocFrame->m_pTangramDoc->m_mapWndScript.end())
+						strXml = it2->second;
+
+					ICompositor* pCompositor = nullptr;
+					pCompositorManager->CreateCompositor(CComVariant(0), CComVariant((LONGLONG)it.second), strName.AllocSysString(), &pCompositor);
+					CCompositor* _pCompositor = (CCompositor*)pCompositor;
+					_pCompositor->m_pParentNode = pWnd->m_pWndNode;
+					IWndNode* pNode = nullptr;
+					pCompositor->Open(CComBSTR(L"default"), CComBSTR(strXml), &pNode);
+					if (pNode)
+					{
+						_pCompositor->m_nCompositorType = CtrlBarCompositor;
+						pWnd->m_pWndNode->m_mapSubFrame[strName] = (CCompositor*)pCompositor;
+					}
 				}
 			}
+			return 0;
 		}
-		return 0;
 	}
+	switch (wParam)
+	{
+	case 2016:
+		return (LRESULT)this;
+	case TANGRAM_CONST_PANE_FIRST:
+		return DefWindowProc(uMsg, wParam, lParam);
+	}
+
 	g_pTangram->m_pActiveDocWnd = this;
 	LRESULT lRes = 0;
 	HWND hPWnd = (HWND)lParam;
@@ -1726,7 +1721,6 @@ LRESULT CTangramDocWnd::OnTangramMsg(UINT uMsg, WPARAM wParam, LPARAM lParam, BO
 		else
 			h = m_hWnd;
 
-		//LRESULT lRes = ::SendMessage(h, WM_TANGRAMMSG, 20190305, 0);
 		g_pTangram->CreateCompositorManager((LONGLONG)h, &pCompositorManager);
 		if (pCompositorManager)
 		{
@@ -1933,9 +1927,7 @@ void CCompositor::HostPosChanged()
 			::SetWindowPos(m_pBKWnd->m_hWnd, HWND_BOTTOM, 0, 0, rt1.right - rt1.left, rt1.bottom - rt1.top, SWP_NOACTIVATE | SWP_NOREDRAW);
 		}
 		//if (m_bTabbedMDIClient)
-		{
-			::SendMessage(hPWnd, WM_QUERYAPPPROXY, 0, 19651965);
-		}
+		::SendMessage(hPWnd, WM_QUERYAPPPROXY, 0, 19651965);
 	}
 }
 
@@ -2529,9 +2521,6 @@ STDMETHODIMP CCompositor::Open(BSTR bstrKey, BSTR bstrXml, IWndNode** ppRetNode)
 		it.first->Open(CComBSTR(it.second), CComBSTR(""), &pNode);
 	}
 	::PostMessage(m_hWnd, WM_TANGRAMMSG, 0, 20180115);
-	//auto itBrowser = g_pTangram->m_mapBrowserWnd.find(::GetParent(m_hWnd));
-	//if(itBrowser !=g_pTangram->m_mapBrowserWnd.end())
-	//	::SendMessage(itBrowser->second->m_hWnd, WM_BROWSERLAYOUT, 0, 2);
 	return S_OK;
 }
 

@@ -282,7 +282,6 @@ LRESULT CSplitterNodeWnd::OnSplitterNodeAdd(WPARAM wParam, LPARAM lParam)
 		}
 		return 0;
 	}
-#ifdef TANGRAMCOMMERCIALDITION
 	IWndNode* _pNode = nullptr;
 	CString str = (LPCTSTR)lParam;
 	CWndNode* pOldNode = (CWndNode*)g_pTangram->m_pDesignWindowNode;
@@ -350,7 +349,6 @@ LRESULT CSplitterNodeWnd::OnSplitterNodeAdd(WPARAM wParam, LPARAM lParam)
 			RecalcLayout();
 		}
 	}
-#endif
 	return -1;
 }
 
@@ -475,8 +473,11 @@ void CSplitterNodeWnd::StopTracking(BOOL bAccept)
 		else if(g_pTangram->m_pDesignWindowNode&&g_pTangram->m_pDesignWindowNode->m_pTangramNodeCommonData->m_pCompositor->m_pWebWnd)
 			pWebWnd = g_pTangram->m_pDesignWindowNode->m_pTangramNodeCommonData->m_pCompositor->m_pWebWnd;
 		pCompositor->HostPosChanged();
-		if(pWebWnd)
-			::SendMessage(::GetParent(pWebWnd->m_hWnd), WM_BROWSERLAYOUT, 0, 2);
+		if (pWebWnd)
+		{
+			//::SendMessage(pWebWnd->m_hWnd, WM_LBUTTONDOWN, 0, 0);
+			//::SendMessage(::GetParent(pWebWnd->m_hWnd), WM_BROWSERLAYOUT, 0, 2);
+		}
 	}
 }
 

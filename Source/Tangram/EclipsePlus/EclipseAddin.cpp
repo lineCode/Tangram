@@ -408,7 +408,7 @@ void CEclipseWnd::Show(CString strID)
 			m_strAppProxyID = _T("");
 			auto it = g_pTangram->m_mapWindowPage.find(m_hWnd);
 			if (it != g_pTangram->m_mapWindowPage.end())
-				m_pCompositorManager = it->second;
+				m_pCompositorManager = (CCompositorManager*)it->second;
 			else
 			{
 				m_pCompositorManager = new CComObject<CCompositorManager>();
@@ -515,6 +515,7 @@ void CEclipseWnd::Show(CString strID)
 					{
 						delete m_pCompositor;
 						m_pCompositor = nullptr;
+						m_pCompositorManager = nullptr;
 					}
 				}
 			}
@@ -538,7 +539,7 @@ LRESULT CEclipseWnd::OnShowWindow(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL&
 			m_strDocKey = g_pTangram->m_strCurrentEclipsePagePath;
 			g_pTangram->m_strCurrentEclipsePagePath = _T("");
 		}
-		if (::IsWindow(m_hClient))
+		if (::IsWindow(m_hClient)/*&& m_strDocKey!=_T("")*/)
 		{
 			Show(m_strDocKey);
 		}
@@ -641,7 +642,7 @@ LRESULT CEclipseWnd::OnTangramMsg(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL&
 							g_pTangram->m_strCurrentEclipsePagePath = _T("");
 						}
 						LONG_PTR data = 0;
-						if (::IsWindow(m_hClient))
+						if (::IsWindow(m_hClient)/*&& m_strDocKey!=_T("")*/)
 						{
 							data = ::GetWindowLongPtr(m_hClient, GWLP_USERDATA);
 							if (data == 0)
@@ -779,7 +780,7 @@ LRESULT CEclipseWnd::OnDestroy(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& )
 				{
 					g_pTangram->m_bChromeNeedClosed = true;
 					auto it = g_pTangram->m_mapBrowserWnd.begin();
-					it->second->SendMessageW(WM_CLOSE, 0, 0);
+					((ChromePlus::CBrowserWnd*)it->second)->SendMessageW(WM_CLOSE, 0, 0);
 				}
 			}
 		}
@@ -1374,7 +1375,7 @@ LRESULT CEclipseCtrl::OnTangramMsg(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL
 	auto it = g_pTangram->m_mapWorkBenchWnd.find(hTop);
 	if (it != g_pTangram->m_mapWorkBenchWnd.end())
 	{
-		m_pEclipseWnd = it->second;
+		m_pEclipseWnd = (CEclipseWnd*)it->second;
 		auto it2 = m_pEclipseWnd->m_mapCtrl.find(m_hWnd);
 		if (it2 == m_pEclipseWnd->m_mapCtrl.end())
 			m_pEclipseWnd->m_mapCtrl[m_hWnd] = this;

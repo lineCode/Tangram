@@ -65,11 +65,9 @@ namespace OfficePlus
 	// COfficeAddin
 	class ATL_NO_VTABLE COfficeAddin :
 		public CTangram
-#ifdef TANGRAMCOMMERCIALDITION
 		,public IDispatchImpl<IRibbonExtensibility, &__uuidof(IRibbonExtensibility), &LIBID_Office, /* wMajor = */ 2, /* wMinor = */ 4>,
 		public IDispatchImpl<ICustomTaskPaneConsumer, &__uuidof(ICustomTaskPaneConsumer), &LIBID_Office, /* wMajor = */ 2, /* wMinor = */ 4>,
 		public IDispatchImpl<AddInDesignerObjects::_IDTExtensibility2, &AddInDesignerObjects::IID__IDTExtensibility2, &AddInDesignerObjects::LIBID_AddInDesignerObjects, 1, 0>
-#endif
 	{
 	public:
 		COfficeAddin();
@@ -91,11 +89,9 @@ namespace OfficePlus
 			COM_INTERFACE_ENTRY(ITangram)
 			COM_INTERFACE_ENTRY2(IDispatch, ITangram)
 			COM_INTERFACE_ENTRY(IConnectionPointContainer)
-#ifdef TANGRAMCOMMERCIALDITION
 			COM_INTERFACE_ENTRY(IRibbonExtensibility)
 			COM_INTERFACE_ENTRY(ICustomTaskPaneConsumer)
 			COM_INTERFACE_ENTRY(AddInDesignerObjects::IDTExtensibility2)
-#endif
 		END_COM_MAP()
 
 		HRESULT HrGetResource(CString strLib, int nId, LPCTSTR lpType, LPVOID* ppvResourceData, DWORD* pdwSizeInBytes);

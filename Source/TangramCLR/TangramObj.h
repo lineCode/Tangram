@@ -969,15 +969,21 @@ namespace TangramCLR
 
 		static String^ LoadCLRResource(Object ^ destObj, String ^ resourceName)
 		{
-			if (destObj == nullptr)
-				return L"";
+			Assembly ^ a = nullptr;
 			if (resourceName == L"" || resourceName == nullptr)
 				resourceName = L"tangramresource.xml";
-			Assembly ^ a = nullptr;
 			String ^ strName = L"";
 			try
 			{
-				a = Assembly::GetAssembly(destObj->GetType());
+				if (destObj == nullptr)
+					a = Assembly::GetExecutingAssembly();
+				else
+				{
+					if (destObj->GetType()->IsSubclassOf(Assembly::typeid))
+						a = (Assembly ^)destObj;
+					else
+						a = Assembly::GetAssembly(destObj->GetType());
+				}
 			}
 			catch (ArgumentNullException^)
 			{

@@ -1409,13 +1409,13 @@ void TabStrip::SelectTab(Tab* tab, const ui::Event& event) {
         event.type() == ui::ET_MOUSE_PRESSED && !tab->IsActive()) {
       hover_card_->RecordHoverCardsSeenRatioMetric();
     }
-    controller_->SelectTab(model_index, event);
 	// begin Add by TangramTeam
 	HWND hwnd = views::HWNDForWidget(GetWidget());
 	if (::IsWindow(hwnd)) {
 		::SendMessage(hwnd, WM_TABCHANGE, model_index, 0);
 	}
 	// end Add by TangramTeam
+    controller_->SelectTab(model_index, event);
   }
 }
 

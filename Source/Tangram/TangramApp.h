@@ -86,9 +86,7 @@ private:
 	static LRESULT CALLBACK GetMessageProc(int nCode, WPARAM wParam, LPARAM lParam);
 };
 
-#ifdef TANGRAMCOMMERCIALDITION
-	TANGRAM_OBJECT_ENTRY_AUTO(CLSID_Tangram, CTangramApp)
-#endif
+TANGRAM_OBJECT_ENTRY_AUTO(CLSID_Tangram, CTangramApp)
 
 extern CTangramApp theApp;
 extern CTangram* g_pTangram;

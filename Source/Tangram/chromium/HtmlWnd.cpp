@@ -60,7 +60,7 @@ namespace ChromePlus {
 		auto it = g_pTangram->m_mapBrowserWnd.find(::GetParent(m_hWnd));
 		if (it != g_pTangram->m_mapBrowserWnd.end())
 		{
-			pParent = it->second;
+			pParent = (ChromePlus::CBrowserWnd*)it->second;
 		}
 		HWND hPWnd = ::GetParent(pParent->m_hWnd);
 		if (hPWnd != NULL)
@@ -94,7 +94,7 @@ namespace ChromePlus {
 			auto it = g_pTangram->m_mapBrowserWnd.find(::GetParent(m_hWnd));
 			if (it != g_pTangram->m_mapBrowserWnd.end())
 			{
-				CBrowserWnd* pParent = it->second;
+				CBrowserWnd* pParent = (ChromePlus::CBrowserWnd*)it->second;
 
 				if (/*!bChild&&*/m_hExtendWnd == nullptr)
 				{
@@ -239,7 +239,7 @@ namespace ChromePlus {
 				auto it = g_pTangram->m_mapBrowserWnd.find(hNewPWnd);
 				if (it != g_pTangram->m_mapBrowserWnd.end())
 				{
-					pChromeBrowserWnd = it->second;
+					pChromeBrowserWnd = (ChromePlus::CBrowserWnd*)it->second;
 					g_pTangram->m_pActiveBrowser = pChromeBrowserWnd->m_pBrowser;
 					if (pChromeBrowserWnd && m_hExtendWnd) {
 						if (::IsWindowVisible(m_hWnd)) {
@@ -319,11 +319,12 @@ namespace ChromePlus {
 				{
 					auto it = g_pTangram->m_mapBrowserWnd.find(hPWnd);
 					if (it != g_pTangram->m_mapBrowserWnd.end()) {
-						it->second->m_pVisibleWebWnd = this;
+						((ChromePlus::CBrowserWnd*)it->second)->m_pVisibleWebWnd = this;
 					}
 				}
 				::ShowWindow(m_hExtendWnd, SW_SHOW);
 				::SetParent(m_hExtendWnd, hPWnd);
+				//::SendMessage(hPWnd, WM_BROWSERLAYOUT, 0, 2);
 			}
 			else
 			{
@@ -340,7 +341,7 @@ namespace ChromePlus {
 		auto it2 = g_pTangram->m_mapBrowserWnd.find(::GetParent(hWnd));
 		if (it2 != g_pTangram->m_mapBrowserWnd.end())
 		{
-			pPWnd = it2->second;
+			pPWnd = (CBrowserWnd*)it2->second;
 			if (pPWnd->m_pVisibleWebWnd == this)
 				pPWnd->m_pVisibleWebWnd = nullptr;
 		}
@@ -354,19 +355,6 @@ namespace ChromePlus {
 		CWindowImpl::OnFinalMessage(hWnd);
 		delete this;
 	}
-
-	//LRESULT CHtmlWnd::OnWindowPosChanging(UINT uMsg,
-	//	WPARAM wParam,
-	//	LPARAM lParam,
-	//	BOOL&) {
-	//	if (m_hExtendWnd && ::IsChild(m_hWnd, m_hExtendWnd))
-	//	{
-	//		::SetParent(m_hExtendWnd, ::GetParent(m_hWnd));
-	//	}
-	//	LRESULT lRes = DefWindowProc(uMsg, wParam, lParam);
-	//	return lRes;
-	//}
-
 
 	void CHtmlWnd::Show(CString strID2)
 	{
@@ -383,7 +371,7 @@ namespace ChromePlus {
 				m_strAppProxyID = _T("");
 				auto it = g_pTangram->m_mapWindowPage.find(m_hExtendWnd);
 				if (it != g_pTangram->m_mapWindowPage.end())
-					m_pCompositorManager = it->second;
+					m_pCompositorManager = (CCompositorManager*)it->second;
 				else
 				{
 					m_pCompositorManager = new CComObject<CCompositorManager>();
@@ -525,7 +513,7 @@ namespace ChromePlus {
 				CCompositorManager* pCompositorManager = nullptr;
 				auto it = g_pTangram->m_mapWindowPage.find(m_hExtendWnd);
 				if (it != g_pTangram->m_mapWindowPage.end())
-					pCompositorManager = it->second;
+					pCompositorManager = (CCompositorManager*)it->second;
 				else
 				{
 					pCompositorManager = new CComObject<CCompositorManager>();

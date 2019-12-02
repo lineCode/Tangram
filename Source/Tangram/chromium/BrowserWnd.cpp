@@ -23,7 +23,6 @@
 #include "../stdafx.h"
 #include "../TangramApp.h"
 #include "../WndNode.h"
-#include "../NodeWnd.h"
 #include "../Compositor.h"
 #include "BrowserWnd.h"
 #include "HtmlWnd.h"
@@ -32,7 +31,6 @@ namespace ChromePlus {
 	CBrowserWnd::CBrowserWnd() {
 		m_hDrawWnd = 0;
 		m_pBrowser = nullptr;
-		m_pWndNode = nullptr;
 		m_fdevice_scale_factor = 1.0f;
 		m_strCurKey = _T("");
 		m_pVisibleWebWnd = nullptr;
@@ -63,7 +61,7 @@ namespace ChromePlus {
 					auto it = g_pTangram->m_mapHtmlWnd.find(hWnd);
 					if (it != g_pTangram->m_mapHtmlWnd.end())
 					{
-						m_pVisibleWebWnd = it->second;
+						m_pVisibleWebWnd = (CHtmlWnd*)it->second;
 						if (m_pVisibleWebWnd->m_hExtendWnd)
 							::SetParent(m_pVisibleWebWnd->m_hExtendWnd, m_hWnd);
 					}
@@ -280,6 +278,8 @@ namespace ChromePlus {
 	}
 
 	LRESULT CBrowserWnd::OnChromeTabChange(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL&) {
+		//BrowserLayout();
+		m_pBrowser->LayoutBrowser();
 		g_pTangram->m_pActiveHtmlWnd = m_pVisibleWebWnd;
 		if (m_pVisibleWebWnd && g_pTangram->m_pActiveHtmlWnd->m_pChromeRenderFrameHost)
 		{
@@ -362,8 +362,8 @@ namespace ChromePlus {
 
 			for (auto it : g_pTangram->m_mapBrowserWnd)
 			{
-				if (it.second->m_hWnd != m_hWnd)
-				it.second->PostMessageW(WM_CLOSE, 0, 0);
+				if (((ChromePlus::CBrowserWnd*)it.second)->m_hWnd != m_hWnd)
+					((ChromePlus::CBrowserWnd*)it.second)->PostMessageW(WM_CLOSE, 0, 0);
 			}
 		}
 
@@ -401,7 +401,7 @@ namespace ChromePlus {
 	LRESULT ChromePlus::CBrowserWnd::OnWindowPosChanging(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL&) {
 		LRESULT lRes = DefWindowProc(uMsg, wParam, lParam);
 		//if(g_pTangram->m_bOMNIBOXPOPUPVISIBLE)
-			::SendMessage(m_hWnd, WM_BROWSERLAYOUT, 0, 2);
+		::SendMessage(m_hWnd, WM_BROWSERLAYOUT, 0, 2);
 		return lRes;
 	}
 
@@ -438,7 +438,7 @@ namespace ChromePlus {
 			{
 				if (m_pBrowser)
 				{
-					if (g_pTangram->m_bOMNIBOXPOPUPVISIBLE)
+					//if (g_pTangram->m_bOMNIBOXPOPUPVISIBLE)
 					{
 						BrowserLayout();
 					}

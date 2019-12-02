@@ -370,7 +370,7 @@ namespace OfficePlus
 								{
 									auto it = g_pTangram->m_mapWindowPage.find(hPWnd);
 									if (it != g_pTangram->m_mapWindowPage.end())
-										pTangramPresentation->m_pTaskPaneCompositorManager = it->second;
+										pTangramPresentation->m_pTaskPaneCompositorManager = (CCompositorManager*)it->second;
 									else
 									{
 										pTangramPresentation->m_pTaskPaneCompositorManager = new CComObject<CCompositorManager>();
@@ -609,7 +609,7 @@ namespace OfficePlus
 								{
 									auto it = m_mapWindowPage.find(hPWnd);
 									if (it != m_mapWindowPage.end())
-										pTangramPresentation->m_pTaskPaneCompositorManager = it->second;
+										pTangramPresentation->m_pTaskPaneCompositorManager = (CCompositorManager*)it->second;
 									else
 									{
 										pTangramPresentation->m_pTaskPaneCompositorManager = new CComObject<CCompositorManager>();
@@ -695,7 +695,7 @@ namespace OfficePlus
 										{
 											auto it = m_mapWindowPage.find(hPWnd);
 											if (it != m_mapWindowPage.end())
-												pTangramPresentation->m_pTaskPaneCompositorManager = it->second;
+												pTangramPresentation->m_pTaskPaneCompositorManager = (CCompositorManager*)it->second;
 											else
 											{
 												pTangramPresentation->m_pTaskPaneCompositorManager = new CComObject<CCompositorManager>();

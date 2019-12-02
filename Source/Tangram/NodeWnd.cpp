@@ -64,9 +64,7 @@ BEGIN_MESSAGE_MAP(CNodeWnd, CWnd)
 	ON_WM_MOUSEACTIVATE()
 	ON_WM_WINDOWPOSCHANGED()
 	ON_WM_WINDOWPOSCHANGING()
-#ifdef TANGRAMCOMMERCIALDITION
 	ON_MESSAGE(WM_TABCHANGE, OnTabChange)
-#endif
 	ON_MESSAGE(WM_TANGRAMMSG, OnTangramMsg)
 	ON_MESSAGE(WM_TANGRAMGETNODE, OnGetTangramObj)
 	ON_MESSAGE(WM_TGM_SETACTIVEPAGE, OnActiveTangramObj)
@@ -538,7 +536,6 @@ void CNodeWnd::PostNcDestroy()
 	delete this;
 }
 
-#ifdef TANGRAMCOMMERCIALDITION
 LRESULT CNodeWnd::OnTabChange(WPARAM wParam, LPARAM lParam)
 {
 	int nOldPage = m_pWndNode->m_nActivePage;
@@ -596,7 +593,6 @@ LRESULT CNodeWnd::OnTabChange(WPARAM wParam, LPARAM lParam)
 	LRESULT lRes = CWnd::DefWindowProc(WM_TABCHANGE, wParam, lParam);
 	return lRes;
 }
-#endif
 
 LRESULT CNodeWnd::OnTangramMsg(WPARAM wParam, LPARAM lParam)
 {
@@ -998,7 +994,7 @@ LRESULT CNodeWnd::OnGetTangramObj(WPARAM wParam, LPARAM lParam)
 			auto it = g_pTangram->m_mapBrowserWnd.find(hBrowser);
 			if (it != g_pTangram->m_mapBrowserWnd.end())
 			{
-				m_pWndNode->m_pWebBrowser = it->second;
+				m_pWndNode->m_pWebBrowser = (CBrowserWnd*)it->second;
 			}
 		}
 		return (LRESULT)m_pWndNode;

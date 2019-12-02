@@ -163,10 +163,9 @@
 #include "eclipseJNI.h"
 #include "eclipseConfig.h"
 #include "eclipseCommon.h"
-#include "tangram.h"
+//#include "tangram.h"
 #include "TangramApp.h"
 #include "TangramCore.h"
-#include "Compositor.h"
 
 #ifdef _WIN32
 #include <windows.h>
@@ -264,18 +263,12 @@ extern _TCHAR* checkVMRegistryKey(HKEY jrekey, _TCHAR* subKeyName);
 #define STARTUP      _T_ECLIPSE("-startup")
 #define VM           _T_ECLIPSE("-vm")
 #define WS           _T_ECLIPSE("-ws")
-#define NAME         _T_ECLIPSE("-name")
-#define VMARGS       _T_ECLIPSE("-vmargs")					/* special option processing required */
 #define CP			 _T_ECLIPSE("-cp")
 #define CLASSPATH    _T_ECLIPSE("-classpath")
 #define JAR 		 _T_ECLIPSE("-jar")
-#define PROTECT 	 _T_ECLIPSE("-protect")
 #define OPENFILE	  _T_ECLIPSE("--launcher.openFile")
 #define DEFAULTACTION _T_ECLIPSE("--launcher.defaultAction")
 #define TIMEOUT		  _T_ECLIPSE("--launcher.timeout")
-#define LIBRARY		  _T_ECLIPSE("--launcher.library")
-#define SUPRESSERRORS _T_ECLIPSE("--launcher.suppressErrors")
-#define INI			  _T_ECLIPSE("--launcher.ini")
 #define APPEND_VMARGS _T_ECLIPSE("--launcher.appendVmargs")
 #define OVERRIDE_VMARGS _T_ECLIPSE("--launcher.overrideVmargs")
 #define SECOND_THREAD _T_ECLIPSE("--launcher.secondThread")
@@ -854,58 +847,10 @@ static int _run(int argc, _TCHAR * argv[], _TCHAR * vmArgs[])
 	ATLTRACE(_T("begin quit eclipse\n"));
 	if (g_pTangram)
 	{
-		if (g_pTangram->m_pCLRProxy)
-			g_pTangram->m_pCLRProxy->TangramAction(_T("<begin_quit_eclipse/>"), nullptr);
-		if (g_pTangram->m_mapMDTFrame.size())
-		{
-			auto it = g_pTangram->m_mapMDTFrame.begin();
-			while (it != g_pTangram->m_mapMDTFrame.end())
-			{
-				if (it->second)
-				{
-					it->second->DestroyWindow();
-				}
-				it = g_pTangram->m_mapMDTFrame.begin();
-			}
-		}
-		g_pTangram->m_mapMDTFrame.clear();
-		if (g_pTangram->m_mapTangramMDIChildWnd.size())
-		{
-			auto it = g_pTangram->m_mapTangramMDIChildWnd.begin();
-			while (it != g_pTangram->m_mapTangramMDIChildWnd.end())
-			{
-				if (it->second)
-				{
-					it->second->DestroyWindow();
-				}
-				it = g_pTangram->m_mapTangramMDIChildWnd.begin();
-			}
-		}
-		g_pTangram->m_mapTangramMDIChildWnd.clear();
-
-		while (g_pTangram->m_mapBrowserWnd.size())
-		{
-			auto it = g_pTangram->m_mapBrowserWnd.begin();
-			if (it != g_pTangram->m_mapBrowserWnd.end())
-				it->second->DestroyWindow();
-		}
 		::DestroyWindow(g_pTangram->m_hHostWnd);
-		//if (g_pTangram->m_mapBrowserWnd.size())
-		//{
-		//	g_pTangram->m_bChromeNeedClosed = true;
-		//	auto it = g_pTangram->m_mapBrowserWnd.begin();
-		//	//if (::GetParent(it->second->m_hWnd) == NULL)
-		//	it->second->SendMessageW(WM_CLOSE, 0, 0);
-		//	//else
-		//	//	pTangram->m_mapBrowserWnd.erase(it);
-		//}
 	}
 	ATLTRACE(_T("end quit eclipse\n"));
 	return running;
-}
-
-void freeOtherJavaVMInfo()
-{
 }
 
 static _TCHAR** buildLaunchCommand(_TCHAR * program, _TCHAR * *vmArgs, _TCHAR * *progArgs) {

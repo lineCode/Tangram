@@ -126,4 +126,12 @@ extern _TCHAR* checkPath( _TCHAR* path, _TCHAR* programDir, int reverseOrder );
 extern _TCHAR * lastDirSeparator(_TCHAR* str);
 
 extern _TCHAR * firstDirSeparator(_TCHAR* str);
+
+#define NAME         _T("-name")
+#define VMARGS       _T("-vmargs")					/* special option processing required */
+#define LIBRARY		  _T("--launcher.library")
+#define SUPRESSERRORS _T("--launcher.suppressErrors")
+#define INI			  _T("--launcher.ini")
+#define PROTECT	     _T("-protect")	/* This argument is also handled in eclipse.c for Mac specific processing */
+#define ROOT		  _T("root")		/* the only level of protection we care now */
 #endif

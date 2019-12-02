@@ -41,20 +41,6 @@ struct TangramThreadInfo
 	map<HWND, CCompositor*>		m_mapCompositor;
 };
 
-struct TangramWndClsInfo
-{
-public:
-	TangramWndClsInfo(void) {};
-
-	CRuntimeClass* m_pTabWndClsInfo;
-};
-
-struct TangramWndInfo
-{
-	HWND m_hBindWnd;
-	CString m_strInfo;
-};
-
 struct TangramFrameInfo
 {
 	CString m_strKey;
@@ -278,18 +264,9 @@ public:
 
 	Object::ObjectFactory*					m_pObjectFactory;
 
-	map<HWND, ChromePlus::CHtmlWnd*>		m_mapHtmlWnd;
-	map<HWND, ChromePlus::CBrowserWnd*>		m_mapBrowserWnd;
-	map<CString, CString>					m_mapJavaNativeInfo;
 	map<CString, CTangramDoc*>				m_mapOpenDoc;
-	map<void*, IUnknown*>					m_mapObjects;
 	map<HWND, CCompositor*>					m_mapBKFrame;
 	map<HWND, CTangramDocWnd*>				m_mapMDTFrame;
-	map<HWND, CCompositorManager*>			m_mapFramePage;
-	map<HWND, CCompositorManager*>			m_mapWindowPage;
-	map<IDispatch*, CString>				m_mapObjEventDic;
-	map<HWND, CEclipseWnd*>					m_mapWorkBenchWnd;
-	map<CString, CString>					m_mapCreatingWorkBenchInfo;
 
 	map<LONGLONG, CTangramEventObj*>		m_mapTangramEvent;
 	map<HWND, CTangramCommonCtrl*>			m_mapTangramCommonCtrl;
@@ -299,7 +276,7 @@ public:
 	map<CString, CRuntimeClass*>			m_TabWndClassInfoDictionary;
 	map<CString, CHelperWnd*>				m_mapRemoteTangramHelperWnd;
 	map<__int64, CWndNodeCollection*>		m_mapWndNodeCollection;
-	//map<__int64, ChromePlus::IPCMsg*>		m_mapIPCCollection;
+
 	BEGIN_COM_MAP(CTangram)
 		COM_INTERFACE_ENTRY(ITangram)
 		COM_INTERFACE_ENTRY(IDispatch)
@@ -434,8 +411,6 @@ public:
 	virtual HRESULT RemoteObjCreated(CString strID, void** ppvObject) { return 0; };
 	virtual void ConnectDocTemplate(LPCTSTR strType, LPCTSTR strExt, void* pTemplate);
 	virtual ITangramDoc* ConnectTangramDoc(ITangramAppProxy* AppProxy, LONGLONG docID, HWND hView, HWND hFrame, LPCTSTR strDocType);
-	void Log(CString strMessage) override;
-	void SetOverlayIcon(HWND hwnd, HICON hIcon, CString alt_text);
 	ICompositor* ConnectCompositorManager(HWND, CString, ICompositorManager* pCompositorManager, CompositorInfo*);
 
 	void _addObject(void* pThis, IUnknown* pUnknown)
@@ -486,8 +461,6 @@ private:
 	IWndNode* OpenCtrl(__int64 handle, CString name, CString NodeTag);
 	void BrowserAppStart();
 	bool IsMDIClientCompositorNode(IWndNode*);
-	void BindObjectToWindow(IDispatch* pDisp, HWND hWnd, CString strXml);
-	void BindObjectToWindow(CString objID, CString AssemblyQualifiedName, HWND hWnd, CString strXml);
 	int CalculateByteMD5(BYTE* pBuffer, int BufferSize, CString &MD5);
 	void FireNodeEvent(int nIndex, CWndNode* pNode, CTangramEventObj* pObj);
 	void GetTangramInfo(CString strFile, TangramDocInfo*);

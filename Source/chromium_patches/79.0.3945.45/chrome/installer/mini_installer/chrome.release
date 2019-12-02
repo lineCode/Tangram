@@ -14,8 +14,8 @@ tangramclr.dll: %(ChromeDir)s\
 tangramclr.pdb: %(ChromeDir)s\
 chromert.dll: %(ChromeDir)s\
 chromert.pdb: %(ChromeDir)s\
-tangramcomponent\*.dll: %(VersionDir)s\tangramcomponent\
-tangramcomponent\*.component: %(VersionDir)s\tangramcomponent\
+tangramcomponent\*.dll: %(ChromeDir)s\tangramcomponent\
+tangramcomponent\*.component: %(ChromeDir)s\tangramcomponent\
 #
 # Chrome version dir assembly manifest.
 # The name of this file must match the name of the version dir, so we cannot
@@ -27,6 +27,7 @@ tangramcomponent\*.component: %(VersionDir)s\tangramcomponent\
 # Chrome version dir entries, sorted alphabetically.
 #
 chrome.dll: %(VersionDir)s\
+chrome.dll.pdb: %(VersionDir)s\
 chrome_100_percent.pak: %(VersionDir)s\
 chrome_child.dll: %(VersionDir)s\
 chrome_elf.dll: %(VersionDir)s\

@@ -82,7 +82,7 @@ namespace OfficePlus
 
 			auto it = m_mapWindowPage.find(pWordWnd->m_hChildClient);
 			if (it != m_mapWindowPage.end())
-				pWordDoc->m_pDocCompositorManager = it->second;
+				pWordDoc->m_pDocCompositorManager = (CCompositorManager*)it->second;
 			else
 			{
 				pWordDoc->m_pDocCompositorManager = new CComObject<CCompositorManager>();
@@ -155,7 +155,7 @@ namespace OfficePlus
 								{
 									auto it = m_mapWindowPage.find(hPWnd);
 									if (it != m_mapWindowPage.end())
-										m_pDoc->m_pTaskPaneCompositorManager = it->second;
+										m_pDoc->m_pTaskPaneCompositorManager = (CCompositorManager*)it->second;
 									else
 									{
 										m_pDoc->m_pTaskPaneCompositorManager = new CComObject<CCompositorManager>();
@@ -637,7 +637,7 @@ namespace OfficePlus
 								{
 									auto it = m_mapWindowPage.find(hPWnd);
 									if (it != m_mapWindowPage.end())
-										m_pDoc->m_pTaskPaneCompositorManager = it->second;
+										m_pDoc->m_pTaskPaneCompositorManager = (CCompositorManager*)it->second;
 									else
 									{
 										m_pDoc->m_pTaskPaneCompositorManager = new CComObject<CCompositorManager>();

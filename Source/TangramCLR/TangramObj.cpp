@@ -380,7 +380,6 @@ namespace TangramCLR
 	{
 		if (m_pManager == nullptr)
 			m_pManager = gcnew Tangram();
-
 		if (theAppProxy.m_bInitApp == false)
 		{
 			::PostAppMessage(::GetCurrentThreadId(), WM_TANGRAMMSG, 0, 20191022);
@@ -1388,8 +1387,6 @@ namespace TangramCLR
 
 	ChromeWebBrowser^ Tangram::CreateBrowser(IntPtr ParentHandle, String^ strUrls)
 	{
-		//if (theApp.m_bBrowserModeInit == false)
-		//	theApp.InitCloudApp(false);
 		HWND hPWnd = (HWND)ParentHandle.ToPointer();
 		if (theApp.m_pTangramImpl->m_pBrowserFactory)
 		{

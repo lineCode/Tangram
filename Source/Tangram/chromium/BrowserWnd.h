@@ -42,7 +42,7 @@ namespace ChromePlus {
 		float		m_fdevice_scale_factor;
 		HWND		m_hDrawWnd;
 		CString		m_strCurKey;
-		CWndNode*	m_pWndNode;
+		//CWndNode*	m_pWndNode;
 		CHtmlWnd*	m_pVisibleWebWnd;
 
 		LRESULT BrowserLayout();

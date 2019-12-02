@@ -61,9 +61,7 @@ protected:
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg LRESULT OnActiveTangramObj(WPARAM wParam,LPARAM lParam);
 	afx_msg LRESULT OnTangramMsg(WPARAM wParam,LPARAM lParam);
-#ifdef TANGRAMCOMMERCIALDITION
 	afx_msg LRESULT OnTabChange(WPARAM wParam, LPARAM lParam);
-#endif
 	afx_msg LRESULT OnGetTangramObj(WPARAM wParam, LPARAM lParam);
 	afx_msg LRESULT OnSplitterReposition(WPARAM wParam, LPARAM lParam);
 	DECLARE_MESSAGE_MAP()

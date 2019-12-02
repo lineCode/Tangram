@@ -504,10 +504,6 @@ void CTangramListCtrl::OnNMDblclk(NMHDR *pNMHDR, LRESULT *pResult)
 									InsertItem(&item);
 								}
 							}
-							else
-							{
-								g_pTangram->m_pCLRProxy->Extend(it->second->m_strProxyID, strTemplateFile + it->second->m_strExt, L"tangram:creatingform:design");
-							}
 						}
 						else
 						{

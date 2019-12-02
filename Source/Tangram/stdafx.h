@@ -105,8 +105,6 @@ using namespace ATL;
 
 using namespace std;
 
-#define TANGRAMCOMMERCIALDITION
-
 #include <ppl.h>
 #include <ppltasks.h>
 using namespace concurrency;

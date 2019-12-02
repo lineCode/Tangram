@@ -78,8 +78,7 @@ void LegacyRenderWidgetHostHWND::UpdateParent(HWND parent) {
   if (::IsWindow(m_hWnd) && ::GetParent(m_hWnd) != parent) {
 	  ::SetParent(hwnd(), parent);
 	  ::PostMessage(m_hWnd, WM_CHROMEWNDPARENTCHANGED, 0, (LPARAM)parent);
-	  ::PostMessage(parent, WM_DEVICESCALEFACTORCHANGED, (WPARAM)0,
-		  (LPARAM)host_->GetDeviceScaleFactor() * 100);
+	  ::PostMessage(parent, WM_DEVICESCALEFACTORCHANGED, 0, host_->GetDeviceScaleFactor() * 100);
   }
   // end Add by TangramTeam
 

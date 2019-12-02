@@ -31,7 +31,6 @@
 #include <io.h>
 #include <stdio.h>
 #include "Markup.h"
-#include "AcquireTemplateStorageInfoForm.h"
 #include "AssemblyLocalor.h"
 #include "Win32AppForm.h"
 
@@ -69,6 +68,10 @@ ITangram* GetTangram()
 				theApp.m_pTangramImpl->m_pTangramDelegate = (ITangramDelegate*)&theApp;
 				theApp.m_pTangramImpl->m_pTangramAppProxy = (ITangramAppProxy*)&theApp;
 			}
+		}
+		else
+		{
+			//::MessageBox(nullptr, _T("Init TangramCore Failed!"), _T(""), MB_OK);
 		}
 	}
 	return theApp.m_pTangram;
@@ -109,6 +112,7 @@ CTangramCLRProxy::CTangramCLRProxy() : ITangramCLRImpl()
 			}
 		}
 	}
+	TangramCLR::Tangram::GetTangram();
 }
 
 CTangramCLRProxy::~CTangramCLRProxy()
@@ -162,8 +166,6 @@ void CTangramCLRApp::ProcessMsg(MSG* msg) {
 
 void CTangramCLRProxy::ExportCLRObjInfo(CString strPath)
 {
-	CString strLogMsg; strLogMsg.Format(L"Export CLR object info from %s", strPath);
-	theApp.m_pTangramImpl->Log(strLogMsg);
 	if (strPath == _T(""))
 		strPath = Forms::Application::ExecutablePath->ToLower();
 	Assembly ^ m_pDotNetAssembly = nullptr;
@@ -1219,17 +1221,6 @@ void CTangramCLRProxy::OnCLRHostExit()
 	Forms::Application::Exit();
 }
 
-Tuple<String^, String^>^ AcquireTemplateStorageInfo()
-{
-	AcquireTemplateStorageInfoForm^ pForm = gcnew AcquireTemplateStorageInfoForm();
-	if (pForm->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		Tuple<String^, String^>^ pResult = gcnew Tuple<String^, String^>(pForm->strTemplateCategory, pForm->strTemplateName);
-		return pResult;
-	}
-	return nullptr;
-}
-
 void* CTangramCLRProxy::Extend(CString strKey, CString strData, CString strFeatures)
 {
 	if (strFeatures.CompareNoCase(_T("tangram:creatingform")) == 0)
@@ -1261,114 +1252,6 @@ void* CTangramCLRProxy::Extend(CString strKey, CString strData, CString strFeatu
 					Form^ pForm = (Form^)pObj;
 					pForm->MdiParent = pParentForm;
 					m_strCurrentWinFormTemplate = strData;
-					pForm->Show();
-				}
-			}
-		}
-	}
-	else if (strFeatures.CompareNoCase(_T("tangram:creatingmdichildform:design")) == 0)
-	{
-		int nPos = strKey.Find(_T(":"));
-		Form^ pParentForm = (Form^)Form::FromHandle((IntPtr)_wtol(strKey.Mid(nPos + 1)));
-		if (pParentForm && pParentForm->IsMdiContainer)
-		{
-			auto it = theApp.m_pTangramImpl->m_mapTangramDesignedWindows.find(strData);
-			if (it != theApp.m_pTangramImpl->m_mapTangramDesignedWindows.end())
-			{
-				HWND h = it->second;
-				if (::IsWindow(h))
-					::BringWindowToTop(h);
-				else
-				{
-					strKey = strKey.Left(nPos);
-					nPos = strKey.Find(_T(","));
-					if (nPos != -1)
-					{
-						Object^ pObj = TangramCLR::Tangram::CreateObject(BSTR2STRING(strKey));
-						if (pObj && pObj->GetType()->IsSubclassOf(Form::typeid))
-						{
-							Form^ pForm = static_cast<Form^>(pObj);
-							if (pForm->IsMdiContainer)
-								pForm->IsMdiContainer = false;
-							pForm->MdiParent = pParentForm;
-							m_strCurrentWinFormTemplate = strData;
-							pForm->Text += L"-[design]";
-							pForm->Show();
-							HWND hWnd = (HWND)pForm->Handle.ToInt64();
-							theApp.m_pTangramImpl->m_mapTangramDesignedWindows[strData] = hWnd;
-							LRESULT l = ::SendMessage((HWND)pForm->Handle.ToInt64(), WM_TANGRAMDATA, (WPARAM)strData.GetBuffer(), 3);
-						}
-					}
-				}
-			}
-			else
-			{
-				strKey = strKey.Left(nPos);
-				nPos = strKey.Find(_T(","));
-				if (nPos != -1)
-				{
-					Object^ pObj = TangramCLR::Tangram::CreateObject(BSTR2STRING(strKey));
-					if (pObj && pObj->GetType()->IsSubclassOf(Form::typeid))
-					{
-						Form^ pForm = (Form^)pObj;
-						if (pForm->IsMdiContainer)
-							pForm->IsMdiContainer = false;
-						pForm->MdiParent = pParentForm;
-						m_strCurrentWinFormTemplate = strData;
-						pForm->Text += L"-[design]";
-						pForm->Show();
-						HWND hWnd = (HWND)pForm->Handle.ToInt64();
-						theApp.m_pTangramImpl->m_mapTangramDesignedWindows[strData] = hWnd;
-						LRESULT l = ::SendMessage((HWND)pForm->Handle.ToInt64(), WM_TANGRAMDATA, (WPARAM)strData.GetBuffer(), 3);
-					}
-				}
-			}
-		}
-	}
-	else if (strFeatures.Find(_T("tangram:creatingform:design")) != -1)
-	{
-		auto it = theApp.m_pTangramImpl->m_mapTangramDesignedWindows.find(strData);
-		if (it != theApp.m_pTangramImpl->m_mapTangramDesignedWindows.end() && ::IsWindow(it->second))
-		{
-			::BringWindowToTop(it->second);
-		}
-		else
-		{
-			int nPos = strKey.Find(_T(","));
-			if (nPos != -1)
-			{
-				Object^ pObj = TangramCLR::Tangram::CreateObject(BSTR2STRING(strKey));
-				if (pObj && pObj->GetType()->IsSubclassOf(Form::typeid))
-				{
-					Form^ pForm = (Form^)pObj;
-					HWND hWnd = (HWND)pForm->Handle.ToInt64();
-					theApp.m_pTangramImpl->m_mapTangramDesignedWindows[strData] = hWnd;
-					if (strFeatures.Find(L"new") != -1)
-					{
-						AcquireTemplateStorageInfoForm^ pInfoForm = gcnew AcquireTemplateStorageInfoForm();
-						if (pInfoForm->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-						{
-							Tuple<String^, String^>^ pResult = gcnew Tuple<String^, String^>(pInfoForm->strTemplateCategory, pInfoForm->strTemplateName);
-							//return pResult;
-							strData += STRING2BSTR(pInfoForm->strTemplateCategory);
-							strData += _T("\\");
-							strData += STRING2BSTR(pInfoForm->strTemplateName);
-							strData += _T(".formxml");
-							pForm->Text = pForm->Text + L"-[Design]";
-							pForm->Show();
-							return (void*)::SendMessage(hWnd, WM_TANGRAMDATA, (WPARAM)strData.GetBuffer(), 0);
-						}
-						return nullptr;
-					}
-					else
-					{
-						CMarkup xml;
-						if (xml.Load(strData))
-						{
-							pForm->Text = pForm->Text + L"-[Design]";
-							::SendMessage(hWnd, WM_TANGRAMDATA, (WPARAM)strData.GetBuffer(), 1);
-						}
-					}
 					pForm->Show();
 				}
 			}
@@ -1924,7 +1807,7 @@ void CTangramCLRProxy::TangramAction(BSTR bstrXml, IWndNode * pNode)
 	CString strXml = OLE2T(bstrXml);
 	if (strXml != _T(""))
 	{
-		if (strXml.CompareNoCase(_T("startclrapp")) == 0||strXml.CompareNoCase(_T("ChromiumInit")) == 0)
+		if (strXml.CompareNoCase(_T("startclrapp")) == 0)
 		{
 			if (m_bInitApp == false)
 			{
@@ -2242,25 +2125,6 @@ CTangramWPFObj* CTangramWPFObjWrapper::CreateControl(Type ^ type, HWND parent, D
 	}
 
 	return m_hwndWPF == NULL ? nullptr : this;
-}
-
-bool CTangramCLRProxy::BindObjectToWindow(IDispatch* pDisp, HWND hWnd, CString strXml)
-{
-	Object^ pCLRObj = (Object^)Marshal::GetObjectForIUnknown((IntPtr)pDisp);
-	if (pCLRObj != nullptr)
-	{
-		if (pCLRObj->GetType()->IsSubclassOf(Control::typeid))
-		{
-			Control^ pCtrl = static_cast<Control^>(pCLRObj);
-			return true;
-		}
-	}
-	return false;
-}
-
-bool CTangramCLRProxy::BindObjectToWindow(CString objID, CString AssemblyQualifiedName, HWND hWnd, CString strXml)
-{
-	return false;
 }
 
 HICON CTangramCLRProxy::GetAppIcon(int nIndex)

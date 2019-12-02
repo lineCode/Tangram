@@ -104,7 +104,7 @@
     <LinkKeyFile>TangramCLR.snk</LinkKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)$(Configuration)\x64\</OutDir>
+    <OutDir>..\..\chromium_root_80\src\out\tangram_static_release_x64</OutDir>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <LinkIncremental>false</LinkIncremental>
     <LinkKeyFile>TangramCLR.snk</LinkKeyFile>
@@ -332,7 +332,6 @@ copy $(OutDir)$(TargetName)$(TargetExt) $(windir)\Microsoft.NET\assembly\GAC_64\
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AcquireTemplateStorageInfoForm.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="ChromeWebBrowser.cpp" />
     <ClCompile Include="DefaultNTPCtrl.cpp" />
@@ -367,9 +366,6 @@ copy $(OutDir)$(TargetName)$(TargetExt) $(windir)\Microsoft.NET\assembly\GAC_64\
     <ClCompile Include="Win32AppForm.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AcquireTemplateStorageInfoForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="AssemblyLocalor.h" />
     <ClInclude Include="BrowserWndOpenDisposition.h" />
     <ClInclude Include="ChromeWebBrowser.h" />
@@ -405,9 +401,6 @@ copy $(OutDir)$(TargetName)$(TargetExt) $(windir)\Microsoft.NET\assembly\GAC_64\
     <None Include="TangramCLR2COM.rgs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AcquireTemplateStorageInfoForm.resx">
-      <DependentUpon>AcquireTemplateStorageInfoForm.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DefaultNTPCtrl.resx">
       <DependentUpon>DefaultNTPCtrl.h</DependentUpon>
     </EmbeddedResource>

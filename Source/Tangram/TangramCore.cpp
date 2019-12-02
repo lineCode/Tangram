@@ -95,8 +95,6 @@ event_target_names.json5：
 #include "eclipseCommon.h"
 
 #include "CloudUtilities\TangramComponentInstaller.h"
-#include "..\CommonFile\TangramChromeProxy.h"
-
 #include "Markup.h"
 
 using namespace ChromePlus;
@@ -140,7 +138,6 @@ CTangram::CTangram()
 {
 	m_pActiveBrowser = nullptr;
 	m_pClrHost = nullptr;
-	m_pTaskbarList3 = nullptr;
 	m_nJVMVersion = JNI_VERSION_10;
 	g_pTangram = this;
 	m_bCLRObjTemplateInit = false;
@@ -252,6 +249,11 @@ CTangram::CTangram()
 #endif
 	m_mapValInfo[_T("currenteclipeworkBenchid")] = CComVariant(_T(""));
 	m_pObjectFactory = new Object::ObjectFactory();
+	m_TabWndClassInfoDictionary[_T("hostview")] = RUNTIME_CLASS(CNodeWnd);
+	m_TabWndClassInfoDictionary[_T("tangramlistview")] = RUNTIME_CLASS(CTangramListView);
+	m_TabWndClassInfoDictionary[_T("wpfctrl")] = RUNTIME_CLASS(CWPFView);
+	m_TabWndClassInfoDictionary[TGM_SPLITTER] = RUNTIME_CLASS(CSplitterNodeWnd);
+	m_TabWndClassInfoDictionary[_T("tabctrl")] = RUNTIME_CLASS(CTangramTabCtrl);
 }
 
 BOOL CTangram::CopyFolder(CString strSrcPath, CString strDesPath)
@@ -353,13 +355,13 @@ void CTangram::Init()
 
 	if (m_bOfficeApp == false && m_nAppID != 9)
 	{
-		m_strConfigDataFile = m_strAppDataPath;
-		if (::PathIsDirectory(m_strConfigDataFile) == false)
+		//m_strConfigDataFile = m_strAppDataPath;
+		if (::PathIsDirectory(m_strAppDataPath) == false)
 		{
-			::SHCreateDirectory(nullptr, m_strConfigDataFile);
+			::SHCreateDirectory(nullptr, m_strAppDataPath);
 		}
 		m_strAppFormsPath = m_strAppPath + _T("CommonForms\\");
-		if (::PathIsDirectory(m_strAppFormsInfoPath) == false)
+		if (::PathIsDirectory(m_strAppFormsPath) == false)
 		{
 			::SHCreateDirectory(nullptr, m_strAppFormsPath);
 		}
@@ -373,6 +375,7 @@ void CTangram::Init()
 		{
 			::SHCreateDirectory(nullptr, m_strAppWPFObjsInfoPath);
 		}
+		
 		m_strAppControlsInfoPath = m_strAppDataPath + _T("TangramControlsInfo\\");
 		if (::PathIsDirectory(m_strAppControlsInfoPath) == false)
 		{
@@ -388,14 +391,15 @@ void CTangram::Init()
 	SHGetFolderPath(NULL, CSIDL_PROGRAM_FILES, NULL, 0, m_szBuffer);
 	m_strProgramFilePath = CString(m_szBuffer);
 
-	// Create App.exe.config
-	CString strDefaultAppConfigFile = m_strProgramFilePath + _T("\\Tangram\\App.exe.config");
 	::GetModuleFileName(NULL, m_szBuffer, MAX_PATH);
 	m_strWinAppConfigFile = CString(m_szBuffer);
 	m_strWinAppConfigFile += _T(".config");
 	if (::PathFileExists(m_strWinAppConfigFile) == FALSE)
 	{
-		::CopyFile(strDefaultAppConfigFile, m_strWinAppConfigFile, true);
+		// Create App.exe.config
+		CString strDefaultAppConfigFile = m_strProgramFilePath + _T("\\Tangram\\App.exe.config");
+		if (::PathFileExists(strDefaultAppConfigFile))
+			::CopyFile(strDefaultAppConfigFile, m_strWinAppConfigFile, true);
 	}
 
 	m_strAppCommonDocPath2 = m_strProgramFilePath + _T("\\Tangram\\CommonDocComponent\\");
@@ -409,56 +413,20 @@ void CTangram::Init()
 	m_mapValInfo[_T("appdatafile")] = CComVariant(m_strConfigDataFile);
 	m_mapValInfo[_T("appname")] = CComVariant(m_strExeName);
 	m_mapValInfo[_T("appkey")] = CComVariant(m_strAppKey);
-	WNDCLASS wndClass;
-	wndClass.style = CS_DBLCLKS;
-	wndClass.lpfnWndProc = ::DefWindowProc;
-	wndClass.cbClsExtra = 0;
-	wndClass.cbWndExtra = 0;
-	wndClass.hInstance = AfxGetInstanceHandle();
-	wndClass.hIcon = 0;
-	wndClass.hCursor = ::LoadCursor(NULL, IDC_ARROW);
-	wndClass.hbrBackground = 0;
-	wndClass.lpszMenuName = NULL;
-	wndClass.lpszClassName = _T("Tangram Splitter Class");
-
-	RegisterClass(&wndClass);
-
-	m_lpszSplitterClass = wndClass.lpszClassName;
-
-	wndClass.lpfnWndProc = CTangramApp::TangramWndProc;
-	wndClass.style = CS_HREDRAW | CS_VREDRAW;
-	wndClass.lpszClassName = L"Tangram Window Class";
-
-	RegisterClass(&wndClass);
-
-	wndClass.lpfnWndProc = CTangramApp::TangramMsgWndProc;
-	wndClass.style = CS_HREDRAW | CS_VREDRAW;
-	wndClass.lpszClassName = L"Tangram Message Window Class";
-
-	RegisterClass(&wndClass);
-
-	wndClass.lpfnWndProc = CTangramApp::TangramExtendedWndProc;
-	wndClass.lpszClassName = L"Chrome Extended Window Class";
-
-	RegisterClass(&wndClass);
 
 	if (m_nAppID != 9)
 	{
-		::CreateWindowEx(WS_EX_NOACTIVATE, _T("Tangram Message Window Class"), _T(""), WS_VISIBLE | WS_POPUP, 0, 0, 0, 0, nullptr, nullptr, theApp.m_hInstance, nullptr);
+		g_pTangram->TangramInit();
+		HWND hWnd = ::CreateWindowEx(WS_EX_NOACTIVATE, _T("Tangram Message Window Class"), _T(""), WS_VISIBLE | WS_POPUP, 0, 0, 0, 0, nullptr, nullptr, theApp.m_hInstance, nullptr);
 	}
 
-	m_TabWndClassInfoDictionary[_T("hostview")] = RUNTIME_CLASS(CNodeWnd);
-	m_TabWndClassInfoDictionary[_T("tangramlistview")] = RUNTIME_CLASS(CTangramListView);
-	m_TabWndClassInfoDictionary[_T("wpfctrl")] = RUNTIME_CLASS(CWPFView);
-	m_TabWndClassInfoDictionary[TGM_SPLITTER] = RUNTIME_CLASS(CSplitterNodeWnd);
-	m_TabWndClassInfoDictionary[_T("tabctrl")] = RUNTIME_CLASS(CTangramTabCtrl);
 
 	CString _strPath = _T("");
 		_strPath = m_strAppPath + m_strExeName + _T("InitData\\");
 	if (::PathIsDirectory(_strPath))
 	{
-		auto task = create_task([this, _strPath]()
-		{
+		//auto task = create_task([this, _strPath]()
+		//{
 			CTangramXmlParse m_Parse;
 			CTangramXmlParse* pZipNode = nullptr;
 			BOOL b = m_Parse.LoadFile(m_strConfigDataFile);
@@ -472,7 +440,7 @@ void CTangram::Init()
 					m_Parse.SaveFile(m_strConfigDataFile);
 				}
 			}
-		});
+		//});
 	}
 
 	if (m_nAppID != 9 && ::PathFileExists(m_strConfigFile) && m_bOfficeApp == false)
@@ -576,7 +544,6 @@ void CTangram::Init()
 			_T("\n   Object Name:   %s") +
 			_T("\n   Object Caption:%s\n\n");
 	}
-	//});
 
 	if (m_nAppID != 9 && m_bOfficeApp == false && ::IsWindow(m_hHostWnd) == false)
 	{
@@ -613,7 +580,7 @@ CTangram::~CTangram()
 		auto it = m_mapWindowPage.begin();
 		while (it != m_mapWindowPage.end())
 		{
-			CCompositorManager* pCompositorManager = it->second;
+			CCompositorManager* pCompositorManager = (CCompositorManager*)it->second;
 			delete pCompositorManager;
 			m_mapWindowPage.erase(it);
 			if (m_mapWindowPage.size())
@@ -1500,18 +1467,19 @@ void CTangram::TangramLoad()
 	m_strTempPath = CString(m_szBuffer);
 	m_bAdmin = IsUserAdministrator();
 	HRESULT hr = SHGetFolderPath(NULL, CSIDL_COMMON_APPDATA, NULL, 0, m_szBuffer);
-	m_strAppDataPath = CString(m_szBuffer);
-	m_strAppCommonDocPath += m_strAppDataPath + _T("\\TangramCommonDocTemplate\\");
+	m_strAppDataPath = CString(m_szBuffer)+_T("\\");
+	m_strAppDataPath.Replace(_T("\\\\"), _T("\\"));
+	m_strAppCommonDocPath += m_strAppDataPath + _T("TangramCommonDocTemplate\\");
 	if (::PathIsDirectory(m_strAppCommonDocPath) == false)
 	{
 		::SHCreateDirectory(nullptr, m_strAppCommonDocPath);
 	}
-	m_strAppCommonFormsInfoPath = m_strAppDataPath + _T("\\TangramCommonFormsInfo\\");
+	m_strAppCommonFormsInfoPath = m_strAppDataPath + _T("TangramCommonFormsInfo\\");
 	if (::PathIsDirectory(m_strAppCommonFormsInfoPath) == false)
 	{
 		::SHCreateDirectory(nullptr, m_strAppCommonFormsInfoPath);
 	}
-	m_strAppCommonFormsTemplatePath = m_strAppDataPath + _T("\\TangramCommonFormsTemplate\\");
+	m_strAppCommonFormsTemplatePath = m_strAppDataPath + _T("TangramCommonFormsTemplate\\");
 	if (::PathIsDirectory(m_strAppCommonFormsTemplatePath) == false)
 	{
 		::SHCreateDirectory(nullptr, m_strAppCommonFormsTemplatePath);
@@ -1527,18 +1495,11 @@ void CTangram::TangramLoad()
 		m_Parse.SaveFile(strPath);
 	}
 
-	m_strAppDataPath += _T("\\TangramData\\");
+	m_strAppDataPath += _T("TangramData\\");
 	m_strAppDataPath += m_strExeName;
 	m_strAppDataPath += _T("\\");
 	m_strAppDataPath += m_strAppKey;
 	m_strAppDataPath += _T("\\");
-
-	// Log direcotry
-	CTime time = CTime::GetCurrentTime();
-	CString strTime;
-	strTime.Format(L"%lld", time.GetTime());
-	m_strLogFileFormatPath.Format(L"%s.log", strTime);
-	m_strLogFileFormatPath = m_strAppDataPath + m_strLogFileFormatPath;
 
 	strPath = g_pTangram->m_strAppDataPath + _T("default.tangramdoc");
 	if (::PathFileExists(strPath) == false)
@@ -1548,22 +1509,6 @@ void CTangram::TangramLoad()
 		{
 			::CopyFile(_strPath, strPath, true);
 		}
-	}
-
-	m_strAppFormsPath = m_strAppPath + _T("CommonForms\\");
-	if (::PathIsDirectory(m_strAppFormsPath) == false)
-	{
-		::SHCreateDirectory(nullptr, m_strAppFormsPath);
-	}
-	m_strAppFormsInfoPath = m_strAppDataPath + _T("TangramFormsInfo\\");
-	if (::PathIsDirectory(m_strAppFormsInfoPath) == false)
-	{
-		::SHCreateDirectory(nullptr, m_strAppFormsInfoPath);
-	}
-	m_strAppFormsTemplatePath = m_strAppDataPath + _T("TangramFormsTemplate\\");
-	if (::PathIsDirectory(m_strAppFormsTemplatePath) == false)
-	{
-		::SHCreateDirectory(nullptr, m_strAppFormsTemplatePath);
 	}
 }
 
@@ -1617,6 +1562,7 @@ void CTangram::TangramInit()
 			}
 		}
 	}
+
 	if (bLoad == false) {
 		bLoad = _m_Parse.LoadFile(m_strConfigFile);
 	}
@@ -1813,20 +1759,6 @@ void CTangram::ExitInstance()
 	m_mapValInfo.clear();
 }
 
-void CTangram::SetOverlayIcon(HWND hwnd, HICON hIcon, CString alt_text)
-{
-	CComPtr<ITaskbarList3> taskbar;
-	HRESULT result = ::CoCreateInstance(
-		CLSID_TaskbarList, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&taskbar));
-	if (FAILED(result) || FAILED(taskbar->HrInit()))
-		return;
-	//if (::GetWindowLongPtr(hwnd, GWL_STYLE) & WS_CHILD == false)
-	{
-		taskbar->AddTab(hwnd);
-		taskbar->SetOverlayIcon(hwnd, NULL, alt_text);
-	}
-}
-
 TangramThreadInfo* CTangram::GetThreadInfo(DWORD ThreadID)
 {
 	TangramThreadInfo* pInfo = nullptr;
@@ -1898,9 +1830,10 @@ void CTangram::ProcessMsg(LPMSG lpMsg)
 				HWND _hPWnd = ::GetParent(hPWnd);
 				if (_hPWnd == nullptr)
 				{
-					if (it->second->m_pOmniboxViewViews&&it->second->m_pOmniboxViewViews->IsFocused() == false)
+					ChromePlus::CBrowserWnd* pBrowserWnd = (ChromePlus::CBrowserWnd*)it->second;
+					if (pBrowserWnd->m_pOmniboxViewViews&& pBrowserWnd->m_pOmniboxViewViews->IsFocused() == false)
 						return;
-					CHtmlWnd * pWnd = it->second->m_pVisibleWebWnd;
+					CHtmlWnd * pWnd = pBrowserWnd->m_pVisibleWebWnd;
 					if (pWnd && lpMsg->hwnd != pWnd->m_hWnd)
 					{
 						CWndNode* pRetNode = (CWndNode*)::SendMessage(lpMsg->hwnd, WM_TANGRAMGETNODE, 0, 0);
@@ -2018,7 +1951,7 @@ void CTangram::CreateCommonDesignerToolBar()
 		{
 			auto it = m_mapWindowPage.find(m_hHostWnd);
 			if (it != m_mapWindowPage.end())
-				m_pDesignerCompositorManager = it->second;
+				m_pDesignerCompositorManager = (CCompositorManager*)it->second;
 			else
 			{
 				m_pDesignerCompositorManager = new CComObject<CCompositorManager>();
@@ -2158,6 +2091,7 @@ ICompositor* CTangram::ConnectCompositorManager(HWND hFrame, CString _strFrameNa
 bool g_bInit = false;
 void CTangram::BrowserAppStart()
 { 
+	Init();
 	if (g_bInit == true)
 		return;
 	g_bInit = true;
@@ -2239,7 +2173,7 @@ ICompositorManager* CTangram::Open(HWND hFrame, CString strName, CString strKey)
 	auto it = m_mapFramePage.find(hFrame);
 	if (it != m_mapFramePage.end())
 	{
-		CCompositorManager* pCompositorManager = it->second;
+		CCompositorManager* pCompositorManager = (CCompositorManager*)it->second;
 		ICompositor* pCompositor = nullptr;
 		auto it2 = pCompositorManager->m_mapCompositor.find(hFrame);
 		if (it2 == pCompositorManager->m_mapCompositor.end())
@@ -2738,7 +2672,7 @@ STDMETHODIMP CTangram::get_RootNodes(IWndNodeCollection** pNodeColletion)
 
 	for (auto& it : m_mapWindowPage)
 	{
-		CCompositorManager* pCompositor = it.second;
+		CCompositorManager* pCompositor = (CCompositorManager*)it.second;
 		for (auto fit : pCompositor->m_mapCompositor)
 		{
 			CCompositor* pCompositor = fit.second;
@@ -3002,10 +2936,8 @@ STDMETHODIMP CTangram::get_CreatingNode(IWndNode** pVal)
 
 STDMETHODIMP CTangram::get_DesignNode(IWndNode** pVal)
 {
-#ifdef TANGRAMCOMMERCIALDITION
 	if (m_pDesignWindowNode)
 		(*pVal) = (IWndNode*)m_pDesignWindowNode;
-#endif
 	return S_OK;
 }
 
@@ -3757,7 +3689,7 @@ STDMETHODIMP CTangram::CreateCompositorManager(LONGLONG hWnd, ICompositorManager
 		CCompositorManager* pCompositorManager = nullptr;
 		auto it = m_mapWindowPage.find(_hWnd);
 		if (it != m_mapWindowPage.end())
-			pCompositorManager = it->second;
+			pCompositorManager = (CCompositorManager*)it->second;
 		else
 		{
 			pCompositorManager = new CComObject<CCompositorManager>();
@@ -4287,7 +4219,6 @@ STDMETHODIMP CTangram::CreateTangramCtrl(BSTR bstrAppID, ITangramCtrl** ppRetCtr
 			int nPos = m_strOfficeAppIDs.Find(strAppID);
 			if (nPos != -1)
 			{
-#ifdef TANGRAMCOMMERCIALDITION
 				CString str = m_strOfficeAppIDs.Left(nPos);
 				int nIndex = str.Replace(_T(","), _T(""));
 				CComPtr<Office::COMAddIns> pAddins;
@@ -4388,7 +4319,6 @@ STDMETHODIMP CTangram::CreateTangramCtrl(BSTR bstrAppID, ITangramCtrl** ppRetCtr
 						}
 					}
 				}
-#endif
 			}
 			else
 			{
@@ -4757,7 +4687,7 @@ STDMETHODIMP CTangram::GetWindowClientDefaultNode(IDispatch* pAddDisp, LONGLONG 
 		}
 	}
 	else
-		pCompositorManager = it->second;
+		pCompositorManager = (CCompositorManager*)it->second;
 	if (pCompositorManager != nullptr)
 	{
 		pCompositorManager->put_ConfigName(strClsName.AllocSysString());
@@ -5405,9 +5335,9 @@ STDMETHODIMP CTangram::OpenCompositors(LONGLONG hWnd, BSTR bstrFrames, BSTR bstr
 		CString strXml = OLE2T(bstrXml);
 		if (strFrames == _T(""))
 		{
-			for (auto it1 : it->second->m_mapCompositor)
+			for (auto it1 : ((CCompositorManager*)it->second)->m_mapCompositor)
 			{
-				if (it1.second != it->second->m_pBKFrame)
+				if (it1.second != ((CCompositorManager*)it->second)->m_pBKFrame)
 				{
 					IWndNode* pNode = nullptr;
 					it1.second->Open(bstrKey, bstrXml, &pNode);
@@ -5445,7 +5375,7 @@ STDMETHODIMP CTangram::OpenCompositors(LONGLONG hWnd, BSTR bstrFrames, BSTR bstr
 		else
 		{
 			strFrames = _T(",") + strFrames;
-			for (auto it1 : it->second->m_mapCompositor)
+			for (auto it1 : ((CCompositorManager*)it->second)->m_mapCompositor)
 			{
 				CString strName = _T(",") + it1.second->m_strCompositorName + _T(",");
 				if (strFrames.Find(strName) != -1)
@@ -5481,7 +5411,7 @@ STDMETHODIMP CTangram::DeletePage(LONGLONG CompositorManagerHandle)
 	auto it = m_mapWindowPage.find(hPage);
 	if (it != m_mapWindowPage.end())
 	{
-		CCompositorManager* pCompositorManager = it->second;
+		CCompositorManager* pCompositorManager = (CCompositorManager*)it->second;
 		auto it2 = pCompositorManager->m_mapCompositor.begin();
 		while (it2 != pCompositorManager->m_mapCompositor.end())
 		{
@@ -5769,7 +5699,8 @@ void CTangram::EclipseInit()
 
 		for (auto it : m_mapBrowserWnd)
 		{
-			it.second->PostMessageW(WM_CLOSE, 0, 0);
+			::PostMessage(it.first, WM_CLOSE, 0, 0);
+			//it.second->PostMessageW(WM_CLOSE, 0, 0);
 		}
 
 		if (::IsWindow(m_hHostWnd))
@@ -6957,7 +6888,7 @@ STDMETHODIMP CTangram::NewWorkBench(BSTR bstrTangramDoc, IWorkBenchWindow** ppWo
 	{
 		if (::IsWindow(m_hEclipseHideWnd) && m_mapWorkBenchWnd.size())
 		{
-			CEclipseWnd* pWnd = m_mapWorkBenchWnd.begin()->second;
+			CEclipseWnd* pWnd = (CEclipseWnd*)m_mapWorkBenchWnd.begin()->second;
 			if (pWnd)
 			{
 				m_strCurrentEclipsePagePath = strDoc;
@@ -7398,38 +7329,6 @@ ITangramDoc* CTangram::ConnectTangramDoc(ITangramAppProxy* AppProxy, LONGLONG do
 	return (ITangramDoc*)pDoc;
 }
 
-void CTangram::BindObjectToWindow(IDispatch* pDisp, HWND hWnd, CString strXml)
-{
-	if (m_pCLRProxy)
-	{
-		if (m_pCLRProxy->BindObjectToWindow(pDisp, hWnd, strXml))
-		{
-			return;
-		}
-	}
-}
-
-void CTangram::BindObjectToWindow(CString objID, CString AssemblyQualifiedName, HWND hWnd, CString strXml)
-{
-	if (m_pCLRProxy)
-	{
-		if (m_pCLRProxy->BindObjectToWindow(objID, AssemblyQualifiedName, hWnd, strXml))
-		{
-		}
-	}
-}
-
-void CTangram::Log(CString strMessage)
-{
-	CString strTime = CTime::GetCurrentTime().Format(L"%A, %B %d, %Y at %Hh%M.");
-	strMessage.Format(L"%s: %s\r\n", strTime, strMessage);
-	CStdioFile file;
-	file.Open(m_strLogFileFormatPath, CFile::modeCreate | CFile::modeWrite | CFile::modeNoTruncate);
-	file.SeekToEnd();
-	file.WriteString(strMessage);
-	file.Close();
-}
-
 __declspec(dllexport) ITangram* __stdcall  GetTangram()
 {
 	return static_cast<ITangram*>(g_pTangram);
@@ -7601,7 +7500,7 @@ CChromeBrowserBase* CTangram::GetChromeBrowserBase(HWND hHostWnd)
 	auto it2 = m_mapBrowserWnd.find(hHostWnd);
 	if (it2 != m_mapBrowserWnd.end())
 	{
-		pPWnd = it2->second;
+		pPWnd = (CBrowserWnd*)it2->second;
 		return pPWnd->m_pBrowser;
 	}
 	return nullptr;
@@ -7615,7 +7514,7 @@ void CTangram::OnDocumentOnLoadCompleted(CChromeRenderFrameHostBase* pFrameHostB
 	auto it = g_pTangram->m_mapHtmlWnd.find(hHtmlWnd);
 	if (it != g_pTangram->m_mapHtmlWnd.end())
 	{
-		it->second->m_pChromeRenderFrameHost = pFrameHostBase;
+		((CHtmlWnd*)it->second)->m_pChromeRenderFrameHost = pFrameHostBase;
 		// Set m_pProxy to CChromeRenderFrameHostProxyBase
 		// TODO: Not work
 		pFrameHostBase->m_pProxy = (CChromeRenderFrameHostProxyBase*)it->second;

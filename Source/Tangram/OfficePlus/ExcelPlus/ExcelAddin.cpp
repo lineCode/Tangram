@@ -92,7 +92,7 @@ namespace OfficePlus
 				{
 					auto it = m_mapWindowPage.find(m_hHostWnd);
 					if (it != m_mapWindowPage.end())
-						m_pDesignerCompositorManager = it->second;
+						m_pDesignerCompositorManager = (CCompositorManager*)it->second;
 					else
 					{
 						m_pDesignerCompositorManager = new CComObject<CCompositorManager>();
@@ -1039,7 +1039,7 @@ namespace OfficePlus
 
 			auto it = pAddin->m_mapWindowPage.find(m_hClient);
 			if (it != pAddin->m_mapWindowPage.end())
-				m_pWorkBook->m_pDocCompositorManager = it->second;
+				m_pWorkBook->m_pDocCompositorManager = (CCompositorManager*)it->second;
 			else
 			{
 				m_pWorkBook->m_pDocCompositorManager = new CComObject<CCompositorManager>();

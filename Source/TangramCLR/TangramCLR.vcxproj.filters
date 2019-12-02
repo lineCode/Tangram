@@ -49,9 +49,6 @@
     <ClCompile Include="Markup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AcquireTemplateStorageInfoForm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DefaultNTPCtrl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -99,9 +96,6 @@
     <ClInclude Include="Markup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AcquireTemplateStorageInfoForm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AssemblyLocalor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -135,9 +129,6 @@
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="ErrorCtrl.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AcquireTemplateStorageInfoForm.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="DefaultNTPCtrl.resx">

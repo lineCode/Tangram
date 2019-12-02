@@ -166,7 +166,7 @@ int MainDllLoader::Launch(HINSTANCE instance,
       return chrome::RESULT_CODE_UNSUPPORTED_PARAM;
     }
 
-    base::FilePath watcher_data_directory;
+	base::FilePath watcher_data_directory;
     if (!base::PathService::Get(chrome::DIR_WATCHER_DATA,
                                 &watcher_data_directory))
       return chrome::RESULT_CODE_MISSING_DATA;

@@ -73,11 +73,11 @@ public:
 		}
 		return pRetObj;
 	}
-
 	void ExportCLRObjInfo(CString strPath);
 	void ExportAllCLRObjInfo(CString _strPath);
 	IDispatch* CreateCLRObj(CString bstrObjID);
 	IDispatch* CreateFormAsMdiChild(BSTR bstrObjID, IDispatch* pMdiParent);
+	void TangramAction(BSTR bstrXml, IWndNode* pNode);
 private:
 	map<HWND, gcroot<Form^>>				m_mapForm;
 	gcroot<Hashtable^>						m_htObjects;
@@ -105,7 +105,6 @@ private:
 	IDispatch* GetCtrlFromHandle(HWND hWnd);
 	HWND IsCtrlCanNavigate(IDispatch* ctrl);
 	void ReleaseTangramObj(IDispatch*);
-	void TangramAction(BSTR bstrXml, IWndNode* pNode);
 	BSTR GetCtrlValueByName(IDispatch* CtrlDisp, BSTR bstrName, bool bFindInChild);
 	void SetCtrlValueByName(IDispatch* CtrlDisp, BSTR bstrName, bool bFindInChild, BSTR strVal);
 	HRESULT NavigateURL(IWndNode* pNode, CString strURL, IDispatch* dispObjforScript);
@@ -119,8 +118,6 @@ private:
 	void* Extend(CString strKey, CString strData, CString strFeatures);
 	bool IsSupportDesigner();
 	HICON GetAppIcon(int nIndex);
-	bool BindObjectToWindow(IDispatch* pDisp, HWND hWnd, CString strXml);
-	bool BindObjectToWindow(CString objID, CString AssemblyQualifiedName, HWND hWnd, CString strXml);
 
 	void WindowCreated(LPCTSTR strClassName, LPCTSTR strName, HWND hPWnd, HWND hWnd);
 	void WindowDestroy(HWND hWnd);

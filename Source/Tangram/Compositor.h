@@ -19,9 +19,8 @@
 ********************************************************************************/
 
 #pragma once
-#include "chromium/BrowserWnd.h"
-#include "chromium/HtmlWnd.h"
 #include "IPC/Broker.h"
+#include "chromium/HtmlWnd.h"
 
 using namespace ChromePlus;
 
@@ -153,7 +152,6 @@ public:
 	map<int, TangramDocTemplateInfo*>		m_mapTangramFormsTemplateInfo2;
 	BEGIN_MSG_MAP(CTangramWinFormWnd)
 		MESSAGE_HANDLER(WM_CLOSE, OnClose)
-		MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
 		MESSAGE_HANDLER(WM_TANGRAMMSG, OnTangramMsg)
 		MESSAGE_HANDLER(WM_TANGRAMDATA, OnGetMe)
 		MESSAGE_HANDLER(WM_WINFORMCREATED, OnFormCreated)
@@ -165,7 +163,6 @@ public:
 private:
 	LRESULT OnClose(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& );
 	LRESULT OnGetMe(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL&);
-	LRESULT OnDestroy(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& );
 	LRESULT OnFormCreated(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& );
 	LRESULT OnTangramMsg(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL&);
 	LRESULT OnTangramGetXml(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL&);

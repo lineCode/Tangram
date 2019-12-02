@@ -595,24 +595,6 @@ void cleanupVM(int exitCode) {
 		if (g_pTangram)
 		{
 			ATLTRACE(_T("begin quit eclipse\n"));
-			g_pTangram->m_pActiveAppProxy = nullptr;
-			for (auto it : g_pTangram->m_mapBKFrame)
-			{
-				HWND hWnd = ::GetParent(it.first);
-				ICompositor* pCompositor = nullptr;
-				g_pTangram->GetCompositor((__int64)::GetParent(hWnd), &pCompositor);
-				CCompositor* _pCompositor = (CCompositor*)pCompositor;
-				if (_pCompositor)
-					_pCompositor->m_pBKWnd = nullptr;
-				::DestroyWindow(::GetParent(it.first));
-			}
-
-			if (g_pTangram->m_mapWindowPage.size())
-			{
-
-				if (g_pTangram->m_pTangramCLRAppProxy)
-					g_pTangram->m_pTangramCLRAppProxy->OnTangramClose();
-			}
 			FreeLibrary((HMODULE)theApp.m_hInstance);
 			return;
 		}

@@ -410,8 +410,7 @@ void RenderWidgetHostViewAura::InitAsChild(gfx::NativeView parent_view) {
   // begin Add by TangramTeam
 #if defined(OS_WIN)
   if (legacy_render_widget_host_HWND_) {
-	  ::PostMessage(GetHostWindowHWND(), WM_DEVICESCALEFACTORCHANGED, (WPARAM)0,
-		  (LPARAM)device_scale_factor_ * 100);
+	  ::PostMessage(GetHostWindowHWND(), WM_DEVICESCALEFACTORCHANGED, 0, device_scale_factor_ * 100);
   }
 #endif
   // end Add by TangramTeam
@@ -470,8 +469,7 @@ void RenderWidgetHostViewAura::InitAsPopup(
   // begin Add by TangramTeam
 #if defined(OS_WIN)
   if (legacy_render_widget_host_HWND_) {
-	  ::PostMessage(GetHostWindowHWND(), WM_DEVICESCALEFACTORCHANGED, (WPARAM)0,
-		  (LPARAM)device_scale_factor_ * 100);
+	  ::PostMessage(GetHostWindowHWND(), WM_DEVICESCALEFACTORCHANGED, 0, device_scale_factor_ * 100);
   }
 #endif
   // end Add by TangramTeam
@@ -503,8 +501,7 @@ void RenderWidgetHostViewAura::InitAsFullscreen(
   // begin Add by TangramTeam
 #if defined(OS_WIN)
   if (legacy_render_widget_host_HWND_) {
-	  ::PostMessage(GetHostWindowHWND(), WM_DEVICESCALEFACTORCHANGED, (WPARAM)0,
-		  (LPARAM)device_scale_factor_ * 100);
+	  ::PostMessage(GetHostWindowHWND(), WM_DEVICESCALEFACTORCHANGED, 0, device_scale_factor_ * 100);
   }
 #endif
   // end Add by TangramTeam
@@ -1698,8 +1695,8 @@ void RenderWidgetHostViewAura::OnDeviceScaleFactorChanged(
 #if defined(OS_WIN)
   if (legacy_render_widget_host_HWND_) {
 	  ::PostMessage(GetHostWindowHWND(), WM_DEVICESCALEFACTORCHANGED,
-		  (WPARAM)old_device_scale_factor * 100,
-		  (LPARAM)new_device_scale_factor * 100);
+		  old_device_scale_factor * 100,
+		  new_device_scale_factor * 100);
   }
 #endif
   // end Add by TangramTeam

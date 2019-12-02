@@ -538,8 +538,6 @@ namespace TangramCommon {
 		virtual void* Extend(CString strKey, CString strData, CString strFeatures) { return nullptr; }
 		virtual bool IsSupportDesigner() { return false; }
 		virtual HICON GetAppIcon(int nIndex) = 0;
-		virtual bool BindObjectToWindow(IDispatch* pDisp, HWND hWnd, CString strXml) = 0;
-		virtual bool BindObjectToWindow(CString objID, CString AssemblyQualifiedName, HWND hWnd, CString strXml) = 0;
 	};
 
 	class CTangramImpl {
@@ -563,7 +561,6 @@ namespace TangramCommon {
 			m_pTangramCLRAppProxy = nullptr;
 			m_pTangramAppProxy = nullptr;
 			m_pTangramDelegate = nullptr;
-			m_pTaskbarList3 = nullptr;
 			m_pCurMDIChildFormInfo = nullptr;
 			m_strNtpXml = _T("");
 			m_strNtpDataXml = _T("");
@@ -670,7 +667,6 @@ namespace TangramCommon {
 		CString									m_strStartupURL = _T("");
 		CString									m_strStartupCLRObj;
 		CString									m_strCurrentEclipsePagePath;
-		CString									m_strLogFileFormatPath;
 		CString									m_strDefaultXml;
 		CString									m_strLibs;
 
@@ -678,7 +674,6 @@ namespace TangramCommon {
 		CString									m_strStartJarPath;
 
 		ITangramCLRImpl*						m_pCLRProxy;
-		ITaskbarList3*							m_pTaskbarList3;
 		ITangramAppProxy*						m_pActiveAppProxy;
 		ITangramAppProxy*						m_pTangramAppProxy;
 		ITangramAppProxy*						m_pTangramCLRAppProxy;
@@ -698,6 +693,8 @@ namespace TangramCommon {
 		CChromeRenderFrameHostBase*				m_pCreatingChromeRenderFrameHostBase;
 
 		map<CString, IDispatch*>				m_mapObjDic;
+		map<HWND, ICompositorManager*>			m_mapFramePage;
+		map<HWND, ICompositorManager*>			m_mapWindowPage;
 		map<CString, IDispatch*>				m_mapAppDispDic;
 		map<CString, CComVariant>				m_mapValInfo;
 		map<CString, void*>						m_mapTemplateInfo;
@@ -711,6 +708,13 @@ namespace TangramCommon {
 		map<CString, TangramDocTemplateInfo*>	m_mapTangramFormsTemplateInfo;
 		map<int, TangramDocTemplateInfo*>		m_mapTangramFormsTemplateInfo2;
 		map<CString, ITangramAppProxy*>			m_mapTangramAppProxy;
+		map<HWND, IChromeWebContent*>			m_mapHtmlWnd;
+		map<HWND, IChromeWebBrowser*>			m_mapBrowserWnd;
+		map<HWND, IWorkBenchWindow*>			m_mapWorkBenchWnd;
+		map<void*, IUnknown*>					m_mapObjects;
+		map<IDispatch*, CString>				m_mapObjEventDic;
+		map<CString, CString>					m_mapJavaNativeInfo;
+		map<CString, CString>					m_mapCreatingWorkBenchInfo;
 
 		map<CString, CString>					m_mapFormsInfo;
 		map<CString, CString>					m_mapAtlMFCsInfo;
@@ -742,10 +746,6 @@ namespace TangramCommon {
 		virtual void DotNetControlCreated(MSG* lpMsg) {}
 		virtual void ExportComponentInfo() {}
 		virtual void ConnectDocTemplate(LPCTSTR strType, LPCTSTR strExt, void* pTemplate) {}
-		virtual void SetOverlayIcon(HWND hwnd, HICON hIcon, CString alt_text) {}
-		virtual void Log(CString strMessage) {}
-		virtual void BindObjectToWindow(IDispatch* pDisp, HWND hWnd, CString strXml) {}
-		virtual void BindObjectToWindow(CString objID, CString AssemblyQualifiedName, HWND hWnd, CString strXml) {}
 	};
 
 	class ITangramDelegate {

@@ -89,7 +89,6 @@ namespace OfficePlus
 
 	STDMETHODIMP COfficeAddin::OnConnection(IDispatch *pApplication, AddInDesignerObjects::ext_ConnectMode ConnectMode, IDispatch *pAddInInst, SAFEARRAY ** /*custom*/)
 	{
-#ifdef TANGRAMCOMMERCIALDITION
 		CComQIPtr<COMAddIn> _pAddInInst(pAddInInst);
 		if (_pAddInInst)
 			_pAddInInst->put_Object((ITangram*)this);
@@ -100,7 +99,6 @@ namespace OfficePlus
 			m_hChildHostWnd = ::CreateWindowEx(NULL, _T("Tangram Window Class"), _T(""), WS_CLIPCHILDREN | WS_CLIPSIBLINGS | WS_VISIBLE | WS_CHILD, 0, 0, 0, 0, m_hHostWnd, NULL, theApp.m_hInstance, NULL);
 		}
 		OnConnection(pApplication, ConnectMode);
-#endif
 		return S_OK;
 	}
 
@@ -108,11 +106,9 @@ namespace OfficePlus
 	{
 		m_bOfficeAddinUnLoad = true;
 		g_pTangram->m_pActiveAppProxy = nullptr;
-#ifdef TANGRAMCOMMERCIALDITION
 		if (m_pCTPFactory)
 			m_pCTPFactory.Detach();
 		OnDisconnection(RemoveMode);
-#endif
 
 		g_pTangram->m_pDesignerCompositorManager = nullptr;
 		if (::IsWindow(m_hHostWnd))
@@ -150,7 +146,6 @@ namespace OfficePlus
 
 	void COfficeAddin::OnCloseOfficeObj(CString strName, HWND hWnd)
 	{
-#ifdef TANGRAMCOMMERCIALDITION
 		auto it = m_mapOfficeObjects.find(hWnd);
 		if (it != m_mapOfficeObjects.end())
 		{
@@ -164,7 +159,6 @@ namespace OfficePlus
 
 			}
 		}
-#endif
 	}
 
 	void COfficeAddin::_AddDocXml(Office::_CustomXMLParts* pCustomXMLParts, BSTR bstrXml, BSTR bstrKey)
@@ -279,7 +273,6 @@ namespace OfficePlus
 
 	CString COfficeAddin::_GetDocXmlByKey(Office::_CustomXMLParts* pCustomXMLParts, BSTR bstrKey)
 	{
-#ifdef TANGRAMCOMMERCIALDITION
 		CString strKey = OLE2T(bstrKey);
 		if (strKey == _T("") || pCustomXMLParts == nullptr)
 		{
@@ -309,7 +302,6 @@ namespace OfficePlus
 				}
 			}
 		}
-#endif
 		return _T("");
 	}
 
@@ -358,7 +350,6 @@ namespace OfficePlus
 
 	STDMETHODIMP COfficeAddin::TangramGetImage(BSTR strValue, IPictureDisp ** ppDispImage)
 	{
-#ifdef TANGRAMCOMMERCIALDITION
 		CImage m_Image;
 		TCHAR szPath[MAX_PATH] = { 0 };
 		GetModuleFileName(GetModuleHandle(_T("TangramCore.dll")), szPath, MAX_PATH);
@@ -400,7 +391,6 @@ namespace OfficePlus
 			::MessageBox(0, _T("Error in creating picture from bitmap."), _T("Tangram - COutLookApp::OnGetImage()"), MB_OK);
 			return S_OK;
 		}
-#endif
 		return S_OK;
 	}
 
@@ -453,7 +443,7 @@ namespace OfficePlus
 			{
 				auto it = m_mapWindowPage.find(m_hHostWnd);
 				if (it != m_mapWindowPage.end())
-					m_pDesignerCompositorManager = it->second;
+					m_pDesignerCompositorManager = (CCompositorManager*)it->second;
 				else
 				{
 					m_pDesignerCompositorManager = new CComObject<CCompositorManager>();
@@ -546,7 +536,6 @@ namespace OfficePlus
 
 	STDMETHODIMP COfficeExtender::InitVBAForm(IDispatch* pFormDisp, long nStyle, BSTR bstrXml, IWndNode** ppNode)
 	{
-#ifdef TANGRAMCOMMERCIALDITION
 		CComQIPtr<IOleWindow> pOleWnd(pFormDisp);
 		if (pOleWnd)
 		{
@@ -591,7 +580,7 @@ namespace OfficePlus
 					CCompositorManager* pCompositorManager = nullptr;
 					auto it = m_pAddin->m_mapWindowPage.find(hChild);
 					if (it != m_pAddin->m_mapWindowPage.end())
-						pCompositorManager = it->second;
+						pCompositorManager = (CCompositorManager*)it->second;
 					else
 					{
 						pCompositorManager = new CComObject<CCompositorManager>();
@@ -626,13 +615,11 @@ namespace OfficePlus
 				}
 			}
 		}
-#endif
 		return S_OK;
 	}
 
 	STDMETHODIMP COfficeExtender::AddVBAFormsScript(IDispatch* OfficeObject, BSTR bstrKey, BSTR bstrXml)
 	{
-#ifdef TANGRAMCOMMERCIALDITION
 		CString strKey = OLE2T(bstrKey);
 		if (strKey == _T(""))
 		{
@@ -716,7 +703,6 @@ namespace OfficePlus
 			}
 			::VariantClear(&result);
 		}
-#endif
 		return S_OK;
 	}
 
@@ -810,7 +796,7 @@ namespace OfficePlus
 
 			auto it = g_pTangram->m_mapWindowPage.find(m_hClient);
 			if (it != g_pTangram->m_mapWindowPage.end())
-				m_pCompositorManager = it->second;
+				m_pCompositorManager = (CCompositorManager*)it->second;
 			else
 			{
 				m_pCompositorManager = new CComObject<CCompositorManager>();
@@ -837,7 +823,6 @@ namespace OfficePlus
 
 	STDMETHODIMP COfficeObject::UnloadTangram()
 	{
-#ifdef TANGRAMCOMMERCIALDITION
 		if (m_pCompositorManager)
 		{
 			m_pCompositor->ModifyHost((long)m_hChildClient);
@@ -847,7 +832,6 @@ namespace OfficePlus
 			m_pCompositor = nullptr;
 			m_pCompositorManager = nullptr;
 		}
-#endif
 		return S_OK;
 	}
 }

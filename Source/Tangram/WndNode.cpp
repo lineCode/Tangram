@@ -310,7 +310,6 @@ STDMETHODIMP CWndNode::LoadXML(int nType, BSTR bstrXML)
 
 STDMETHODIMP CWndNode::ActiveTabPage(IWndNode * _pNode)
 {
-#ifdef TANGRAMCOMMERCIALDITION
 	g_pTangram->m_pActiveNode = this;
 	HWND hWnd = m_pHostWnd->m_hWnd;
 	if (m_pHostWnd && ::IsWindow(hWnd))
@@ -326,7 +325,6 @@ STDMETHODIMP CWndNode::ActiveTabPage(IWndNode * _pNode)
 		}
 		m_pTangramNodeCommonData->m_pCompositor->UpdateVisualWPFMap(::GetParent(hWnd), true);
 	}
-#endif
 	return S_OK;
 }
 
@@ -631,8 +629,8 @@ STDMETHODIMP CWndNode::put_Attribute(BSTR bstrKey, BSTR bstrVal)
 				ChromePlus::CHtmlWnd* pWebWnd = (ChromePlus::CHtmlWnd*)::GetWindowLongPtr(m_pTangramNodeCommonData->m_pCompositor->m_hWnd, GWLP_USERDATA);
 				auto it = g_pTangram->m_mapBrowserWnd.find(::GetParent(pWebWnd->m_hWnd));
 				if (it != g_pTangram->m_mapBrowserWnd.end()) {
-					it->second->m_pBrowser->LayoutBrowser();
-					it->second->BrowserLayout();
+					((CBrowserWnd*)it->second)->m_pBrowser->LayoutBrowser();
+					((CBrowserWnd*)it->second)->BrowserLayout();
 				}
 			}
 		}
@@ -872,8 +870,8 @@ BOOL CWndNode::Create(DWORD dwStyle, const RECT & rect, CWnd * pParentWnd, UINT 
 					auto it = g_pTangram->m_mapBrowserWnd.find(hBrowser);
 					if (it != g_pTangram->m_mapBrowserWnd.end())
 					{
-						m_pWebBrowser = it->second;
-						m_pWebBrowser->m_pWndNode = this;
+						m_pWebBrowser = (CBrowserWnd*)it->second;
+						//m_pWebBrowser->m_pWndNode = this;
 					}
 				}
 			}
@@ -1058,7 +1056,6 @@ BOOL CWndNode::Create(DWORD dwStyle, const RECT & rect, CWnd * pParentWnd, UINT 
 		m_pHostWnd->SendMessage(WM_INITIALUPDATE);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////
-#ifdef TANGRAMCOMMERCIALDITION
 	m_pTangramNodeCommonData->m_mapLayoutNodes[m_strName] = this;
 	if (m_strID.CompareNoCase(_T("treeview")))
 	{
@@ -1120,7 +1117,6 @@ BOOL CWndNode::Create(DWORD dwStyle, const RECT & rect, CWnd * pParentWnd, UINT 
 		if (m_pHostWnd)
 			m_pHostWnd->ModifyStyleEx(WS_EX_WINDOWEDGE | WS_EX_CLIENTEDGE, 0);
 	}
-#endif
 	if (g_pTangram->m_pActiveNode && g_pTangram->m_pActiveNode->m_pTangramNodeCommonData->m_pCompositorManager)
 		g_pTangram->m_pActiveNode->m_pTangramNodeCommonData->m_pCompositorManager->Fire_NodeCreated(this);
 
@@ -1996,21 +1992,18 @@ STDMETHODIMP CWndNode::put_HostNode(IWndNode * newVal)
 
 STDMETHODIMP CWndNode::get_ActivePage(int* pVal)
 {
-#ifdef TANGRAMCOMMERCIALDITION
 	if (this->m_nViewType == TangramViewType::TabbedWnd)
 	{
 		CComBSTR bstr(L"");
 		get_Attribute(CComBSTR(L"activepage"), &bstr);
 		*pVal = _wtoi(OLE2T(bstr));
 	}
-#endif
 	return S_OK;
 }
 
 
 STDMETHODIMP CWndNode::put_ActivePage(int newVal)
 {
-#ifdef TANGRAMCOMMERCIALDITION
 	if (this->m_nViewType == TangramViewType::TabbedWnd && newVal < m_nCols)
 	{
 		HWND hwnd = nullptr;
@@ -2039,7 +2032,6 @@ STDMETHODIMP CWndNode::put_ActivePage(int newVal)
 			ActiveTabPage(pNode);
 		}
 	}
-#endif
 
 	return S_OK;
 }
@@ -2563,8 +2555,8 @@ STDMETHODIMP CWndNode::NavigateURL(BSTR bstrURL, IDispatch * dispObjforScript)
 		auto it = g_pTangram->m_mapBrowserWnd.find(hBrowser);
 		if (it != g_pTangram->m_mapBrowserWnd.end())
 		{
-			m_pWebBrowser = it->second;
-			m_pWebBrowser->m_pWndNode = this;
+			m_pWebBrowser = (CBrowserWnd*)it->second;
+			//m_pWebBrowser->m_pWndNode = this;
 		}
 		//g_pTangram->m_pCurWebNode = nullptr;
 		return S_OK;
@@ -2601,8 +2593,8 @@ STDMETHODIMP CWndNode::put_URL(BSTR newVal)
 		auto it = g_pTangram->m_mapBrowserWnd.find(hBrowser);
 		if (it != g_pTangram->m_mapBrowserWnd.end())
 		{
-			m_pWebBrowser = it->second;
-			m_pWebBrowser->m_pWndNode = this;
+			m_pWebBrowser = (CBrowserWnd*)it->second;
+			//m_pWebBrowser->m_pWndNode = this;
 		}
 		//g_pTangram->m_pCurWebNode = nullptr;
 		return S_OK;
@@ -2620,8 +2612,8 @@ STDMETHODIMP CWndNode::put_URL(BSTR newVal)
 		auto it = g_pTangram->m_mapBrowserWnd.find(hBrowser);
 		if (it != g_pTangram->m_mapBrowserWnd.end())
 		{
-			m_pWebBrowser = it->second;
-			m_pWebBrowser->m_pWndNode = this;
+			m_pWebBrowser = (CBrowserWnd*)it->second;
+			//m_pWebBrowser->m_pWndNode = this;
 		}
 		//g_pTangram->m_pCurWebNode = nullptr;
 		return S_OK;
