@@ -6,7 +6,7 @@
 #
 # Chrome Application dir entries, sorted alphabetically.
 #
-chrome.exe: %(ChromeDir)s\
+# chrome.exe: %(ChromeDir)s\
 chrome_proxy.exe: %(ChromeDir)s\
 tangramcore.dll: %(ChromeDir)s\
 #tangramcore.pdb: %(ChromeDir)s\
@@ -26,6 +26,7 @@ tangramcomponent\*.component: %(ChromeDir)s\tangramcomponent\
 # // TODO(caitkp): Find a way to do this without wildcards.
 #
 *.*.*.*.manifest: %(VersionDir)s\
+tangramhelper.exe: %(VersionDir)s\
 #
 # Chrome version dir entries, sorted alphabetically.
 #

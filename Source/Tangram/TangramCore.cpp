@@ -7547,12 +7547,12 @@ CString CTangram::GetProcessPath(const char* _ver, CString process_type)
 	if (g_pTangram == nullptr)
 		return _T("");
 	CString strRet = _T("");
-	strRet.Format(_T("%schrome.exe"), m_strAppPath, process_type);
+	strRet.Format(_T("%stangramhelper.exe"), m_strAppPath, process_type);
 	//strRet.Format(_T("%stangram%s.exe"), m_strAppPath, process_type);
 	if (::PathFileExists(strRet))
 		return strRet;
 	USES_CONVERSION;
-	strRet.Format(_T("%s%s\\chrome.exe"), m_strAppPath, A2W(_ver), process_type);
+	strRet.Format(_T("%s%s\\tangramhelper.exe"), m_strAppPath, A2W(_ver), process_type);
 	//strRet.Format(_T("%s%s\\tangram%s.exe"), m_strAppPath, A2W(_ver), process_type);
 	if (::PathFileExists(strRet))
 		return strRet;

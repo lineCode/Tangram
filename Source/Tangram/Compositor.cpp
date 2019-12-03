@@ -3370,8 +3370,7 @@ STDMETHODIMP CCompositor::get_HostBrowser(IChromeWebBrowser** ppChromeWebBrowser
 			auto it = g_pTangram->m_mapBrowserWnd.find(hPWnd);
 			if (it != g_pTangram->m_mapBrowserWnd.end())
 			{
-				CBrowserWnd* pBrowserWnd = it->second;
-				*ppChromeWebBrowser = (IChromeWebBrowser*)pBrowserWnd;
+				*ppChromeWebBrowser = it->second;
 				return S_OK;
 			}
 		}
