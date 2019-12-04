@@ -50,9 +50,9 @@ void CTangramCLRApp::InitTangramApp(bool bCrashReporting)
 {
 	if (m_bBrowserModeInit)
 		return;
-	HMODULE hModule = ::GetModuleHandle(L"chromert.dll");
+	HMODULE hModule = ::GetModuleHandle(L"tangram_chrome_rt.dll");
 	if(hModule==nullptr)
-		hModule = ::LoadLibrary(L"chromert.dll");
+		hModule = ::LoadLibrary(L"tangram_chrome_rt.dll");
 	if (hModule) {
 		typedef int(__stdcall * _InitApp)(bool bSupportCrashReporting);
 		_InitApp _pInitAppFunction;

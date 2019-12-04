@@ -10,10 +10,13 @@
 chrome_proxy.exe: %(ChromeDir)s\
 tangramcore.dll: %(ChromeDir)s\
 tangramcore.pdb: %(ChromeDir)s\
-tangramclr.dll: %(ChromeDir)s\
-tangramclr.pdb: %(ChromeDir)s\
-chromert.dll: %(ChromeDir)s\
-chromert.rt.pdb: %(ChromeDir)s\
+tangram_clr_rt.dll: %(ChromeDir)s\
+tangram_clr_rt.pdb: %(ChromeDir)s\
+tangram_chrome_rt.dll: %(ChromeDir)s\
+tangram_chrome_rt.dll.pdb: %(ChromeDir)s\
+winrtapi\*.dll: %(ChromeDir)s\
+mfcexe\*.exe: %(ChromeDir)s\
+csharpexe\*.exe: %(ChromeDir)s\
 tangramcomponent\*.dll: %(ChromeDir)s\tangramcomponent\
 tangramcomponent\*.component: %(ChromeDir)s\tangramcomponent\
 #

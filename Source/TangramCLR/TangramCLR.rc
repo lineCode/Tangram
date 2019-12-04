@@ -74,12 +74,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "TangramTeam"
-            VALUE "FileDescription", "Tangram CLR Proxy"
+            VALUE "FileDescription", "Tangram CLR Runtime"
             VALUE "FileVersion", "10.0.0.0"
-            VALUE "InternalName", "TangramCLR.dll"
+            VALUE "InternalName", "tangram_clr_rt.dll"
             VALUE "LegalCopyright", "TangramTeam.  All rights reserved."
-            VALUE "OriginalFilename", "TangramCLR.dll"
-            VALUE "ProductName", "TangramCLR"
+            VALUE "OriginalFilename", "tangram_clr_rt.dll"
+            VALUE "ProductName", "Tangram CLR Runtime"
             VALUE "ProductVersion", "10.0.0.0"
         END
     END

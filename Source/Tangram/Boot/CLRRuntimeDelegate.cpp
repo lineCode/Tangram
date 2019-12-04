@@ -60,7 +60,7 @@ namespace Boot
 					HANDLE hFind; // file handle
 					WIN32_FIND_DATA FindFileData;
 
-					hFind = FindFirstFile(Application::GetWorkingPath() + _T("TangramCLR.dll"), &FindFileData); // find the first file
+					hFind = FindFirstFile(Application::GetWorkingPath() + _T("Tangram_CLR_Rt.dll"), &FindFileData); // find the first file
 					if (hFind != INVALID_HANDLE_VALUE)
 					{
 						bool bSearch = true;
@@ -78,7 +78,7 @@ namespace Boot
 								if ((FindFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY))
 								{
 									CString strPath = Application::GetWorkingPath() + FindFileData.cFileName + _T("\\");
-									strPath += _T("tangramclr.dll");
+									strPath += _T("Tangram_CLR_Rt.dll");
 									if (::PathFileExists(strPath))
 									{
 										break;
@@ -97,7 +97,7 @@ namespace Boot
 #else
 						nVer = 32;
 #endif
-						strPath.Format(_T("%s\\Microsoft.NET\\assembly\\GAC_%d\\TangramCLR\\v4.0_1.0.1992.1963__1bcc94f26a4807a7\\TangramCLR.dll"), g_pTangram->m_szBuffer, nVer);
+						strPath.Format(_T("%s\\Microsoft.NET\\assembly\\GAC_%d\\Tangram_CLR_Rt\\v4.0_1.0.1992.1963__1bcc94f26a4807a7\\Tangram_CLR_RT.dll"), g_pTangram->m_szBuffer, nVer);
 					}
 
 					CTangramImpl* pTangramProxyBase = static_cast<CTangramImpl*>(g_pTangram);

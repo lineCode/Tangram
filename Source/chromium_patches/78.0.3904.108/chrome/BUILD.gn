@@ -979,7 +979,7 @@ if (!is_android && !is_mac) {
 
   template("chrome_component") {
     shared_library(target_name) {
-      output_name = "${invoker.output_name}rt"
+      output_name = "tangram_${invoker.output_name}_rt"
       sources = invoker.sources
       if (defined(invoker.deps)) {
         deps = invoker.deps

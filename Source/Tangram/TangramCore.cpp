@@ -2451,14 +2451,14 @@ int CTangram::LoadCLR()
 				else
 					m_bEnableProcessFormTabKey = true;
 
-				CString strPath = m_strAppPath + _T("TangramCLR.dll");
+				CString strPath = m_strAppPath + _T("tangram_clr_rt.dll");
 
 				HANDLE hFind; // file handle
 				WIN32_FIND_DATA FindFileData;
 				if (::PathFileExists(strPath) == false)
 				{
 					strPath = _T("");
-					hFind = FindFirstFile(m_strAppPath + _T("TangramCLR.dll"), &FindFileData); // find the first file
+					hFind = FindFirstFile(m_strAppPath + _T("tangram_clr_rt.dll"), &FindFileData); // find the first file
 					if (hFind != INVALID_HANDLE_VALUE)
 					{
 						bool bSearch = true;
@@ -2476,7 +2476,7 @@ int CTangram::LoadCLR()
 								if ((FindFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY))
 								{
 									strPath = m_strAppPath + FindFileData.cFileName + _T("\\");
-									strPath += _T("tangramclr.dll");
+									strPath += _T("tangram_clr_rt.dll");
 									if (::PathFileExists(strPath))
 									{
 										break;
@@ -2496,7 +2496,7 @@ int CTangram::LoadCLR()
 	#else
 					nVer = 32;
 	#endif
-					strPath.Format(_T("%s\\Microsoft.NET\\assembly\\GAC_%d\\TangramCLR\\v4.0_1.0.1992.1963__1bcc94f26a4807a7\\TangramCLR.dll"), m_szBuffer, nVer);
+					strPath.Format(_T("%s\\Microsoft.NET\\assembly\\GAC_%d\\tangram_clr_rt\\v4.0_1.0.1992.1963__1bcc94f26a4807a7\\Tangram_CLR_RT.dll"), m_szBuffer, nVer);
 				}
 
 				CTangramImpl* pTangramProxyBase = static_cast<CTangramImpl*>(this);

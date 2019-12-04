@@ -25,7 +25,7 @@ CTangramAppBase::~CTangramAppBase()
 
 void CTangramAppBase::InitCloudApp(bool bCrashReporting, ChromePlus::CTangramMessagePumpImplProxy* pPumpImplProxy)
 {
-	HMODULE hModule = ::LoadLibrary(L"chromert.dll");
+	HMODULE hModule = ::LoadLibrary(L"tangram_chrome_rt.dll");
 	if (hModule) {
 		::PostAppMessage(::GetCurrentThreadId(), WM_TANGRAMMSG,
 			(WPARAM)& theAppImpl, 20190420);

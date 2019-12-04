@@ -81,7 +81,7 @@ BOOL CTangramAppBaseEx::CheckChromeRT()
 	CString m_strChromeRTPath = CString(exefile);
 	int nPos = m_strChromeRTPath.ReverseFind('\\');
 	m_strChromeRTPath = m_strChromeRTPath.Left(nPos + 1);
-	return ::PathFileExists(m_strChromeRTPath + _T("chromert.dll"));
+	return ::PathFileExists(m_strChromeRTPath + _T("tangram_chrome_rt.dll"));
 }
 
 int CTangramAppBaseEx::Run() {
@@ -97,7 +97,7 @@ int CTangramAppBaseEx::Run() {
 
 BOOL CTangramAppBaseEx::InitCloudApp(bool bCrashReporting)
 {
-	HMODULE hModule = ::LoadLibrary(L"chromert.dll");
+	HMODULE hModule = ::LoadLibrary(L"tangram_chrome_rt.dll");
 	if (hModule) {
 		typedef int(__stdcall* _InitApp)(bool bSupportCrashReporting, void*, TangramCommon::CTangramApplicationImpl*);
 		_InitApp FuncInitApp;

@@ -19,8 +19,7 @@ namespace MyCSharpBrowser
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            string newTabPageLayout = Helper.LoadResourceFile("MyCSharpBrowser.Default.xml");
-            Tangram.UpdateNewTabPageLayout(newTabPageLayout);
+            Tangram.UpdateNewTabPageLayout(Helper.LoadResourceFile("MyCSharpBrowser.Default.xml"));
             Application.Run(Tangram.Context);// Important!
         }
     }

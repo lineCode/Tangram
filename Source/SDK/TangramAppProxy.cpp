@@ -22,7 +22,7 @@ CAppProxy::~CAppProxy()
 	//		bUnload = ::FreeLibrary(hModule);
 	//}
 	
-	//hModule = ::GetModuleHandle(L"chromert.dll");
+	//hModule = ::GetModuleHandle(L"tangram_chrome_rt.dll");
 	//if (hModule) {
 	//	BOOL bUnload = ::FreeLibrary(hModule);
 	//	while (bUnload)
@@ -223,9 +223,9 @@ void CAppProxy::ProcessMsg(MSG* msg)
 
 BOOL CAppProxy::InitCloudApp(bool bCrashReporting)
 {
-	HMODULE hModule = ::GetModuleHandle(L"chromert.dll");
+	HMODULE hModule = ::GetModuleHandle(L"tangram_chrome_rt.dll");
 	if (hModule == nullptr)
-		hModule = ::LoadLibrary(L"chromert.dll");
+		hModule = ::LoadLibrary(L"tangram_chrome_rt.dll");
 	if (hModule) {
 		FuncInitApp = (_InitApp)GetProcAddress(hModule, "InitApp");
 		if (FuncInitApp != NULL) {
@@ -253,9 +253,9 @@ CString CAppProxy::GetNTPXml()
 
 BOOL CAppProxy::IsBrowserModel(bool bCrashReporting)
 {
-	HMODULE hModule = ::GetModuleHandle(L"chromert.dll");
+	HMODULE hModule = ::GetModuleHandle(L"tangram_chrome_rt.dll");
 	if (hModule == nullptr)
-		hModule = ::LoadLibrary(L"chromert.dll");
+		hModule = ::LoadLibrary(L"tangram_chrome_rt.dll");
 	if (hModule) {
 		FuncIsBrowserModel = (_IsBrowserModel)GetProcAddress(hModule, "IsBrowserModel");
 		if (FuncIsBrowserModel != NULL) {

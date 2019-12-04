@@ -661,7 +661,7 @@ namespace TangramCommon
 				m_strProviderID += _T(".host");
 				m_strProviderID.MakeLower();
 				m_pTangramImpl->m_mapTangramAppProxy[m_strProviderID] = static_cast<ITangramAppProxy*>(this);
-				m_pTangramImpl->m_mapTangramWindowProvider[m_strProviderID] = static_cast<ITangramWindowProvider*>(this);
+				g_pTangramImpl->m_mapTangramWindowProvider[m_strProviderID] = static_cast<ITangramWindowProvider*>(this);
 			}
 			else 
 			{
@@ -706,9 +706,9 @@ namespace TangramCommon
 #endif
 				}
 				m_pTangramImpl->m_hMainWnd = NULL;
-				HMODULE hModule = ::GetModuleHandle(L"chromert.dll");
+				HMODULE hModule = ::GetModuleHandle(L"tangram_chrome_rt.dll");
 				if (hModule == nullptr)
-					hModule = ::LoadLibrary(L"chromert.dll");
+					hModule = ::LoadLibrary(L"tangram_chrome_rt.dll");
 				if (hModule) {
 					typedef int(__stdcall* _InitApp)(bool bSupportCrashReporting, void*);
 					_InitApp _pInitAppFunction;
@@ -743,9 +743,9 @@ namespace TangramCommon
 
 	BOOL CTangramAppDelegate::IsBrowserModel(bool bCrashReporting)
 	{
-		HMODULE hModule = ::GetModuleHandle(L"chromert.dll");
+		HMODULE hModule = ::GetModuleHandle(L"tangram_chrome_rt.dll");
 		if (hModule == nullptr)
-			hModule = ::LoadLibrary(L"chromert.dll");
+			hModule = ::LoadLibrary(L"tangram_chrome_rt.dll");
 		if (hModule) {
 			m_bCrashReporting = bCrashReporting;
 			FuncIsBrowserModel = (_IsBrowserModel)GetProcAddress(hModule, "IsBrowserModel");

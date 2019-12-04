@@ -24,10 +24,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\chromium_root_80\src\out\tangram_static_release_x64\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -46,9 +46,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TangramCLR, Version=1.0.1992.1963, Culture=neutral, PublicKeyToken=1bcc94f26a4807a7, processorArchitecture=AMD64">
+    <Reference Include="Tangram_CLR_Rt, Version=1.0.1992.1963, Culture=neutral, PublicKeyToken=1bcc94f26a4807a7, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\chromium_root_80\src\out\tangram_static_release_x64\TangramCLR.dll</HintPath>
+      <HintPath>..\..\chromium_root_80\src\out\tangram_static_release_x64\Tangram_CLR_Rt.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

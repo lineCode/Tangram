@@ -361,9 +361,9 @@ namespace TangramCLR
 		if (IsChromeRunning)
 			return true;
 
-		HMODULE hModule = ::GetModuleHandle(L"chromert.dll");
+		HMODULE hModule = ::GetModuleHandle(L"tangram_chrome_rt.dll");
 		if (hModule == nullptr)
-			hModule = ::LoadLibrary(L"chromert.dll");
+			hModule = ::LoadLibrary(L"tangram_chrome_rt.dll");
 		if (hModule) {
 			typedef bool(__stdcall* _IsChromeRunning)(bool bSupportCrashReporting);
 			_IsChromeRunning FuncIsChromeRunning;
@@ -1301,7 +1301,7 @@ namespace TangramCLR
 					{
 						try
 						{
-							if (strLibName.CompareNoCase(_T("tangramclr")) == 0)
+							if (strLibName.CompareNoCase(_T("tangram_clr_rt")) == 0)
 								m_pDotNetAssembly = pApp->GetType()->Assembly;
 							else
 							{

@@ -702,12 +702,12 @@ namespace TangramCommon {
 		map<IWndNode*, CString>					m_mapControlScript;
 		map<CString, void*>						m_mapExcludedObjects;
 		map<CString, HWND>						m_mapTangramDesignedWindows;
+		map<CString, ITangramAppProxy*>			m_mapTangramAppProxy;
 		map<CString, ITangramWindowProvider*>	m_mapTangramWindowProvider;
 		map<int, TangramDocTemplateInfo*>		m_mapTangramDocTemplateInfo;
 		map<CString, TangramDocTemplateInfo*>	m_mapTangramDocTemplateInfo2;
 		map<CString, TangramDocTemplateInfo*>	m_mapTangramFormsTemplateInfo;
 		map<int, TangramDocTemplateInfo*>		m_mapTangramFormsTemplateInfo2;
-		map<CString, ITangramAppProxy*>			m_mapTangramAppProxy;
 		map<HWND, IChromeWebContent*>			m_mapHtmlWnd;
 		map<HWND, IChromeWebBrowser*>			m_mapBrowserWnd;
 		map<HWND, IWorkBenchWindow*>			m_mapWorkBenchWnd;
@@ -715,7 +715,6 @@ namespace TangramCommon {
 		map<IDispatch*, CString>				m_mapObjEventDic;
 		map<CString, CString>					m_mapJavaNativeInfo;
 		map<CString, CString>					m_mapCreatingWorkBenchInfo;
-
 		map<CString, CString>					m_mapFormsInfo;
 		map<CString, CString>					m_mapAtlMFCsInfo;
 		map<CString, CString>					m_mapStartupsInfo;

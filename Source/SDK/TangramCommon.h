@@ -644,24 +644,24 @@ namespace TangramCommon {
 		CStringA								m_strBridgeJavaClass;
 		CString									m_strStartJarPath;
 
-		ITangramCLRImpl*						m_pCLRProxy;
-		ITangramAppProxy*						m_pActiveAppProxy;
-		ITangramAppProxy*						m_pTangramAppProxy;
-		ITangramAppProxy*						m_pTangramCLRAppProxy;
-		CMDIChildFormInfo*						m_pCurMDIChildFormInfo;
-		CTangramPackageProxy*					m_pTangramPackageProxy;
+		ITangramCLRImpl* m_pCLRProxy;
+		ITangramAppProxy* m_pActiveAppProxy;
+		ITangramAppProxy* m_pTangramAppProxy;
+		ITangramAppProxy* m_pTangramCLRAppProxy;
+		CMDIChildFormInfo* m_pCurMDIChildFormInfo;
+		CTangramPackageProxy* m_pTangramPackageProxy;
 
-		IDispatch*								m_pMainFormDisp;
-		IDispatch*								m_pAppDisp;
-		IWndNode*								m_pHostViewDesignerNode;
-		ITangramExtender*						m_pExtender;
+		IDispatch* m_pMainFormDisp;
+		IDispatch* m_pAppDisp;
+		IWndNode* m_pHostViewDesignerNode;
+		ITangramExtender* m_pExtender;
 
-		ITangramDelegate*						m_pTangramDelegate;
-		CChromeBrowserBase*						m_pActiveBrowser;
-		CTangramBrowserFactory*					m_pBrowserFactory;
-		ITangramWindow*							m_pCreatingTangramWindow = nullptr;
-		OmniboxViewViewsProxy*					m_pCreatingOmniboxViewViews;
-		CChromeRenderFrameHostBase*				m_pCreatingChromeRenderFrameHostBase;
+		ITangramDelegate* m_pTangramDelegate;
+		CChromeBrowserBase* m_pActiveBrowser;
+		CTangramBrowserFactory* m_pBrowserFactory;
+		ITangramWindow* m_pCreatingTangramWindow = nullptr;
+		OmniboxViewViewsProxy* m_pCreatingOmniboxViewViews;
+		CChromeRenderFrameHostBase* m_pCreatingChromeRenderFrameHostBase;
 
 		map<CString, IDispatch*>				m_mapObjDic;
 		map<HWND, ICompositorManager*>			m_mapFramePage;
@@ -673,12 +673,12 @@ namespace TangramCommon {
 		map<IWndNode*, CString>					m_mapControlScript;
 		map<CString, void*>						m_mapExcludedObjects;
 		map<CString, HWND>						m_mapTangramDesignedWindows;
+		map<CString, ITangramAppProxy*>			m_mapTangramAppProxy;
 		map<CString, ITangramWindowProvider*>	m_mapTangramWindowProvider;
 		map<int, TangramDocTemplateInfo*>		m_mapTangramDocTemplateInfo;
 		map<CString, TangramDocTemplateInfo*>	m_mapTangramDocTemplateInfo2;
 		map<CString, TangramDocTemplateInfo*>	m_mapTangramFormsTemplateInfo;
 		map<int, TangramDocTemplateInfo*>		m_mapTangramFormsTemplateInfo2;
-		map<CString, ITangramAppProxy*>			m_mapTangramAppProxy;
 		map<HWND, IChromeWebContent*>			m_mapHtmlWnd;
 		map<HWND, IChromeWebBrowser*>			m_mapBrowserWnd;
 		map<HWND, IWorkBenchWindow*>			m_mapWorkBenchWnd;

@@ -140,7 +140,7 @@ namespace TangramCommon
 		//		bUnload = ::FreeLibrary(hModule);
 		//}
 		
-		//hModule = ::GetModuleHandle(L"chromert.dll");
+		//hModule = ::GetModuleHandle(L"tangram_chrome_rt.dll");
 		//if (hModule) {
 		//	BOOL bUnload = ::FreeLibrary(hModule);
 		//	//while (bUnload)
