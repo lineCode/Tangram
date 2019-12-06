@@ -426,8 +426,8 @@ namespace OfficePlus
 		CString strName = this->m_strExeName;
 		if (::IsWindow(m_hHostWnd) == false)
 		{
-			auto it = m_mapValInfo.find(_T("designertoolcaption"));
-			if (it != m_mapValInfo.end())
+			auto it = g_pTangram->m_mapValInfo.find(_T("designertoolcaption"));
+			if (it != g_pTangram->m_mapValInfo.end())
 				m_strDesignerToolBarCaption = OLE2T(it->second.bstrVal);
 			m_hHostWnd = ::CreateWindowEx(WS_EX_WINDOWEDGE | WS_EX_TOOLWINDOW, _T("Tangram Window Class"), m_strDesignerToolBarCaption, WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN | WS_CLIPSIBLINGS, 0, 0, 400, 400, NULL, 0, theApp.m_hInstance, NULL);
 			m_hChildHostWnd = ::CreateWindowEx(NULL, _T("Tangram Window Class"), _T(""), WS_VISIBLE | WS_CHILD, 0, 0, 0, 0, m_hHostWnd, 0, theApp.m_hInstance, NULL);
@@ -441,14 +441,14 @@ namespace OfficePlus
 
 			if (m_pDesignerCompositorManager == nullptr)
 			{
-				auto it = m_mapWindowPage.find(m_hHostWnd);
-				if (it != m_mapWindowPage.end())
+				auto it = g_pTangram->m_mapWindowPage.find(m_hHostWnd);
+				if (it != g_pTangram->m_mapWindowPage.end())
 					m_pDesignerCompositorManager = (CCompositorManager*)it->second;
 				else
 				{
 					m_pDesignerCompositorManager = new CComObject<CCompositorManager>();
 					m_pDesignerCompositorManager->m_hWnd = m_hHostWnd;
-					m_mapWindowPage[m_hHostWnd] = m_pDesignerCompositorManager;
+					g_pTangram->m_mapWindowPage[m_hHostWnd] = m_pDesignerCompositorManager;
 				}
 
 				CString strPath = m_strExeName + _T(".designer");
@@ -578,14 +578,14 @@ namespace OfficePlus
 					HWND hChild = ::GetWindow(hWnd, GW_CHILD);
 					ICompositor* pCompositor = nullptr;
 					CCompositorManager* pCompositorManager = nullptr;
-					auto it = m_pAddin->m_mapWindowPage.find(hChild);
-					if (it != m_pAddin->m_mapWindowPage.end())
+					auto it = g_pTangram->m_mapWindowPage.find(hChild);
+					if (it != g_pTangram->m_mapWindowPage.end())
 						pCompositorManager = (CCompositorManager*)it->second;
 					else
 					{
 						pCompositorManager = new CComObject<CCompositorManager>();
 						pCompositorManager->m_hWnd = hChild;
-						m_pAddin->m_mapWindowPage[hChild] = pCompositorManager;
+						g_pTangram->m_mapWindowPage[hChild] = pCompositorManager;
 					}
 
 					pCompositorManager->CreateCompositor(CComVariant(0), CComVariant((long)hChild), CComBSTR(L"UserForm"), &pCompositor);

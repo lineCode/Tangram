@@ -240,13 +240,13 @@ namespace OfficePlus
 			strKey.MakeLower();
 			if (strKey == _T("doctemplate"))
 			{
-				auto it = m_mapValInfo.find(_T("doctemplate"));
-				if (it != m_mapValInfo.end())
+				auto it = g_pTangram->m_mapValInfo.find(_T("doctemplate"));
+				if (it != g_pTangram->m_mapValInfo.end())
 				{
 					::VariantClear(&it->second);
-					m_mapValInfo.erase(it);
+					g_pTangram->m_mapValInfo.erase(it);
 				}
-				m_mapValInfo[strKey] = newVal;
+				g_pTangram->m_mapValInfo[strKey] = newVal;
 				CComPtr<_Presentation> pDoc;
 				CComVariant varTemplate(L"");
 				CComPtr<PowerPoint::Presentations> pPresentations;
@@ -607,14 +607,14 @@ namespace OfficePlus
 								pPowerPntWndObj->m_hTaskPane = (HWND)hWnd;
 								if (pTangramPresentation->m_pTaskPaneCompositorManager == nullptr)
 								{
-									auto it = m_mapWindowPage.find(hPWnd);
-									if (it != m_mapWindowPage.end())
+									auto it = g_pTangram->m_mapWindowPage.find(hPWnd);
+									if (it != g_pTangram->m_mapWindowPage.end())
 										pTangramPresentation->m_pTaskPaneCompositorManager = (CCompositorManager*)it->second;
 									else
 									{
 										pTangramPresentation->m_pTaskPaneCompositorManager = new CComObject<CCompositorManager>();
 										pTangramPresentation->m_pTaskPaneCompositorManager->m_hWnd = hPWnd;
-										m_mapWindowPage[hPWnd] = pTangramPresentation->m_pTaskPaneCompositorManager;
+										g_pTangram->m_mapWindowPage[hPWnd] = pTangramPresentation->m_pTaskPaneCompositorManager;
 									}
 
 									if (pTangramPresentation->m_pTaskPaneCompositorManager)
@@ -693,14 +693,14 @@ namespace OfficePlus
 										pPowerPntWndObj->m_hTaskPane = (HWND)hWnd;
 										if (pTangramPresentation->m_pTaskPaneCompositorManager == nullptr)
 										{
-											auto it = m_mapWindowPage.find(hPWnd);
-											if (it != m_mapWindowPage.end())
+											auto it = g_pTangram->m_mapWindowPage.find(hPWnd);
+											if (it != g_pTangram->m_mapWindowPage.end())
 												pTangramPresentation->m_pTaskPaneCompositorManager = (CCompositorManager*)it->second;
 											else
 											{
 												pTangramPresentation->m_pTaskPaneCompositorManager = new CComObject<CCompositorManager>();
 												pTangramPresentation->m_pTaskPaneCompositorManager->m_hWnd = hPWnd;
-												m_mapWindowPage[hPWnd] = pTangramPresentation->m_pTaskPaneCompositorManager;
+												g_pTangram->m_mapWindowPage[hPWnd] = pTangramPresentation->m_pTaskPaneCompositorManager;
 											}
 
 											if (pTangramPresentation->m_pTaskPaneCompositorManager)

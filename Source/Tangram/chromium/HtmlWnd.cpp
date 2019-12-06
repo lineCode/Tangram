@@ -789,7 +789,6 @@ namespace ChromePlus {
 			LoadDocument2Viewport(_T("__NTP_DEFAULT__"), g_pTangram->m_strNtpXml);
 		}
 	}
-
 }  // namespace ChromePlus
 
 

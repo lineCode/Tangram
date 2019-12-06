@@ -476,7 +476,7 @@ void CSplitterNodeWnd::StopTracking(BOOL bAccept)
 		if (pWebWnd)
 		{
 			//::SendMessage(pWebWnd->m_hWnd, WM_LBUTTONDOWN, 0, 0);
-			//::SendMessage(::GetParent(pWebWnd->m_hWnd), WM_BROWSERLAYOUT, 0, 2);
+			::SendMessage(::GetParent(pWebWnd->m_hWnd), WM_BROWSERLAYOUT, 0, 2);
 		}
 	}
 }

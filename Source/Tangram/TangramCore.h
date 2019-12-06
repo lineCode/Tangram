@@ -262,7 +262,7 @@ public:
 	CTangramHtmlTreeWnd*					m_pDocDOMTree;
 	CEclipseWnd*							m_pActiveEclipseWnd;
 
-	Object::ObjectFactory*					m_pObjectFactory;
+	//Object::ObjectFactory*					m_pObjectFactory;
 
 	map<CString, CTangramDoc*>				m_mapOpenDoc;
 	map<HWND, CCompositor*>					m_mapBKFrame;
@@ -476,4 +476,5 @@ private:
 	CString GetSchemeBaseName();
 	HICON GetAppIcon(int nIndex);
 	CChromeBrowserBase* GetChromeBrowserBase(HWND);
+	void InsertTangramDataMap(int nType, CString strKey, void* pData);
 };

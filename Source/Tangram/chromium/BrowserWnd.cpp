@@ -37,7 +37,7 @@ namespace ChromePlus {
 		m_pOmniboxViewViews = nullptr;
 		if (g_pTangram->m_pCreatingOmniboxViewViews) {
 			m_pOmniboxViewViews = g_pTangram->m_pCreatingOmniboxViewViews;
-			g_pTangram->m_pCreatingOmniboxViewViews = nullptr; 
+			g_pTangram->m_pCreatingOmniboxViewViews = nullptr;
 		}
 	}
 
@@ -388,7 +388,7 @@ namespace ChromePlus {
 
 		if (g_pTangram->m_hMainWnd == NULL && 
 			g_pTangram->m_bChromeNeedClosed == false && 
-			g_pTangram->m_mapBrowserWnd.size() == 1 && 
+			g_pTangram->m_mapBrowserWnd.size() == 1 &&
 			::IsWindow(g_pTangram->m_hHostBrowserWnd)&&
 			g_pTangram->m_nAppID == 10000 && 
 			g_pTangram->m_bEclipse == false)

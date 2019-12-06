@@ -11,13 +11,9 @@ namespace TangramCommon
 
 	ITangramWindowProvider::~ITangramWindowProvider() 
 	{
-		if (::GetModuleHandle(L"tangramcore") != NULL)
+		if (::GetModuleHandle(L"tangramcore") != NULL&&g_pTangramImpl)
 		{
-			auto it = g_pTangramImpl->m_mapTangramWindowProvider.find(m_strProviderID);
-			if (it != g_pTangramImpl->m_mapTangramWindowProvider.end())
-			{
-				g_pTangramImpl->m_mapTangramWindowProvider.erase(it);
-			}
+			g_pTangramImpl->InsertTangramDataMap(0, m_strProviderID, nullptr);
 		}
 	}
 
@@ -35,7 +31,7 @@ namespace TangramCommon
 				ITangram* pTangram = nullptr;
 				g_pTangramImpl = _pTangramFunction(&pTangram);
 				m_strProviderID.MakeLower();
-				g_pTangramImpl->m_mapTangramWindowProvider[m_strProviderID] = this;
+				g_pTangramImpl->InsertTangramDataMap(1, m_strProviderID, this);
 				return true;
 			}
 		}

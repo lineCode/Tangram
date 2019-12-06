@@ -90,14 +90,14 @@ namespace OfficePlus
 
 				if (m_pDesignerCompositorManager == nullptr)
 				{
-					auto it = m_mapWindowPage.find(m_hHostWnd);
-					if (it != m_mapWindowPage.end())
+					auto it = g_pTangram->m_mapWindowPage.find(m_hHostWnd);
+					if (it != g_pTangram->m_mapWindowPage.end())
 						m_pDesignerCompositorManager = (CCompositorManager*)it->second;
 					else
 					{
 						m_pDesignerCompositorManager = new CComObject<CCompositorManager>();
 						m_pDesignerCompositorManager->m_hWnd = m_hHostWnd;
-						m_mapWindowPage[m_hHostWnd] = m_pDesignerCompositorManager;
+						g_pTangram->m_mapWindowPage[m_hHostWnd] = m_pDesignerCompositorManager;
 					}
 
 					CString strPath = m_strExeName+_T(".designer");
@@ -630,7 +630,7 @@ namespace OfficePlus
 											m_Wnd.Detach();
 											m_pWorkBook->m_pTaskPaneCompositorManager = new CComObject<CCompositorManager>();
 											m_pWorkBook->m_pTaskPaneCompositorManager->m_hWnd = hPWnd;
-											m_mapWindowPage[hPWnd] = m_pWorkBook->m_pTaskPaneCompositorManager;
+											g_pTangram->m_mapWindowPage[hPWnd] = m_pWorkBook->m_pTaskPaneCompositorManager;
 											ICompositor* pTaskPaneFrame = nullptr;
 											m_pWorkBook->m_pTaskPaneCompositorManager->CreateCompositor(CComVariant(0), CComVariant((long)hWnd), CComBSTR(L"TaskPane"), &pTaskPaneFrame);
 											m_pWorkBook->m_pTaskPaneCompositor = (CCompositor*)pTaskPaneFrame;
@@ -813,18 +813,18 @@ namespace OfficePlus
 			strKey.MakeLower();
 			if (strKey == _T("doctemplate"))
 			{
-				auto it = m_mapValInfo.find(_T("doctemplate"));
-				if (it != m_mapValInfo.end())
+				auto it = g_pTangram->m_mapValInfo.find(_T("doctemplate"));
+				if (it != g_pTangram->m_mapValInfo.end())
 				{
 					::VariantClear(&it->second);
-					m_mapValInfo.erase(it);
+					g_pTangram->m_mapValInfo.erase(it);
 				}
 				CComPtr<Workbooks> pWorkBooks;
 				m_pExcelApplication->get_Workbooks(&pWorkBooks);
 				if (pWorkBooks)
 				{
 					CString strXml = OLE2T(newVal.bstrVal);
-					m_mapValInfo[strKey] = newVal;
+					g_pTangram->m_mapValInfo[strKey] = newVal;
 					CComPtr<_Workbook> pWorkbook;
 					CComVariant varTemplate(L"");
 					pWorkBooks->Add(varTemplate, 0, &pWorkbook);
@@ -1037,14 +1037,14 @@ namespace OfficePlus
 				return ;
 			CExcelAddin* pAddin = (CExcelAddin*)g_pTangram;
 
-			auto it = pAddin->m_mapWindowPage.find(m_hClient);
-			if (it != pAddin->m_mapWindowPage.end())
+			auto it = g_pTangram->m_mapWindowPage.find(m_hClient);
+			if (it != g_pTangram->m_mapWindowPage.end())
 				m_pWorkBook->m_pDocCompositorManager = (CCompositorManager*)it->second;
 			else
 			{
 				m_pWorkBook->m_pDocCompositorManager = new CComObject<CCompositorManager>();
 				m_pWorkBook->m_pDocCompositorManager->m_hWnd = m_hClient;
-				pAddin->m_mapWindowPage[m_hClient] = m_pWorkBook->m_pDocCompositorManager;
+				g_pTangram->m_mapWindowPage[m_hClient] = m_pWorkBook->m_pDocCompositorManager;
 			}
 
 			if (m_pWorkBook->m_pDocCompositorManager)
@@ -1140,7 +1140,7 @@ namespace OfficePlus
 										m_Wnd.Detach();
 										m_pWorkBook->m_pTaskPaneCompositorManager = new CComObject<CCompositorManager>();
 										m_pWorkBook->m_pTaskPaneCompositorManager->m_hWnd = hPWnd;
-										pAddin->m_mapWindowPage[hPWnd] = m_pWorkBook->m_pTaskPaneCompositorManager;
+										g_pTangram->m_mapWindowPage[hPWnd] = m_pWorkBook->m_pTaskPaneCompositorManager;
 
 										ICompositor* pTaskPaneFrame = nullptr;
 										m_pWorkBook->m_pTaskPaneCompositorManager->CreateCompositor(CComVariant(0), CComVariant((long)hWnd), CComBSTR(L"TaskPane"), &pTaskPaneFrame);
@@ -1332,8 +1332,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x0000061d;
 			CExcelAddin* pAddin = (CExcelAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -1353,8 +1353,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x00000616;
 			CExcelAddin* pAddin = (CExcelAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -1376,8 +1376,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x00000617;
 			CExcelAddin* pAddin = (CExcelAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -1401,8 +1401,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x00000618;
 			CExcelAddin* pAddin = (CExcelAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -1429,8 +1429,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x00000619;
 			CExcelAddin* pAddin = (CExcelAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -1450,8 +1450,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x0000061a;
 			CExcelAddin* pAddin = (CExcelAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -1471,8 +1471,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x0000061b;
 			CExcelAddin* pAddin = (CExcelAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -1492,8 +1492,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x0000061c;
 			CExcelAddin* pAddin = (CExcelAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -1515,8 +1515,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x0000061f;
 			CExcelAddin* pAddin = (CExcelAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pExcelApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");

@@ -548,8 +548,6 @@ namespace TangramCommon {
 			m_hParent = NULL;
 			m_hSmallIcon = nullptr;
 			m_hLargeIcon = nullptr;
-			m_pBrowserFactory = nullptr;
-			m_pActiveBrowser = nullptr;
 			m_bExportComponent = false;
 			m_hHostWnd = nullptr;
 			m_hFormNodeWnd = nullptr;
@@ -560,15 +558,11 @@ namespace TangramCommon {
 			m_pActiveAppProxy = nullptr;
 			m_pTangramCLRAppProxy = nullptr;
 			m_pTangramAppProxy = nullptr;
-			m_pTangramDelegate = nullptr;
 			m_pCurMDIChildFormInfo = nullptr;
 			m_strNtpXml = _T("");
 			m_strNtpDataXml = _T("");
 			m_pTangramPackageProxy = nullptr;
 			m_strAppCurrentFormTemplatePath = _T("");
-			m_pCreatingTangramWindow = nullptr;
-			m_pCreatingOmniboxViewViews = nullptr;
-			m_pCreatingChromeRenderFrameHostBase = nullptr;
 		}
 
 		virtual ~CTangramImpl() {}
@@ -679,18 +673,16 @@ namespace TangramCommon {
 		ITangramAppProxy*						m_pTangramCLRAppProxy;
 		CMDIChildFormInfo*						m_pCurMDIChildFormInfo;
 		CTangramPackageProxy*					m_pTangramPackageProxy;
-
-		IDispatch*								m_pMainFormDisp;
-		IDispatch*								m_pAppDisp;
-		IWndNode*								m_pHostViewDesignerNode;
-		ITangramExtender*						m_pExtender;
-
-		ITangramDelegate*						m_pTangramDelegate;
-		CChromeBrowserBase*						m_pActiveBrowser;
-		CTangramBrowserFactory*					m_pBrowserFactory;
+		IDispatch*								m_pMainFormDisp = nullptr;
+		IDispatch*								m_pAppDisp = nullptr;
+		IWndNode*								m_pHostViewDesignerNode = nullptr;
+		ITangramExtender*						m_pExtender = nullptr;
+		ITangramDelegate*						m_pTangramDelegate = nullptr;
+		CChromeBrowserBase*						m_pActiveBrowser = nullptr;
+		CTangramBrowserFactory*					m_pBrowserFactory = nullptr;
 		ITangramWindow*							m_pCreatingTangramWindow = nullptr;
-		OmniboxViewViewsProxy*					m_pCreatingOmniboxViewViews;
-		CChromeRenderFrameHostBase*				m_pCreatingChromeRenderFrameHostBase;
+		OmniboxViewViewsProxy*					m_pCreatingOmniboxViewViews = nullptr;
+		CChromeRenderFrameHostBase*				m_pCreatingChromeRenderFrameHostBase = nullptr;
 
 		map<CString, IDispatch*>				m_mapObjDic;
 		map<HWND, ICompositorManager*>			m_mapFramePage;
@@ -745,6 +737,7 @@ namespace TangramCommon {
 		virtual void DotNetControlCreated(MSG* lpMsg) {}
 		virtual void ExportComponentInfo() {}
 		virtual void ConnectDocTemplate(LPCTSTR strType, LPCTSTR strExt, void* pTemplate) {}
+		virtual void InsertTangramDataMap(int nType, CString strKey, void* pData) {}
 	};
 
 	class ITangramDelegate {

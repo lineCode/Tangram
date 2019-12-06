@@ -91,8 +91,8 @@ namespace OfficePlus
 				delete m_pTangramInspectorItems;
 			}
 
-			if (m_pExtender)
-				m_pExtender->Close();
+			if (g_pTangram->m_pExtender)
+				g_pTangram->m_pExtender->Close();
 
 			m_bCanClose = true;
 			//m_nRef = 3;
@@ -101,8 +101,8 @@ namespace OfficePlus
 		void COutLookAddin::OnNewMailEx(BSTR EntryIDCollection)
 		{
 			int nIndex = 0x0000fab5;
-			auto it2 = m_mapObjEventDic.find(m_pApplication.p);
-			if (it2 != m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -125,8 +125,8 @@ namespace OfficePlus
 		void COutLookAddin::OnAttachmentContextMenuDisplay(CommandBar* CommandBar, AttachmentSelection* Attachments) 
 		{
 			int nIndex = 0x0000fb3e;
-			auto it2 = m_mapObjEventDic.find(m_pApplication.p);
-			if (it2 != m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -149,8 +149,8 @@ namespace OfficePlus
 		void COutLookAddin::OnFolderContextMenuDisplay(CommandBar* CommandBar, OutLook::Folder* Folder) 
 		{
 			int nIndex = 0x0000fb42;
-			auto it2 = m_mapObjEventDic.find(m_pApplication.p);
-			if (it2 != m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -173,8 +173,8 @@ namespace OfficePlus
 		void COutLookAddin::OnStoreContextMenuDisplay(CommandBar* CommandBar, Store* Store)
 		{
 			int nIndex = 0x0000fb43;
-			auto it2 = m_mapObjEventDic.find(m_pApplication.p);
-			if (it2 != m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -197,8 +197,8 @@ namespace OfficePlus
 		void COutLookAddin::OnShortcutContextMenuDisplay(CommandBar* CommandBar, OutlookBarShortcut* Shortcut) 
 		{
 			int nIndex = 0x0000fb44;
-			auto it2 = m_mapObjEventDic.find(m_pApplication.p);
-			if (it2 != m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -221,8 +221,8 @@ namespace OfficePlus
 		void COutLookAddin::OnViewContextMenuDisplay(CommandBar* CommandBar, OutLook::View* View)
 		{
 			int nIndex = 0x0000fb40;
-			auto it2 = m_mapObjEventDic.find(m_pApplication.p);
-			if (it2 != m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -245,8 +245,8 @@ namespace OfficePlus
 		void COutLookAddin::OnItemContextMenuDisplay(CommandBar* CommandBar, OutLook::Selection* Selection)
 		{
 			int nIndex = 0x0000fb41;
-			auto it2 = m_mapObjEventDic.find(m_pApplication.p);
-			if (it2 != m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -270,8 +270,8 @@ namespace OfficePlus
 			int nIndex = 0x0000fba6;
 			//IDispatch* pDisp = nullptr;
 			//m_pApplication->QueryInterface(IID_IDispatch, (void**)pDisp);
-			auto it2 = m_mapObjEventDic.find(m_pApplication.p);
-			if (it2 != m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -310,8 +310,8 @@ namespace OfficePlus
 			int nIndex = 0x0000fba7;
 			//IDispatch* pDisp2 = nullptr;
 			//m_pApplication->QueryInterface(IID_IDispatch, (void**)pDisp2);
-			auto it2 = m_mapObjEventDic.find(m_pApplication.p);
-			if (it2 != m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -334,8 +334,8 @@ namespace OfficePlus
 			int nIndex = 0x0000fc01;
 			//IDispatch* pDisp = nullptr;
 			//m_pApplication->QueryInterface(IID_IDispatch, (void**)pDisp);
-			auto it2 = m_mapObjEventDic.find(m_pApplication.p);
-			if (it2 != m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -3035,8 +3035,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x0000f002;
 			COutLookAddin* pAddin = (COutLookAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -3062,8 +3062,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x0000f003;
 			COutLookAddin* pAddin = (COutLookAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -3081,8 +3081,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x0000f004;
 			COutLookAddin* pAddin = (COutLookAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -3103,8 +3103,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x0000f005;
 			COutLookAddin* pAddin = (COutLookAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -3126,8 +3126,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x0000f006;
 			COutLookAddin* pAddin = (COutLookAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -3146,8 +3146,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x0000f007;
 			COutLookAddin* pAddin = (COutLookAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -3166,8 +3166,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x0000fa6a;
 			COutLookAddin* pAddin = (COutLookAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -3188,8 +3188,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x0000fa6b;
 			COutLookAddin* pAddin = (COutLookAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");
@@ -3211,8 +3211,8 @@ namespace OfficePlus
 		{
 			int nIndex = 0x0000fa90;
 			COutLookAddin* pAddin = (COutLookAddin*)g_pTangram;
-			auto it2 = pAddin->m_mapObjEventDic.find(pAddin->m_pApplication.p);
-			if (it2 != pAddin->m_mapObjEventDic.end())
+			auto it2 = g_pTangram->m_mapObjEventDic.find(pAddin->m_pApplication.p);
+			if (it2 != g_pTangram->m_mapObjEventDic.end())
 			{
 				CString strEventIndexs = it2->second;
 				CString strIndex = _T("");

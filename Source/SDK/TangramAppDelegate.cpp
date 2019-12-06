@@ -400,11 +400,8 @@ namespace TangramCommon
 	{
 		if (m_pTangramImpl)
 		{
-			auto it = m_pTangramImpl->m_mapTangramAppProxy.find(m_strProviderID);
-			if (it != m_pTangramImpl->m_mapTangramAppProxy.end())
-			{
-				m_pTangramImpl->m_mapTangramAppProxy.erase(it);
-			}
+			m_pTangramImpl->InsertTangramDataMap(0, m_strProviderID, nullptr);
+			m_pTangramImpl->InsertTangramDataMap(1, m_strProviderID, nullptr);
 		}
 	}
 
@@ -642,9 +639,17 @@ namespace TangramCommon
 			_pTangramImplFunction = (GetTangramImpl)GetProcAddress(hModule, "GetTangramImpl");
 			g_pTangramImpl = m_pTangramImpl = _pTangramImplFunction(&m_pTangram);
 			g_pTangram = m_pTangram;
+
 			if (!afxContextIsDLL)
 			{
+				m_strProviderID = AfxGetApp()->m_pszAppName;
+				m_strProviderID += _T(".host");
+				m_strProviderID.MakeLower();
+				
 				m_pTangramImpl->m_pTangramDelegate = static_cast<ITangramDelegate*>(this);
+				g_pTangramImpl->InsertTangramDataMap(0, m_strProviderID, static_cast<ITangramAppProxy*>(this));
+				g_pTangramImpl->InsertTangramDataMap(1, m_strProviderID, static_cast<ITangramWindowProvider*>(this));
+
 				if (m_pTangramImpl->m_strNtpXml == _T(""))
 				{
 					m_pTangramImpl->m_strNtpXml = GetNTPXml();
@@ -657,11 +662,6 @@ namespace TangramCommon
 					g_pTangramImpl->m_nAppType != TANGRAM_APP_BROWSER_ECLIPSE)
 				::PostAppMessage(::GetCurrentThreadId(), WM_CHROMEAPPINIT, (WPARAM)m_pTangramImpl->m_pTangramDelegate, g_pTangramImpl->m_nAppType);
 				m_pTangramImpl->m_pTangramAppProxy = this;
-				m_strProviderID = AfxGetApp()->m_pszAppName;
-				m_strProviderID += _T(".host");
-				m_strProviderID.MakeLower();
-				m_pTangramImpl->m_mapTangramAppProxy[m_strProviderID] = static_cast<ITangramAppProxy*>(this);
-				g_pTangramImpl->m_mapTangramWindowProvider[m_strProviderID] = static_cast<ITangramWindowProvider*>(this);
 			}
 			else 
 			{
@@ -676,8 +676,8 @@ namespace TangramCommon
 				if (m_strProviderID != _T(""))
 				{
 					m_strProviderID.MakeLower();
-					m_pTangramImpl->m_mapTangramAppProxy[m_strProviderID] = static_cast<ITangramAppProxy*>(this);
-					g_pTangramImpl->m_mapTangramWindowProvider[m_strProviderID] = this;
+					g_pTangramImpl->InsertTangramDataMap(0, m_strProviderID, static_cast<ITangramAppProxy*>(this));
+					g_pTangramImpl->InsertTangramDataMap(1, m_strProviderID, static_cast<ITangramWindowProvider*>(this));
 				}
 			}
 		}
@@ -927,7 +927,8 @@ namespace TangramCommon
 			if (m_strProviderID != _T(""))
 			{
 				m_strProviderID.MakeLower();
-				g_pTangramImpl->m_mapTangramWindowProvider[m_strProviderID] = this;
+				g_pTangramImpl->InsertTangramDataMap(1, m_strProviderID, this);
+				//g_pTangramImpl->m_pTangramImplData->m_mapTangramWindowProvider[m_strProviderID] = this;
 			}
 		}
 		return true;

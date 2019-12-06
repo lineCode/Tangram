@@ -511,12 +511,6 @@ void CTangramCLRProxy::WindowDestroy(HWND hWnd)
 		m_mapForm.erase(it);
 		if (m_mapForm.size() == 0)
 		{
-			//if (::IsWindow(m_hMsgWnd))
-			//	::DestroyWindow(m_hMsgWnd);
-			//if (::IsWindow(m_pProxy->m_hHostWnd))
-			//	::DestroyWindow(m_pProxy->m_hHostWnd);
-			//Forms::Application::Exit();
-			//PostQuitMessage(0);
 			::PostAppMessage(::GetCurrentThreadId(), WM_TANGRAMMSG, theAppProxy.m_bHostApp ? 1 : 0, 20190511);
 		}
 	}

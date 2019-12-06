@@ -450,7 +450,7 @@ namespace OfficePlus
 
 								m_pTaskPaneCompositorManager = new CComObject<CCompositorManager>();
 								m_pTaskPaneCompositorManager->m_hWnd = hPWnd;
-								pAddin->m_mapWindowPage[hPWnd] = m_pTaskPaneCompositorManager;
+								g_pTangram->m_mapWindowPage[hPWnd] = m_pTaskPaneCompositorManager;
 
 								ICompositor* pTaskPaneFrame = nullptr;
 								m_pTaskPaneCompositorManager->CreateCompositor(CComVariant(0), CComVariant((long)hWnd), CComBSTR(L"TaskPane"), &pTaskPaneFrame);
